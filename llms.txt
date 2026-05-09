@@ -4,40 +4,42 @@
 
 ## About
 
-The gap between foundation models and real decisions is architecture. Not prompts. Not wrappers. Prediction layers over 122M+ indexed compounds, compliance systems that understand jurisdictional complexity, orchestration that gives models the specialized tools they need to move from conversation to computation.
+Focused on the boundary where model reasoning meets structured systems - and where correctness, constraints, and consequences begin to matter. The gap between foundation models and real-world decisions is architecture - systems that translate probabilistic reasoning into reliable action under domain constraints.
 
-NovoQuantNexus builds computational infrastructure for drug discovery and materials science. Two MCP servers — NovoMCP for discovery intelligence and Novo Compute for GPU simulation — expose 62 tools to any AI assistant. From target identification to patient stratification. From OLED screening to electrolyte stability. One platform, two verticals.
+NovoMCP is one instantiation - applying this architecture to scientific discovery, where constraints are explicit and mistakes are costly. Two MCP servers - Novo for discovery intelligence and Novo Compute for GPU simulation - expose 69 tools to any AI assistant. From target identification to patient stratification. From OLED screening to electrolyte stability. Prediction layers over 122M+ indexed compounds, compliance systems that understand jurisdictional complexity, orchestration that turns conversation into computation.
 
-NovoWorkbench is the desktop surface. Researchers paste a molecule and get 3D structure, pharmacokinetic predictions, regulatory screening, and AI-optimized analogs — in under 2 seconds. Model-agnostic. Local-first. Signed and notarized by Apple.
+NovoWorkbench is the desktop surface. Researchers paste a molecule and get 3D structure, pharmacokinetic predictions, regulatory screening, and AI-optimized analogs - in under 2 seconds. Model-agnostic. Local-first. Signed and notarized by Apple.
 
-Before this: autonomous discovery systems in high-stakes manufacturing — reinforcement learning agents that diagnosed failures and improved without intervention. The work is AI infrastructure. The domain is wherever the stakes are high enough to demand it.
+Before this: autonomous discovery systems in high-stakes manufacturing - reinforcement learning agents that diagnosed failures and improved without intervention. The work is AI infrastructure. The domain is wherever the stakes are high enough to demand it.
 
 ## The Stack
 
-- Intelligence Layer: 122M+ compounds, 84 properties each, sub-50ms
-- Compliance: FAVES V4 — 8 jurisdictions, 1,585 structural alerts
-- MCP Tools: 62 tools across 2 servers (NovoMCP + Novo Compute)
+- Intelligence Layer: 122M+ compounds, 100+ data fields each, sub-50ms
+- Compliance: FAVES V4 - 8 jurisdictions, 1,585 structural alerts
+- MCP Tools: 69 tools across 2 servers (Novo + Novo Compute)
 - Verticals: Drug discovery + materials science
-- Desktop Surface: NovoWorkbench — local-first, model-agnostic
+- Desktop Surface: NovoWorkbench - local-first, model-agnostic
 - Ecosystem: NVIDIA Inception, AWS Activate, Microsoft Founders Hub
 
 ## Publications
 
-- NovoExpert: State-of-the-Art ADMET Prediction on TDC Benchmarks (2026, ChemRxiv) — Five SOTA wins on Therapeutics Data Commons ADMET endpoints: CYP2D6 (0.778 AUPRC), CYP3A4 (0.916 AUPRC), CYP3A4 Substrate (0.648 AUPRC), Clearance Hepatocyte (0.602 Spearman), DILI (0.922 AUROC). CatBoost ensembles with MapLight and GIN fingerprints. DOI: 10.26434/chemrxiv.15000061/v2
+Research on how domain structure shapes reasoning - and how reasoning systems adapt under different objective and constraint regimes.
 
-- Molecular Targets Shape Reasoning Topology: Bidirectional Validation of Chemistry-Inspired Bond Classification for AI Reasoning Chains (2026, ChemRxiv) — Across 478 reasoning traces from five ADMET endpoints, molecular targets determine AI reasoning topology with large effect sizes (Cohen's d = 0.94 and 1.75, both p < 10^-9). DOI: 10.26434/chemrxiv.15001019/v1
+- NovoExpert: State-of-the-Art ADMET Prediction on TDC Benchmarks (2026, ChemRxiv) - Five SOTA wins on Therapeutics Data Commons ADMET endpoints: CYP2D6 (0.778 AUPRC), CYP3A4 (0.916 AUPRC), CYP3A4 Substrate (0.648 AUPRC), Clearance Hepatocyte (0.602 Spearman), DILI (0.922 AUROC). CatBoost ensembles with MapLight and GIN fingerprints. DOI: 10.26434/chemrxiv.15000061/v2
+
+- Molecular Targets Shape Reasoning Topology: Bidirectional Validation of Chemistry-Inspired Bond Classification for AI Reasoning Chains (2026, ChemRxiv) - Across 478 reasoning traces from five ADMET endpoints, molecular targets determine AI reasoning topology with large effect sizes (Cohen's d = 0.94 and 1.75, both p < 10^-9). DOI: 10.26434/chemrxiv.15001019/v1
 
 ## Projects
 
-- NovoMCP + Novo Compute: 62 tools across two MCP servers. NovoMCP handles discovery intelligence — 122M+ compounds, ADMET predictions, FAVES V4 compliance, research search, lead optimization, funnel orchestration. Novo Compute handles simulation — GPU docking, GROMACS MD, quantum chemistry, neural network potentials, structure prediction, materials science. https://novomcp.com/novo / https://novomcp.com/novo-compute
+- Novo + Novo Compute: A domain-constrained reasoning system where models must operate through tools, data, and regulatory constraints to produce valid outputs. 69 tools across two MCP servers. Novo handles discovery intelligence - 122M+ compounds, ADMET predictions, FAVES V4 compliance, research search, lead optimization, funnel orchestration. Novo Compute handles simulation - GPU docking, GROMACS MD, quantum chemistry, neural network potentials, structure prediction, materials science. https://novomcp.com/novo / https://novomcp.com/novo-compute
 
-- NovoWorkbench — The Desktop Surface: 3D rendering, pharmacokinetic predictions, regulatory screening, AI-optimized analogs in under 2 seconds. Model-agnostic. Local-first. Apple signed/notarized.
+- NovoWorkbench - The Desktop Surface: 3D rendering, pharmacokinetic predictions, regulatory screening, AI-optimized analogs in under 2 seconds. Model-agnostic. Local-first. Apple signed/notarized.
 
-- FAVES V4 — Compliance Inline: Three-tier detection with 1,585 structural alert patterns, 8 jurisdictions, BOILED-Egg permeability, prior art checks. 100% sensitivity/specificity on 102-compound benchmark.
+- FAVES V4 - Compliance Inline: Three-tier detection with 1,585 structural alert patterns, 8 jurisdictions, BOILED-Egg permeability, prior art checks. 100% sensitivity/specificity on 102-compound benchmark.
 
 ## Writing
 
-- Server-Side Tool Search for a 62-Tool MCP Platform (2026.04) — https://substack.com/home/post/p-195517589
+- Server-Side Tool Search for a 69-Tool MCP Platform (2026.04) - https://substack.com/home/post/p-195517589
 - Why Most AI Pilots Fail: The Missing Infrastructure Layer (2026.02)
 - Scaling MCP: Lessons from 122M Compounds (2026.02)
 - From Conversational to Computational AI (2026.02)
