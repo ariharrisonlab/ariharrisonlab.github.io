@@ -25,9 +25,9 @@ Before this: autonomous discovery systems in high-stakes manufacturing - reinfor
 
 Research on how domain structure shapes reasoning - and how reasoning systems adapt under different objective and constraint regimes.
 
-- NovoExpert: State-of-the-Art ADMET Prediction on TDC Benchmarks (2026, ChemRxiv) - Five SOTA wins on Therapeutics Data Commons ADMET endpoints: CYP2D6 (0.778 AUPRC), CYP3A4 (0.916 AUPRC), CYP3A4 Substrate (0.648 AUPRC), Clearance Hepatocyte (0.602 Spearman), DILI (0.922 AUROC). CatBoost ensembles with MapLight and GIN fingerprints. DOI: 10.26434/chemrxiv.15000061/v2
+- FAVES V4: A Production-Deployed Compliance and Liability Screening System for Drug Discovery at 122M-Compound Scale (2026.05, ChemRxiv) - Production compliance and liability screening aligned to HHS/ONC FAVES and NIST AI 600-1. Single-API call returns regulatory status (DEA / FDA / CWC / EPA / EU REACH), 1,585 structural alerts, BOILED-Egg permeability, and InChIKey prior-art lookup. ~5 ms live latency, precomputed cache of 122,407,635 documents. Validated 362/362 compounds post-fix across five predetermined tests with documented governance bundle. DOI: 10.26434/chemrxiv.15003738/v2
 
-- Molecular Targets Shape Reasoning Topology: Bidirectional Validation of Chemistry-Inspired Bond Classification for AI Reasoning Chains (2026, ChemRxiv) - Across 478 reasoning traces from five ADMET endpoints, molecular targets determine AI reasoning topology with large effect sizes (Cohen's d = 0.94 and 1.75, both p < 10^-9). DOI: 10.26434/chemrxiv.15001019/v1
+- NovoExpert: State-of-the-Art ADMET Prediction on TDC Benchmarks (2026.04, ChemRxiv) - Five SOTA wins on Therapeutics Data Commons ADMET endpoints: CYP2D6 (0.778 AUPRC), CYP3A4 (0.916 AUPRC), CYP3A4 Substrate (0.648 AUPRC), Clearance Hepatocyte (0.602 Spearman), DILI (0.922 AUROC). CatBoost ensembles with MapLight and GIN fingerprints. DOI: 10.26434/chemrxiv.15000061/v2
 
 ## Projects
 
