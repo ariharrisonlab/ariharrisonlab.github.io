@@ -39,7 +39,7 @@ Research on how domain structure shapes reasoning - and how reasoning systems ad
 
 ## Writing
 
-- Server-Side Tool Search for a 69-Tool MCP Platform (2026.04) - https://substack.com/home/post/p-195517589
+- Server-Side Tool Search for a 62-Tool MCP Platform (2026.04) - https://substack.com/home/post/p-195517589
 - Why Most AI Pilots Fail: The Missing Infrastructure Layer (2026.02)
 - Scaling MCP: Lessons from 122M Compounds (2026.02)
 - From Conversational to Computational AI (2026.02)
