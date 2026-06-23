@@ -4,20 +4,26 @@
 
 The gap between foundation models and real decisions is architecture. Not prompts. Not wrappers. Prediction layers over 122M+ indexed compounds, compliance systems that understand jurisdictional complexity, an engine that turns conversation into computation.
 
-## Products
+## One Engine, Six Surfaces
 
-- **Novo** — The cloud platform. 122M+ compounds, 100+ properties each, sub-50ms. 42 discovery tools. [Product page](https://novomcp.com/novo)
-- **Novo Compute** — The compute engine. GPU docking, MD, QM, NNP, materials science. 40 tools. [Product page](https://novomcp.com/novo-compute)
-- **NovoWorkbench** — The desktop surface. 3D structure, pharmacokinetic predictions, regulatory screening, AI-optimized analogs in under 2 seconds. Model-agnostic. Local-first.
-- **FAVES V4** — Compliance inline. Three-tier detection, 1,585 structural alerts, 8 jurisdictions. 100% sensitivity/specificity on 102-compound benchmark.
+The engine is the product. The surface is how you reach it.
+
+- **MCP** — Novo + Novo Compute. The chat surface. [Novo](https://novomcp.com/novo) · [Novo Compute](https://novomcp.com/novo-compute)
+- **REST API** — `api.novomcp.com`. Single endpoint shape, OpenAPI 3.1 catalog. [API docs](https://novomcp.com/api)
+- **NovoWorkbench** — The workstation. One workbench, two runtimes (desktop + cloud). Same account across both. [Download](https://releases.novomcp.com)
+- **Chrome extension** — Hover any SMILES for ADMET / FAVES. [Chrome Web Store](https://chromewebstore.google.com/detail/novomcp/nfnhfmfmaccidmepfhllcllnjopeonmf)
+- **Word add-in** — Inline SMILES profiling in manuscripts and grants. Private beta.
+- **Dashboard** — `app.novomcp.com`. The spine — auth, keys, billing, jobs. Where every surface authenticates.
+
+See the [full product portfolio →](https://realariharrison.github.io/portfolio.html)
 
 ## The Stack
 
 - **The Engine** — 122M+ compounds, 100+ properties each, sub-50ms
+- **Tool Catalog** — 69 tools across ADMET, FAVES, docking, MD, FEP, QM
 - **Compliance** — FAVES V4, 8 jurisdictions, 1,585 structural alerts
-- **MCP Tools** — 69 tools across 2 servers (Novo + Novo Compute)
 - **Verticals** — Drug discovery + materials science
-- **Desktop Surface** — NovoWorkbench, local-first, model-agnostic
+- **One account, one credit pool, one audit trail** — across all six surfaces
 
 ## Ecosystem
 
@@ -25,6 +31,7 @@ NVIDIA Inception · AWS Activate · Microsoft Founders Hub
 
 ## Links
 
+- [Portfolio — one engine, six surfaces](https://realariharrison.github.io/portfolio.html)
 - [NovoMCP](https://novomcp.com)
 - [X / Twitter](https://x.com/realariharrison)
 - [Google Scholar](https://scholar.google.com/citations?hl=en&user=O3Bdfh8AAAAJ)

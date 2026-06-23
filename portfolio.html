@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ari Harrison — Portfolio · One Engine, Six Surfaces</title>
+<meta name="description" content="Product portfolio: six surfaces over one computational chemistry engine — MCP, REST API, desktop + cloud workbench, Chrome extension, Word add-in, dashboard. The problem, the decision, the build, the outcome for each.">
+<meta property="og:title" content="Ari Harrison — Portfolio · One Engine, Six Surfaces">
+<meta property="og:description" content="Six product surfaces shipped against one computational chemistry engine. Problem, decision, build, outcome — for each.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://realariharrison.github.io/portfolio.html">
+<meta property="og:image" content="https://realariharrison.github.io/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ari Harrison — Portfolio · One Engine, Six Surfaces">
+<meta name="twitter:description" content="Six product surfaces shipped against one computational chemistry engine.">
+<meta name="twitter:image" content="https://realariharrison.github.io/og-image.png">
+<link rel="canonical" href="https://realariharrison.github.io/portfolio.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%232A2725'/><text x='50' y='68' font-family='Georgia,serif' font-size='42' font-weight='400' fill='%23B8704B' text-anchor='middle'>AH</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  /* Tokens mirror index.html so the portfolio reads as the same site. */
+  :root {
+    --bg: #1A1816;
+    --bg-warm: #242120;
+    --bg-card-hover: #F5F2EE;
+    --text: #E8E4DF;
+    --text-soft: #B0AAA3;
+    --text-muted: #7A746D;
+    --accent: #D4A88A;
+    --accent-soft: #B8704B;
+    --border: #3A3634;
+    --nav-bg: rgba(26, 24, 22, 0.85);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', Monaco, monospace;
+    --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  [data-theme="light"] {
+    --bg: #F5F2EE;
+    --bg-warm: #EDEAE4;
+    --bg-card-hover: #2A2725;
+    --text: #2A2725;
+    --text-soft: #5E5954;
+    --text-muted: #908A83;
+    --accent: #B8704B;
+    --accent-soft: #D4A88A;
+    --border: #DDD8D1;
+    --nav-bg: rgba(245, 242, 238, 0.85);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    transition: background 400ms var(--ease), color 400ms var(--ease);
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none;
+    opacity: 0.015; z-index: 10000;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  ::selection { background: var(--accent-soft); color: var(--text); }
+  a { color: var(--accent); text-decoration: none; transition: color 400ms var(--ease); }
+  a:hover { color: var(--text); }
+
+  /* NAV — identical to index.html */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 20px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    background: var(--nav-bg);
+    border-bottom: 1px solid transparent;
+    transition: border-color 400ms var(--ease), background 400ms var(--ease);
+  }
+  nav.scrolled { border-bottom-color: var(--border); }
+  .nav-name {
+    font-family: var(--serif); font-size: 20px; font-weight: 400;
+    color: var(--text); letter-spacing: -0.01em;
+  }
+  .nav-right { display: flex; align-items: center; gap: 32px; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 12px; font-weight: 400; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--text-muted);
+    transition: color 400ms var(--ease); position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px; background: var(--accent);
+    transition: width 400ms var(--ease);
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links a.current { color: var(--text); }
+  .nav-links a.current::after { width: 100%; }
+
+  .theme-toggle {
+    background: none; border: 1px solid var(--border); border-radius: 50%;
+    width: 36px; height: 36px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted);
+    transition: all 400ms var(--ease); flex-shrink: 0;
+  }
+  .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+  .theme-toggle svg { width: 16px; height: 16px; fill: currentColor; }
+  .theme-toggle .icon-sun { display: block; }
+  .theme-toggle .icon-moon { display: none; }
+  [data-theme="light"] .theme-toggle .icon-sun { display: none; }
+  [data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px; cursor: pointer;
+    padding: 8px; background: none; border: none;
+  }
+  .hamburger span {
+    display: block; width: 22px; height: 1.5px;
+    background: var(--text); transition: all 300ms var(--ease);
+  }
+
+  /* Page chrome */
+  section {
+    padding: 120px 48px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--text-muted);
+    margin-bottom: 40px;
+  }
+  .section-label::before {
+    content: ''; display: inline-block; width: 24px; height: 1px;
+    background: var(--accent); margin-right: 12px; vertical-align: middle;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 70vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: 100px;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(38px, 5.4vw, 64px);
+    font-weight: 300; line-height: 1.08; letter-spacing: -0.02em;
+    color: var(--text); margin-bottom: 28px;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-sub {
+    font-size: 17px; color: var(--text-soft);
+    max-width: 640px; line-height: 1.8; font-weight: 300;
+  }
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 24px;
+    margin-top: 40px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+  .hero-meta span strong {
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  /* THESIS BAND */
+  .thesis {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-warm);
+    padding: 80px 48px;
+    transition: background 400ms var(--ease);
+  }
+  .thesis-inner {
+    max-width: 800px; margin: 0 auto;
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.4vw, 28px);
+    line-height: 1.5;
+    color: var(--text);
+    text-align: center;
+  }
+  .thesis-inner b { font-weight: 400; color: var(--accent); font-style: italic; }
+
+  /* SURFACE CASE */
+  .case {
+    padding: 96px 48px 24px;
+    max-width: 1100px; margin: 0 auto;
+    border-top: 1px solid var(--border);
+  }
+  .case:first-of-type { border-top: none; padding-top: 80px; }
+
+  .case-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 32px;
+    align-items: start;
+    margin-bottom: 36px;
+  }
+  .case-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    margin-bottom: 14px;
+  }
+  .case-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.4vw, 40px);
+    font-weight: 400;
+    line-height: 1.12;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .case-title em { font-style: italic; color: var(--accent); font-weight: 300; }
+  .case-status {
+    display: inline-flex; align-items: center;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    background: transparent;
+    white-space: nowrap;
+  }
+  .case-status.live {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+  }
+
+  .case-oneliner {
+    font-family: var(--serif);
+    font-size: clamp(17px, 1.5vw, 20px);
+    line-height: 1.55;
+    color: var(--text-soft);
+    max-width: 70ch;
+    margin-bottom: 48px;
+  }
+
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .case-cell {
+    padding: 28px 30px;
+    background: var(--bg-warm);
+  }
+  .case-cell h3 {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+  }
+  .case-cell p {
+    font-size: 14px;
+    color: var(--text-soft);
+    line-height: 1.75;
+  }
+  .case-cell p + p { margin-top: 12px; }
+  .case-cell strong { color: var(--text); font-weight: 500; }
+  .case-cell code {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--accent-soft);
+    background: rgba(184, 112, 75, 0.06);
+    padding: 1px 5px;
+  }
+
+  .case-foot {
+    margin-top: 24px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 22px 32px;
+  }
+  .case-foot .case-foot-label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .case-foot a {
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    border-bottom: 1px solid transparent;
+    transition: border-color 400ms var(--ease);
+  }
+  .case-foot a:hover { border-bottom-color: var(--accent); }
+  .case-foot code {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* DECISIONS LIST (cross-cutting) */
+  .decisions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .decision {
+    background: var(--bg-warm);
+    padding: 32px;
+  }
+  .decision h3 {
+    font-family: var(--serif);
+    font-size: 21px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 12px;
+    line-height: 1.25;
+  }
+  .decision p {
+    font-size: 14px;
+    color: var(--text-soft);
+    line-height: 1.75;
+  }
+  .decision p + p { margin-top: 12px; }
+
+  /* CTA */
+  .cta {
+    border-top: 1px solid var(--border);
+    padding: 90px 48px;
+    text-align: center;
+    background: var(--bg-warm);
+    transition: background 400ms var(--ease);
+  }
+  .cta h2 {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+  .cta-links {
+    display: flex; justify-content: center; gap: 28px; flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .cta-links a {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    transition: all 400ms var(--ease);
+  }
+  .cta-links a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* FOOTER — same as index */
+  footer {
+    padding: 80px 48px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .footer-left {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--text);
+    max-width: 600px;
+    line-height: 1.4;
+  }
+  .footer-links { display: flex; gap: 24px; list-style: none; }
+  .footer-links a {
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-copy {
+    text-align: center;
+    padding: 40px 48px;
+    font-size: 12px;
+    color: var(--text-muted);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 800ms var(--ease), transform 800ms var(--ease);
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    .case-grid, .decisions { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .nav-right { gap: 16px; }
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--bg); padding: 24px; gap: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    section { padding: 80px 24px 60px; }
+    .case { padding: 64px 24px 16px; }
+    .thesis, .cta { padding: 60px 24px; }
+    .case-head { grid-template-columns: 1fr; gap: 16px; }
+    .case-status { justify-self: start; }
+    footer { flex-direction: column; gap: 24px; align-items: flex-start; }
+  }
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 34px; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-name">Ari Harrison</a>
+  <div class="nav-right">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="portfolio.html" class="current">Portfolio</a></li>
+      <li><a href="index.html#publications">Publications</a></li>
+      <li><a href="index.html#blog">Writing</a></li>
+      <li><a href="index.html#videos">Videos</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24"><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24"><path d="M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z"/></svg>
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1 class="fade-in">One Engine.<br><em>Six Surfaces.</em></h1>
+  <p class="hero-sub fade-in">Product portfolio for NovoMCP — a computational chemistry engine that ships against six different user surfaces, on one account, one credit pool, one audit trail. Each surface below is its own product decision: where it lives, who it's for, what trade-off it pays. The problem, the call, the build, the outcome.</p>
+  <div class="hero-meta fade-in">
+    <span><strong>6</strong> shipping surfaces</span>
+    <span><strong>69</strong> tools in catalog</span>
+    <span><strong>122M</strong> pre-computed molecules</span>
+    <span><strong>1</strong> backend</span>
+  </div>
+</section>
+
+<div class="thesis">
+  <div class="thesis-inner fade-in">
+    Every surface is <b>a door into the same engine</b>, not a separate product.
+    Start in Claude, continue in the browser, batch from the API, review in the
+    dashboard — same account the whole way through.
+  </div>
+</div>
+
+<!-- 1. MCP -->
+<article class="case fade-in">
+  <header class="case-head">
+    <div>
+      <div class="case-tag">01 · MCP connector — AI assistants</div>
+      <h1 class="case-title">Novo &amp; Novo Compute — <em>the chat surface.</em></h1>
+    </div>
+    <span class="case-status live">Live</span>
+  </header>
+  <p class="case-oneliner">Add Novo to Claude, ChatGPT, Gemini, or Cursor and run the full discovery funnel in chat — with human-in-the-loop confirmation at each stage.</p>
+
+  <div class="case-grid">
+    <div class="case-cell">
+      <h3>The Problem</h3>
+      <p>Chemists already live in Claude and ChatGPT. Asking them to leave their assistant for a separate product is adoption death. But "an MCP server" is also not a product — it's a protocol. The product call is what you ship through it.</p>
+    </div>
+    <div class="case-cell">
+      <h3>The Decision</h3>
+      <p><strong>Two MCP servers, not one.</strong> <code>Novo</code> exposes core tools and is available on every tier including the free preview; <code>Novo Compute</code> exposes paid GPU/quantum tools and is paid-only. Different API key prefixes (<code>nmcp_</code> vs <code>ncmcp_</code>) so a leaked core key cannot burn GPU budget.</p>
+      <p>Same Docker image, one env flag (<code>NOVO_SERVER_MODE</code>) toggles the tool catalog — zero duplicated code, separate governance surface.</p>
+    </div>
+    <div class="case-cell">
+      <h3>The Build</h3>
+      <p>FastAPI MCP server, OAuth + RFC 8693 token exchange (separate <code>novomcp-auth</code> service), Redis-cached key validation with 5-min TTL and an in-memory fallback so dashboard outages don't take MCP down.</p>
+      <p>Funnel stages use MCP elicitation so the assistant prompts the user at each gate — never silent autonomy on someone else's compounds.</p>
+    </div>
+    <div class="case-cell">
+      <h3>The Outcome</h3>
+      <p>Live on Claude AI, Claude Code, Cursor, ChatGPT (Plus / Pro / Business), and Gemini. <strong>69 tools</strong> exposed across the two servers — ADMET, FAVES compliance, docking, MD, FEP, QM, materials.</p>
+      <p>Hosts: <code>ai.novomcp.com</code> · <code>compute.novomcp.com</code>.</p>
+    </div>
+  </div>
+
+  <div class="case-foot">
+    <span class="case-foot-label">Live →</span>
+    <a href="https://novomcp.com/novo" target="_blank" rel="noopener">Novo product page</a>
+    <a href="https://novomcp.com/novo-compute" target="_blank" rel="noopener">Novo Compute product page</a>
+    <a href="https://novomcp.com/surfaces" target="_blank" rel="noopener">All surfaces</a>
+  </div>
+</article>
+
+<!-- 2. API -->
+<article class="case fade-in">
+  <header class="case-head">
+    <div>
+      <div class="case-tag">02 · REST API — your own code</div>
+      <h1 class="case-title">api.novomcp.com — <em>bring your own model.</em></h1>
+    </div>
+    <span class="case-status live">Live</span>
+  </header>
+  <p class="case-oneliner">Call any of the 69 tools from your own code — or wire them into your own agent. Single REST surface, OpenAPI 3.1 as source of truth.</p>
+
+  <div class="case-grid">
+    <div class="case-cell">
+      <h3>The Problem</h3>
+      <p>Some teams already have their own AI agent, their own automation, their own pipeline. They don't want OAuth flows, they don't want MCP — they want a Bearer key and a JSON body.</p>
+    </div>
+    <div class="case-cell">
+      <h3>The Decision</h3>
+      <p><strong>One endpoint shape, not 69 of them.</strong> Every tool is <code>POST /v1/tools/{name}</code> with a Bearer key — no bespoke per-tool routes to design, document, or version. The tool catalog <em>is</em> the OpenAPI 3.1 spec, served live; there are no separate docs to drift.</p>
+      <p>Same backend (<code>quanta-mcp</code>) serves MCP and REST — zero code duplicated for the second surface.</p>
+    </div>
+    <div class="case-cell">
+      <h3>The Build</h3>
+      <p>FastAPI proxy at <code>api.novomcp.com</code>, OpenAPI 3.1 generated from the tool registry, Bearer-key auth shared with MCP (same key validates either surface). Rate limits and credit accounting share the same Aurora-backed billing path.</p>
+    </div>
+    <div class="case-cell">
+      <h3>The Outcome</h3>
+      <p>Live. Engineers who don't want to talk to a chat assistant can curl their way to ADMET in one command. The OpenAPI spec also feeds custom GPTs, agent frameworks, and Postman collections — same engine, no maintenance.</p>
+    </div>
+  </div>
+
+  <div class="case-foot">
+    <span class="case-foot-label">Live →</span>
+    <a href="https://novomcp.com/api" target="_blank" rel="noopener">API overview</a>
+    <a href="https://novomcp.com/api/docs" target="_blank" rel="noopener">API docs</a>
+  </div>
+</article>
+
+<!-- 3. NovoWorkbench -->
+<article class="case fade-in">
+  <header class="case-head">
+    <div>
+      <div class="case-tag">03 · Workstation — NovoWorkbench</div>
+      <h1 class="case-title">One workbench, <em>two runtimes.</em></h1>
+    </div>
+    <span class="case-status live">Live</span>
+  </header>
+  <p class="case-oneliner">The full engine as a workstation. Molecule canvas, 3D viewers, the discovery funnel — run it on the desktop for local files and offline screening, or in the browser with nothing to install.</p>
+
+  <div class="case-grid">
+    <div class="case-cell">
+      <h3>The Problem</h3>
+      <p>Plenty of researchers don't have API skills, don't use Claude, and don't want a chat to do their job. They want an app. But some live in regulated/offline environments (desktop is non-negotiable); others want zero-install for a quick check (browser).</p>
+    </div>
+    <div class="case-cell">
+      <h3>The Decision</h3>
+      <p><strong>One workbench, two runtimes — not two workbenches.</strong> Same canvas, same viewers, same funnel; desktop adds local files and offline screening, cloud adds zero-install and instant updates. <strong>One account, one credit balance across both.</strong></p>
+      <p>Auto-update points existing installs at AWS S3 — current users keep their version intact through the cloud migration, no version regression.</p>
+    </div>
+    <div class="case-cell">
+      <h3>The Build</h3>
+      <p>Tauri (Rust + system webview), Python sidecar bundled with the binary so the RDKit/chem stack ships inside the app. <strong>Apple Developer ID notarized</strong> (team <code>8N9K9B7Y69</code>), Gatekeeper-accepted. Cloud runtime is Next.js at <code>app.novomcp.com/workbench</code> sharing the dashboard's auth.</p>
+      <p>Distribution: S3 (<code>qmcp-releases</code>) → CloudFront → <code>releases.novomcp.com</code>; auto-update via Tauri <code>latest.json</code> with sig verification.</p>
+    </div>
+    <div class="case-cell">
+      <h3>The Outcome</h3>
+      <p>v1.3.2 live on Apple Silicon — 37 MB compressed, 111 MB installed. Migrated off Azure Blob mid-2026 with zero customer-visible downtime; signatures preserved, auto-update path swept clean of stale URLs and orphan builds.</p>
+      <p>Cloud runtime live at <code>app.novomcp.com/workbench</code>.</p>
+    </div>
+  </div>
+
+  <div class="case-foot">
+    <span class="case-foot-label">Live →</span>
+    <a href="https://releases.novomcp.com/releases/NovoWorkbench_latest.dmg" target="_blank" rel="noopener">Download for macOS (Apple Silicon)</a>
+    <a href="https://app.novomcp.com/workbench" target="_blank" rel="noopener">Open in browser</a>
+    <a href="https://novomcp.com/novoworkbench" target="_blank" rel="noopener">Product page</a>
+  </div>
+</article>
+
+<!-- 4. Chrome Extension -->
+<article class="case fade-in">
+  <header class="case-head">
+    <div>
+      <div class="case-tag">04 · Browser — Chrome extension</div>
+      <h1 class="case-title">Hover any SMILES, <em>get the profile.</em></h1>
+    </div>
+    <span class="case-status live">Live</span>
+  </header>
+  <p class="case-oneliner">Profile cards on PubChem, ChEMBL, and preprints. ADMET, FAVES compliance, similarity search across 100M+ molecules — without leaving the page you're already on.</p>
+
+  <div class="case-grid">
+    <div class="case-cell">
+      <h3>The Problem</h3>
+      <p>Pharma and academic chemists live on PubChem / ChEMBL / DrugBank / preprint sites for half their day. Every "go open the workbench, paste this in" is friction. The value has to come <em>to</em> the page they're already on.</p>
+    </div>
+    <div class="case-cell">
+      <h3>The Decision</h3>
+      <p><strong>Show value before asking for a login.</strong> Hover-card profiling runs against the free tier of the engine — no account required for the basic ADMET / compliance read. The upgrade path is the side-panel "advanced compute" tab and a "Continue in AI" deep-link.</p>
+      <p>Whitelisted hosts only (no opportunistic SMILES detection across the open web) — a privacy and safety call, not a technical one.</p>
+    </div>
+    <div class="case-cell">
+      <h3>The Build</h3>
+      <p>Manifest V3, content scripts on whitelisted molecular databases + preprint servers, side-panel UI, "Continue in AI" deep-links the current SMILES into any MCP-connected assistant via a session handoff.</p>
+    </div>
+    <div class="case-cell">
+      <h3>The Outcome</h3>
+      <p>Published on the Chrome Web Store. Funnels to the dashboard for users who want an account and to the MCP surface for users who want to keep working in their assistant.</p>
+    </div>
+  </div>
+
+  <div class="case-foot">
+    <span class="case-foot-label">Live →</span>
+    <a href="https://chromewebstore.google.com/detail/novomcp/nfnhfmfmaccidmepfhllcllnjopeonmf" target="_blank" rel="noopener">Install from Chrome Web Store</a>
+    <a href="https://novomcp.com/extensions" target="_blank" rel="noopener">Extensions page</a>
+  </div>
+</article>
+
+<!-- 5. Word Add-in -->
+<article class="case fade-in">
+  <header class="case-head">
+    <div>
+      <div class="case-tag">05 · Editor — Word add-in</div>
+      <h1 class="case-title">Profile SMILES <em>where you write.</em></h1>
+    </div>
+    <span class="case-status">Private beta</span>
+  </header>
+  <p class="case-oneliner">Manuscripts, protocols, grants, regulatory writeups. SMILES detected anywhere in the document, profile cards in the task pane, ADMET + FAVES tables inserted as formatted Word tables — without leaving the editor.</p>
+
+  <div class="case-grid">
+    <div class="case-cell">
+      <h3>The Problem</h3>
+      <p>The pharma writeup happens in Word — grants, IND sections, protocols, manuscripts. Compounds get pasted in early and never get profiled until much later, often after review. By then the wrong number is everywhere.</p>
+    </div>
+    <div class="case-cell">
+      <h3>The Decision</h3>
+      <p><strong>Inline, but private-beta first.</strong> The hard part isn't detecting SMILES in Word — it's the UX of an inline AI assistant that doesn't get in the way. Shipping via AppStore-style review locks in a UX before validation; sideload during beta keeps the iteration loop fast.</p>
+      <p>Insert-as-table (not just preview) so the screening result becomes part of the document, not a sidebar fact.</p>
+    </div>
+    <div class="case-cell">
+      <h3>The Build</h3>
+      <p>Office.js add-in. Manifest hosted statically at <code>addin.novomcp.com</code> (S3 + CloudFront + ACM, SSE-KMS-encrypted bucket with an explicit CloudFront <code>kms:Decrypt</code> grant on the CMK — a real gotcha that 403s the manifest silently if missed).</p>
+    </div>
+    <div class="case-cell">
+      <h3>The Outcome</h3>
+      <p>Private beta. Sideload manifest at <code>addin.novomcp.com/manifest.xml</code>. AppSource submission gated on UX validation with the beta cohort.</p>
+    </div>
+  </div>
+
+  <div class="case-foot">
+    <span class="case-foot-label">Beta →</span>
+    <a href="https://novomcp.com/apply" target="_blank" rel="noopener">Request beta access</a>
+    <a href="https://novomcp.com/extensions" target="_blank" rel="noopener">Extensions page</a>
+  </div>
+</article>
+
+<!-- 6. Dashboard -->
+<article class="case fade-in">
+  <header class="case-head">
+    <div>
+      <div class="case-tag">06 · Control room — Dashboard</div>
+      <h1 class="case-title">app.novomcp.com — <em>the spine.</em></h1>
+    </div>
+    <span class="case-status live">Live</span>
+  </header>
+  <p class="case-oneliner">Where every surface authenticates. Sign up, mint and revoke API keys, watch credit usage and billing, monitor MD/FEP jobs, resolve file uploads — and run the cloud workbench.</p>
+
+  <div class="case-grid">
+    <div class="case-cell">
+      <h3>The Problem</h3>
+      <p>Six surfaces, one identity, one credit balance, one audit trail. Each surface needs the same answers to the same questions: who is this user, what tier, how many credits, what was charged. Built per-surface, that's six divergent implementations.</p>
+    </div>
+    <div class="case-cell">
+      <h3>The Decision</h3>
+      <p><strong>The dashboard is not a surface — it's the spine.</strong> No chemistry happens here. It's the auth + billing + observability layer every other surface depends on, plus the lightest possible scientific surface (the cloud workbench) so a curious user lands on something they can actually <em>use</em>.</p>
+      <p>One audit log, one credit ledger, one notification preference set — surfaces don't get to fragment it.</p>
+    </div>
+    <div class="case-cell">
+      <h3>The Build</h3>
+      <p>Next.js 15 frontend at <code>app.novomcp.com</code>, FastAPI dashboard-aggregator backend on EKS, Aurora PostgreSQL for identity / billing / async-jobs. Pipeline Jobs page polls every 30s; long-running MD/FEP completion fires an email via Resend.</p>
+      <p>Migrated off Azure SQL → Aurora 2026-06 with sequence resets + REINDEX in the reconciliation step (both real post-migration footguns).</p>
+    </div>
+    <div class="case-cell">
+      <h3>The Outcome</h3>
+      <p>Live. Handles auth for all six surfaces. Credit usage, billing, recent activity, MD/FEP job tracking — all surface-agnostic. New surfaces plug into the same identity and billing path; the dashboard is what makes "one engine, six surfaces" mean one bill, not six.</p>
+    </div>
+  </div>
+
+  <div class="case-foot">
+    <span class="case-foot-label">Live →</span>
+    <a href="https://app.novomcp.com" target="_blank" rel="noopener">Open the dashboard</a>
+  </div>
+</article>
+
+<!-- Cross-cutting decisions -->
+<section>
+  <div class="section-label fade-in">Cross-cutting decisions</div>
+  <div class="decisions">
+    <div class="decision fade-in">
+      <h3>Engine-first language</h3>
+      <p>"Computational chemistry engine" — not platform, OS, substrate, operating layer, or orchestration. Those nouns collide with every competitor in the category. The diagnostic test on every public line: could a competitor put this exact sentence on their homepage unchanged? If yes, replace the noun.</p>
+      <p>Drives copy across nav, marketing, sales scripts, and the assistant's elicitation prompts — same word in every surface.</p>
+    </div>
+    <div class="decision fade-in">
+      <h3>Scale-to-zero by default</h3>
+      <p>Every compute service ships with <code>min_replicas=0</code> (Fargate <code>min_capacity=0</code>, EKS GPU nodegroup → 0 nodes). Only the public-path surfaces (quanta-mcp / frontend / dashboard) keep <code>min=1</code>.</p>
+      <p>Carries the Azure cold-start posture forward to AWS, keeps the unit economics honest on day one, and avoids retrofit. Pre-warm is an opt-in per-tier capability, not a default cost.</p>
+    </div>
+    <div class="decision fade-in">
+      <h3>Azure → AWS migration</h3>
+      <p>Full inventory: Aurora (replacing Azure SQL), EKS (replacing Container Apps), S3 + CloudFront (replacing Blob), Secrets Manager, Bedrock-adjacent + NVIDIA credits. ~30 services, ~12 weeks. Reconciliation layer (row parity, schema parity, NULL audit, value fidelity) baked into every cutover.</p>
+      <p>Customer surfaces — download links, auto-update manifest, MCP endpoints — moved without version regression for existing users.</p>
+    </div>
+    <div class="decision fade-in">
+      <h3>Private-endpoint-only infra</h3>
+      <p>EKS API, Aurora, Redis, and internal ALBs are all private. GitHub-hosted runners can't reach them — every <code>kubectl apply</code> / <code>psql</code> times out from CI. Locked design: build on GH runners, deploy via GH OIDC → SSM → bastion.</p>
+      <p>Applied uniformly to every NovoServices repo so the pattern doesn't re-litigate per port. Bastion is pre-wired with kubectl, psql, EKS + Aurora + Secrets perms.</p>
+    </div>
+    <div class="decision fade-in">
+      <h3>Tier model: research preview included</h3>
+      <p>Free tier with credits, no time limit, no credit card. Reviewed manually (the research-preview admin surface tracks each application). Approval queues a tier bump that auto-fires when the user signs up — no manual provisioning step at signup time.</p>
+      <p>Trade-off: review labor. Buys product-market-fit signal, an actual user cohort to learn from, and a referral surface.</p>
+    </div>
+    <div class="decision fade-in">
+      <h3>Human-in-the-loop, not autonomous</h3>
+      <p>The discovery funnel is twelve stages. It runs as an MCP server inside the user's assistant — every stage prompts the user via MCP elicitation. <strong>Not</strong> a standalone autonomous agent running on someone else's compounds.</p>
+      <p>The audit trail records every gate, every decision, every tool call. Pipeline audits are the quality gates; the funnel is what's audited.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>Selectively open to research and product conversations.</h2>
+  <div class="cta-links">
+    <a href="https://x.com/realariharrison" target="_blank" rel="noopener">X / Twitter</a>
+    <a href="https://www.linkedin.com/in/realariharrison/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://novomcp.com" target="_blank" rel="noopener">NovoMCP</a>
+    <a href="index.html#about">Back to home</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-left">One engine, six surfaces, one account, one audit trail.</div>
+  <ul class="footer-links">
+    <li><a href="https://x.com/realariharrison" target="_blank">X</a></li>
+    <li><a href="https://scholar.google.com/citations?hl=en&user=O3Bdfh8AAAAJ" target="_blank">Scholar</a></li>
+    <li><a href="https://www.linkedin.com/in/realariharrison/" target="_blank">LinkedIn</a></li>
+    <li><a href="https://github.com/realariharrison" target="_blank">GitHub</a></li>
+    <li><a href="https://www.youtube.com/@AriHarrison1" target="_blank">YouTube</a></li>
+  </ul>
+</footer>
+<div class="footer-copy">© 2026 Ari Harrison. Selectively open to research conversations.</div>
+
+<script>
+  // Theme toggle — mirrors index.html so the preference roundtrips.
+  const themeToggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  function setTheme(theme) {
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }
+  const saved = localStorage.getItem('theme');
+  if (saved) setTheme(saved);
+  themeToggle.addEventListener('click', () => {
+    const current = root.getAttribute('data-theme');
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  });
+
+  // Nav scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+  // Reveal animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

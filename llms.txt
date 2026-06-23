@@ -4,21 +4,19 @@
 
 ## About
 
-Focused on the boundary where model reasoning meets structured systems - and where correctness, constraints, and consequences begin to matter. The gap between foundation models and real-world decisions is architecture - systems that translate probabilistic reasoning into reliable action under domain constraints.
+Focused on the boundary where model reasoning meets structured systems - and where correctness, constraints, and consequences begin to matter. The gap between foundation models and real-world decisions is architecture - systems that translate probabilistic reasoning into reliable action under domain constraints. Then the engine has to meet people where they already work.
 
-NovoMCP is one instantiation - applying this architecture to scientific discovery, where constraints are explicit and mistakes are costly. Two MCP servers - Novo for discovery intelligence and Novo Compute for GPU simulation - expose 69 tools to any AI assistant. From target identification to patient stratification. From OLED screening to electrolyte stability. Prediction layers over 122M+ indexed compounds, compliance systems that understand jurisdictional complexity, an engine that turns conversation into computation.
-
-NovoWorkbench is the desktop surface. Researchers paste a molecule and get 3D structure, pharmacokinetic predictions, regulatory screening, and AI-optimized analogs - in under 2 seconds. Model-agnostic. Local-first. Signed and notarized by Apple.
+NovoMCP is one instantiation - applying this architecture to scientific discovery, where constraints are explicit and mistakes are costly. One computational chemistry engine, six surfaces over it: MCP for AI assistants (Novo + Novo Compute), a REST API for your own code, NovoWorkbench (desktop and cloud) for researchers who want a workstation, a Chrome extension for hover-profiling on PubChem and ChEMBL, a Word add-in for inline screening in manuscripts and grants, and a dashboard that is the spine - one account, one credit pool, one audit trail across all of them. 69 tools across ADMET, FAVES compliance, docking, MD, FEP, and QM, prediction layers over 122M+ indexed compounds.
 
 Before this: autonomous discovery systems in high-stakes manufacturing - reinforcement learning agents that diagnosed failures and improved without intervention. The work is the engine between model reasoning and reliable action. The domain is wherever the stakes are high enough to demand it.
 
 ## The Stack
 
 - The Engine: 122M+ compounds, 100+ data fields each, sub-50ms
+- Tool Catalog: 69 in-silico tools across ADMET, FAVES, docking, MD, FEP, QM
 - Compliance: FAVES V4 - 8 jurisdictions, 1,585 structural alerts
-- MCP Tools: 69 tools across 2 servers (Novo + Novo Compute)
+- Surfaces: MCP (Novo + Novo Compute) - REST API - NovoWorkbench (desktop + cloud) - Chrome extension - Word add-in - dashboard
 - Verticals: Drug discovery + materials science
-- Desktop Surface: NovoWorkbench - local-first, model-agnostic
 - Ecosystem: NVIDIA Inception, AWS Activate, Microsoft Founders Hub
 
 ## Publications
@@ -31,11 +29,21 @@ Research on how domain structure shapes reasoning - and how reasoning systems ad
 
 ## Projects
 
-- Novo + Novo Compute: A domain-constrained reasoning system where models must operate through tools, data, and regulatory constraints to produce valid outputs. 69 tools across two MCP servers. Novo handles discovery intelligence - 122M+ compounds, ADMET predictions, FAVES V4 compliance, research search, lead optimization, the autonomous discovery funnel. Novo Compute handles simulation - GPU docking, GROMACS MD, quantum chemistry, neural network potentials, structure prediction, materials science. https://novomcp.com/novo / https://novomcp.com/novo-compute
+- Novo + Novo Compute (MCP surface): A domain-constrained reasoning system where models must operate through tools, data, and regulatory constraints to produce valid outputs. 69 tools across two MCP servers. Novo handles discovery intelligence - 122M+ compounds, ADMET predictions, FAVES V4 compliance, research search, lead optimization, the autonomous discovery funnel. Novo Compute handles simulation - GPU docking, GROMACS MD, quantum chemistry, neural network potentials, structure prediction, materials science. Two servers, not one: governance separation between free-tier and paid-only tools. https://novomcp.com/novo / https://novomcp.com/novo-compute
 
-- NovoWorkbench - The Desktop Surface: 3D rendering, pharmacokinetic predictions, regulatory screening, AI-optimized analogs in under 2 seconds. Model-agnostic. Local-first. Apple signed/notarized.
+- NovoWorkbench (workstation surface): One workbench, two runtimes - desktop (Tauri, Apple notarized, local files + offline screening) and cloud (in-browser at app.novomcp.com/workbench, zero install, instant updates). Same canvas, same funnel, same account, same credit balance across both. https://releases.novomcp.com
+
+- Chrome extension (browser surface): Hover any SMILES on PubChem, ChEMBL, DrugBank, or preprints for instant ADMET, FAVES compliance, similarity search. Side panel for advanced compute. "Continue in AI" deep-links into MCP-connected assistants. Manifest V3, whitelisted hosts only. Chrome Web Store: nfnhfmfmaccidmepfhllcllnjopeonmf
+
+- Word add-in (editor surface, private beta): Inline SMILES profiling and FAVES tables in Word documents - manuscripts, protocols, grants. Office.js add-in, static-hosted manifest at addin.novomcp.com (S3 + CloudFront + ACM).
+
+- REST API (developer surface): Single endpoint shape - POST /v1/tools/{name} with Bearer key. Tool catalog is the OpenAPI 3.1 spec. Same backend as MCP, zero code duplication. https://novomcp.com/api
+
+- Dashboard (control room): app.novomcp.com. Not a chemistry surface - the spine. Auth, API keys, billing, credit usage, pipeline jobs with email notifications, file uploads. Where every surface authenticates.
 
 - FAVES V4 - Compliance Inline: Three-tier detection with 1,585 structural alert patterns, 8 jurisdictions, BOILED-Egg permeability, prior art checks. 100% sensitivity/specificity on 102-compound benchmark.
+
+- Product portfolio (https://realariharrison.github.io/portfolio.html): Each surface as a product case - problem, decision, build, outcome. Plus cross-cutting decisions: engine-first language, scale-to-zero by default, Azure to AWS migration, private-endpoint infra, research-preview tier model, human-in-the-loop over autonomy.
 
 ## Writing
 
