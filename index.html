@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ari Harrison - Architect of the Engine Between Models and Decisions</title>
-<meta name="description" content="The engine between foundation models and high-stakes decisions, under real constraints.">
-<meta property="og:title" content="Ari Harrison - Architect of the Engine Between Models and Decisions">
-<meta property="og:description" content="The Engine Between Models and Decisions. Under Real Constraints.">
+<title>Ari Harrison — Founder, NovoMCP · Shipping AI-native chemistry across six surfaces</title>
+<meta name="description" content="Founder of NovoMCP — a computational chemistry engine shipped across six surfaces (MCP, REST API, desktop + cloud workbench, Chrome extension, Word add-in, dashboard). Previously: reinforcement learning for autonomous discovery in high-stakes manufacturing.">
+<meta property="og:title" content="Ari Harrison — Founder, NovoMCP">
+<meta property="og:description" content="Shipping AI-native chemistry across six surfaces. The engine between foundation models and high-stakes decisions, under real constraints.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://realariharrison.github.io">
 <meta property="og:image" content="https://realariharrison.github.io/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Ari Harrison - Architect of the Engine Between Models and Decisions">
-<meta name="twitter:description" content="The Engine Between Models and Decisions. Under Real Constraints.">
+<meta name="twitter:title" content="Ari Harrison — Founder, NovoMCP">
+<meta name="twitter:description" content="Shipping AI-native chemistry across six surfaces. Previously: autonomous discovery in high-stakes manufacturing.">
 <meta name="twitter:image" content="https://realariharrison.github.io/og-image.png">
 <link rel="canonical" href="https://realariharrison.github.io">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%232A2725'/><text x='50' y='68' font-family='Georgia,serif' font-size='42' font-weight='400' fill='%23B8704B' text-anchor='middle'>AH</text></svg>">
@@ -274,6 +274,165 @@
     width: 16px;
     height: 16px;
     fill: currentColor;
+  }
+
+  /* Metrics strip — scannable proof. Reused below hero so a recruiter
+     scrolling the home page sees the numbers in 2 seconds. */
+  .metrics-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .metric { display: flex; flex-direction: column; gap: 4px; }
+  .metric-num {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .metric-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* "Now" strip — current status / availability for hiring inbound */
+  .now-strip {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 28px 32px;
+    padding: 36px 40px;
+    background: var(--bg-warm);
+    transition: background 400ms var(--ease);
+    border-left: 2px solid var(--accent);
+  }
+  .now-row { display: contents; }
+  .now-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding-top: 4px;
+  }
+  .now-value {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.65;
+  }
+  .now-value strong { font-weight: 500; color: var(--accent); }
+  .now-value a { color: var(--accent); border-bottom: 1px solid transparent; }
+  .now-value a:hover { border-bottom-color: var(--accent); color: var(--text); }
+  .now-value ul { list-style: none; padding: 0; margin: 0; }
+  .now-value li { padding: 3px 0; }
+  .now-value li::before {
+    content: '— ';
+    color: var(--text-muted);
+  }
+
+  /* Leadership decisions grid — exec-brief shaped */
+  .leadership-intro {
+    font-size: 16px;
+    color: var(--text-soft);
+    line-height: 1.8;
+    max-width: 680px;
+    margin-bottom: 40px;
+  }
+  .leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .decision-card {
+    background: var(--bg-warm);
+    padding: 32px 32px 28px;
+    transition: background 400ms var(--ease);
+  }
+  .decision-head {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    margin-bottom: 14px;
+  }
+  .decision-title {
+    font-family: var(--serif);
+    font-size: 21px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.25;
+    margin-bottom: 14px;
+  }
+  .decision-body {
+    font-size: 14px;
+    color: var(--text-soft);
+    line-height: 1.75;
+  }
+  .decision-body + .decision-body { margin-top: 12px; }
+  .decision-result {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.65;
+  }
+
+  /* Contact section — single block, no clutter */
+  .contact-block {
+    padding: 48px;
+    background: var(--bg-warm);
+    transition: background 400ms var(--ease);
+    border-left: 2px solid var(--accent);
+  }
+  .contact-block p {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: 300;
+    line-height: 1.4;
+    color: var(--text);
+    margin-bottom: 28px;
+  }
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+  }
+  .contact-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    transition: all 400ms var(--ease);
+  }
+  .contact-links a:hover { color: var(--text); border-bottom-color: var(--accent); }
+  .contact-links a code {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: inherit;
+  }
+  .contact-note {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    margin-top: 24px;
+    font-style: normal !important;
   }
 
   .scroll-indicator {
@@ -683,6 +842,13 @@
     .video-grid { grid-template-columns: 1fr 1fr; }
     .blog-item { grid-template-columns: 1fr; gap: 4px; }
     .pub-item { grid-template-columns: 1fr; gap: 8px; }
+    .leadership-grid { grid-template-columns: 1fr; }
+    .metrics-strip { gap: 28px; margin-top: 40px; padding-top: 24px; }
+    .metric-num { font-size: 26px; }
+    .now-strip { grid-template-columns: 1fr; gap: 6px 0; padding: 28px 24px; }
+    .now-label { padding-top: 16px; }
+    .now-row:first-child .now-label { padding-top: 0; }
+    .contact-block { padding: 32px 28px; }
 
     .hero-links { flex-wrap: wrap; gap: 16px; }
 
@@ -702,12 +868,12 @@
   <a href="#" class="nav-name">Ari Harrison</a>
   <div class="nav-right">
     <ul class="nav-links" id="navLinks">
-      <li><a href="#about">About</a></li>
+      <li><a href="#now">Now</a></li>
       <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="#leadership">Leadership</a></li>
       <li><a href="#publications">Publications</a></li>
-      <li><a href="#projects">Projects</a></li>
       <li><a href="#blog">Writing</a></li>
-      <li><a href="#videos">Videos</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
       <svg class="icon-sun" viewBox="0 0 24 24"><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
@@ -720,8 +886,16 @@
 </nav>
 
 <section class="hero" id="hero">
-  <h1 class="fade-in">The Engine Between<br>Models and Decisions.<br><em>Under Real Constraints.</em></h1>
-  <p class="hero-sub fade-in">The gap between foundation models and real-world decisions is architecture - systems that translate probabilistic reasoning into reliable action under domain constraints. Then the engine has to meet people where they already work: in their AI assistant, in their own code, in a desktop app, in the browser, in Word, in a dashboard. One engine, six surfaces.</p>
+  <h1 class="fade-in">Founder, NovoMCP.<br>Shipping AI-native chemistry<br><em>across six surfaces.</em></h1>
+  <p class="hero-sub fade-in">Six surfaces, 69 tools, 122M pre-computed molecules — the engine between foundation models and high-stakes decisions, under real constraints. Previously: reinforcement learning agents for autonomous discovery in manufacturing. The domain changed; the systems thinking didn't.</p>
+
+  <div class="metrics-strip fade-in">
+    <div class="metric"><span class="metric-num">6</span><span class="metric-label">shipping surfaces</span></div>
+    <div class="metric"><span class="metric-num">69</span><span class="metric-label">in-silico tools</span></div>
+    <div class="metric"><span class="metric-num">122M</span><span class="metric-label">molecules indexed</span></div>
+    <div class="metric"><span class="metric-num">2</span><span class="metric-label">SOTA preprints (2026)</span></div>
+    <div class="metric"><span class="metric-num">3</span><span class="metric-label">accelerators backing</span></div>
+  </div>
 
   <div class="hero-links fade-in">
     <a href="https://x.com/realariharrison" target="_blank" rel="noopener">
@@ -745,14 +919,43 @@
   <div class="scroll-indicator">↓ Scroll</div>
 </section>
 
+<section id="now">
+  <div class="section-label fade-in">Now</div>
+  <div class="now-strip fade-in">
+    <div class="now-row">
+      <div class="now-label">Building</div>
+      <div class="now-value"><strong>NovoMCP</strong> — one computational chemistry engine, six surfaces (MCP · REST API · NovoWorkbench desktop+cloud · Chrome extension · Word add-in · dashboard). Solo founder; ~30 services in production on AWS.</div>
+    </div>
+    <div class="now-row">
+      <div class="now-label">Recently</div>
+      <div class="now-value">
+        <ul>
+          <li>Shipped NovoWorkbench v1.3.2 across desktop (Tauri, Apple-notarized) and cloud runtimes</li>
+          <li>Migrated ~30 services Azure → AWS with zero customer-visible downtime</li>
+          <li>Two SOTA preprints on ChemRxiv (FAVES V4 compliance, NovoExpert ADMET — 5 TDC wins)</li>
+          <li>Published Chrome Web Store extension; sideload Word add-in in private beta</li>
+        </ul>
+      </div>
+    </div>
+    <div class="now-row">
+      <div class="now-label">Backed by</div>
+      <div class="now-value">NVIDIA Inception · AWS Activate · Microsoft Founders Hub</div>
+    </div>
+    <div class="now-row">
+      <div class="now-label">Open to</div>
+      <div class="now-value"><strong>Product, AI, and 0-to-1 leadership conversations.</strong> San Francisco / Bay Area or remote. Particularly interested in production AI systems, MCP-shaped infrastructure, and applied AI at companies where correctness matters. <a href="#contact">Reach me &darr;</a></div>
+    </div>
+  </div>
+</section>
+
 <section id="about">
   <div class="section-label fade-in">About</div>
   <div class="about-content">
     <div class="about-text fade-in">
-      <p>Focused on the boundary where model reasoning meets structured systems - and where correctness, constraints, and consequences begin to matter. The problem is not generating answers - it's structuring environments where answers can be acted on safely, correctly, and repeatedly.</p>
-      <p><strong>NovoMCP</strong> is one instantiation - applying this architecture to scientific discovery, where constraints are explicit and mistakes are costly. One computational chemistry engine - 122M+ pre-computed molecules, 69 in-silico tools across ADMET, FAVES compliance, docking, MD, FEP, and QM - reached from <strong>six different surfaces</strong>: MCP for AI assistants, a REST API for your own code, NovoWorkbench (desktop and cloud) for researchers without API skills, a Chrome extension for hover-profiling on PubChem and ChEMBL, a Word add-in for inline screening in manuscripts and grants, and a dashboard that is the spine - one account, one credit pool, one audit trail across all of them.</p>
-      <p>The MCP servers (<strong>Novo</strong> for discovery intelligence, <strong>Novo Compute</strong> for GPU simulation) are the chat door. NovoWorkbench is the workstation door. The Chrome extension is the in-flow door. Same engine behind all of them - which one you pick is a fit detail, not a product choice. <a href="portfolio.html">See the full product portfolio &rarr;</a></p>
-      <p>Before this: autonomous discovery systems in high-stakes manufacturing - reinforcement learning agents that diagnosed failures and improved without intervention. The work is the engine between model reasoning and reliable action. The domain is wherever the stakes are high enough to demand it.</p>
+      <p>The interesting problem isn't getting a model to <em>say</em> something. It's building the system around the model so its output can be acted on — safely, correctly, repeatedly, with a record of what happened. That's the work.</p>
+      <p><strong>NovoMCP</strong> is what I built. One computational chemistry engine — 122M pre-computed molecules, 69 in-silico tools across ADMET, FAVES compliance, docking, molecular dynamics, FEP, and QM — shipped across <strong>six surfaces</strong> so chemists can reach it from wherever they already work: MCP for the AI assistants they already use, a REST API for the code they already write, NovoWorkbench (desktop and cloud) for the workstation they already trust, a Chrome extension for the databases they already browse, a Word add-in for the documents they already write in, and a dashboard that ties identity, credits, and audit across all of them.</p>
+      <p>Two MCP servers, not one (governance call). Scale-to-zero by default (unit economics call). The engine, never the platform (positioning call). A free research-preview tier, manually reviewed (GTM call). Each surface is a separate product bet with separate constraints, but they all sit on one backend, one credit pool, one audit trail. <a href="portfolio.html">See the full product portfolio &rarr;</a></p>
+      <p><strong>Before NovoMCP</strong>: reinforcement learning agents for autonomous discovery in high-stakes manufacturing. The systems ran continuously, diagnosed their own failures, and improved without intervention. Different domain, same problem shape — the agent isn't the product; the system that makes the agent safe to deploy is the product. That's the throughline.</p>
     </div>
     <div class="about-aside fade-in">
       <h3>The Stack</h3>
@@ -764,6 +967,49 @@
         <li><span>Verticals</span>Drug discovery + materials science</li>
         <li><span>Ecosystem</span>NVIDIA Inception · AWS Activate · Microsoft Founders Hub</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<section id="leadership">
+  <div class="section-label fade-in">Leadership</div>
+  <p class="leadership-intro fade-in">A short selection of product, infra, and positioning calls made shipping NovoMCP. What I'd want a hiring manager to know is not what I built — that's the portfolio — but how I decide what to build, what to cut, and what to delay.</p>
+  <div class="leadership-grid">
+    <div class="decision-card fade-in">
+      <div class="decision-head">Governance · Product</div>
+      <div class="decision-title">Two MCP servers, not one.</div>
+      <p class="decision-body">The straightforward call would have been one MCP server with the full tool catalog. I split it: <strong>Novo</strong> (core, all tiers including free preview) and <strong>Novo Compute</strong> (paid GPU/quantum only), with different API key prefixes so a leaked core key can't burn compute budget.</p>
+      <p class="decision-result">Same Docker image, one env flag toggles the catalog. Zero duplicated code, separate governance surface. Free-tier explorers can never accidentally rack up a GPU bill.</p>
+    </div>
+    <div class="decision-card fade-in">
+      <div class="decision-head">Unit economics · Infra</div>
+      <div class="decision-title">Scale-to-zero by default.</div>
+      <p class="decision-body">Every compute service ships with <strong>min_replicas = 0</strong>. Only the public-path surfaces (the gateway, the dashboard, the frontend) keep a warm replica. Pre-warm is an opt-in tier capability, not a default cost.</p>
+      <p class="decision-result">Carried the Azure cold-start posture forward to AWS rather than retrofitting it later. Unit economics stay honest from day one; the bill doesn't grow with idle.</p>
+    </div>
+    <div class="decision-card fade-in">
+      <div class="decision-head">Positioning · Copy</div>
+      <div class="decision-title">Engine, never platform.</div>
+      <p class="decision-body">"Platform," "OS," "infrastructure," "operating layer," "orchestration" — every competitor in the category uses those nouns. They collide. I locked the public language to <strong>computational chemistry engine</strong>, with a diagnostic test on every public sentence: could a competitor put this on their homepage unchanged? If yes, replace the noun.</p>
+      <p class="decision-result">One word does the work of a positioning deck. Sales script, marketing copy, the assistant's own elicitation prompts — same word everywhere.</p>
+    </div>
+    <div class="decision-card fade-in">
+      <div class="decision-head">Discipline · Cut</div>
+      <div class="decision-title">Killed the campaign system.</div>
+      <p class="decision-body">The original product had a campaign / iteration / quality-gate database schema for autonomous research runs. I cut it. <strong>Human-in-the-loop via MCP elicitation</strong> at every funnel stage replaced it. The user's AI assistant prompts the user at each gate.</p>
+      <p class="decision-result">Less code, clearer trust model, and the funnel runs inside the assistant the user already trusts — not as a standalone autonomous agent on someone else's compounds. The audit log is the quality gate now.</p>
+    </div>
+    <div class="decision-card fade-in">
+      <div class="decision-head">Go-to-market · Pricing</div>
+      <div class="decision-title">Free research-preview tier.</div>
+      <p class="decision-body">No credit card, no time limit. Manually reviewed application; approval queues a tier bump that auto-fires when the applicant signs up. Trade-off: review labor.</p>
+      <p class="decision-result">Buys product-market-fit signal, a real user cohort to learn from, and a referral surface. The reviewed cohort gets better support and a story; we get evidence of which problems pull people in. Self-serve sign-up still exists alongside it for the rest.</p>
+    </div>
+    <div class="decision-card fade-in">
+      <div class="decision-head">Infra · Security</div>
+      <div class="decision-title">Private-endpoint everything.</div>
+      <p class="decision-body">EKS API, Aurora, Redis, internal ALBs — all private. The catch: GitHub-hosted CI runners can't reach any of it, so every <code>kubectl apply</code> times out. Rather than poke holes, I committed to <strong>build on GH runners, deploy via OIDC → SSM → bastion</strong> and applied the pattern uniformly across every NovoServices repo.</p>
+      <p class="decision-result">Pattern doesn't re-litigate per port. Bastion comes pre-wired with kubectl, psql, EKS / Aurora / Secrets perms; new services pick it up for free. Security posture is a default, not an exception.</p>
     </div>
   </div>
 </section>
@@ -918,6 +1164,19 @@
   </a>
 </section>
 
+<section id="contact">
+  <div class="section-label fade-in">Contact</div>
+  <div class="contact-block fade-in">
+    <p>Open to product, AI, and 0-to-1 leadership conversations &mdash; Bay Area or remote. Particularly interested in production AI systems, MCP-shaped infrastructure, and applied AI at companies where correctness matters.</p>
+    <div class="contact-links">
+      <a href="mailto:arimgianni@gmail.com"><code>arimgianni@gmail.com</code></a>
+      <a href="https://www.linkedin.com/in/realariharrison/" target="_blank" rel="noopener">LinkedIn DM &rarr;</a>
+      <a href="portfolio.html">Portfolio &rarr;</a>
+    </div>
+    <p class="contact-note">Resume: in revision &mdash; available on request.</p>
+  </div>
+</section>
+
 <footer>
   <div class="footer-left">Building the systems that turn model reasoning into real-world decisions.</div>
   <ul class="footer-links">
@@ -928,7 +1187,7 @@
     <li><a href="https://www.youtube.com/@AriHarrison1" target="_blank">YouTube</a></li>
   </ul>
 </footer>
-<div class="footer-copy">© 2026 Ari Harrison. Selectively open to research conversations.</div>
+<div class="footer-copy">© 2026 Ari Harrison. Open to product, AI, and 0-to-1 leadership conversations.</div>
 
 <script>
   // Theme toggle

@@ -1,14 +1,23 @@
 # Ari Harrison
 
-> Architect of the Engine Between Models and Decisions
+> Founder, NovoMCP. Shipping AI-native chemistry across six surfaces.
+
+## Now
+
+- Building: NovoMCP - one computational chemistry engine, six surfaces (MCP, REST API, NovoWorkbench desktop+cloud, Chrome extension, Word add-in, dashboard). Solo founder, ~30 services in production on AWS.
+- Open to: product, AI, and 0-to-1 leadership conversations. Bay Area or remote. Particularly interested in production AI systems, MCP-shaped infrastructure, and applied AI at companies where correctness matters.
+- Contact: arimgianni@gmail.com / LinkedIn (linkedin.com/in/realariharrison).
+- Backed by: NVIDIA Inception, AWS Activate, Microsoft Founders Hub.
 
 ## About
 
-Focused on the boundary where model reasoning meets structured systems - and where correctness, constraints, and consequences begin to matter. The gap between foundation models and real-world decisions is architecture - systems that translate probabilistic reasoning into reliable action under domain constraints. Then the engine has to meet people where they already work.
+The interesting problem isn't getting a model to say something. It's building the system around the model so its output can be acted on - safely, correctly, repeatedly, with a record of what happened. That's the work.
 
-NovoMCP is one instantiation - applying this architecture to scientific discovery, where constraints are explicit and mistakes are costly. One computational chemistry engine, six surfaces over it: MCP for AI assistants (Novo + Novo Compute), a REST API for your own code, NovoWorkbench (desktop and cloud) for researchers who want a workstation, a Chrome extension for hover-profiling on PubChem and ChEMBL, a Word add-in for inline screening in manuscripts and grants, and a dashboard that is the spine - one account, one credit pool, one audit trail across all of them. 69 tools across ADMET, FAVES compliance, docking, MD, FEP, and QM, prediction layers over 122M+ indexed compounds.
+NovoMCP is what I built. One computational chemistry engine, 122M pre-computed molecules, 69 in-silico tools across ADMET, FAVES compliance, docking, molecular dynamics, FEP, and QM - shipped across six surfaces so chemists can reach it from wherever they already work. MCP for the AI assistants they already use (Novo for discovery, Novo Compute for GPU/quantum). REST API for the code they already write. NovoWorkbench (desktop and cloud) for the workstation they already trust. A Chrome extension for the molecular databases they already browse. A Word add-in for the documents they already write in. A dashboard that ties identity, credits, and audit across all of them. One account, one credit pool, one audit trail.
 
-Before this: autonomous discovery systems in high-stakes manufacturing - reinforcement learning agents that diagnosed failures and improved without intervention. The work is the engine between model reasoning and reliable action. The domain is wherever the stakes are high enough to demand it.
+Two MCP servers (not one) for governance. Scale-to-zero by default for unit economics. "Engine" not "platform" for positioning. A free research-preview tier, manually reviewed, for go-to-market. The cuts matter as much as the builds.
+
+Before NovoMCP: reinforcement learning agents for autonomous discovery in high-stakes manufacturing. The systems ran continuously, diagnosed their own failures, and improved without intervention. Different domain, same problem shape - the agent isn't the product; the system that makes the agent safe to deploy is the product. That's the throughline.
 
 ## The Stack
 
@@ -54,9 +63,27 @@ Research on how domain structure shapes reasoning - and how reasoning systems ad
 
 Writing available at: https://substack.com/@ariharrison
 
+## Leadership decisions
+
+Selected product, infra, and positioning calls made shipping NovoMCP. Posted in full at https://realariharrison.github.io/#leadership.
+
+- Two MCP servers, not one: governance separation between free-tier core tools and paid-only GPU/quantum. Different API key prefixes so a leaked core key can't burn compute budget.
+- Scale-to-zero by default: every compute service ships with min_replicas=0; only public-path surfaces stay warm. Unit economics stay honest day one.
+- "Engine" never "platform": locked public language to "computational chemistry engine"; positioning rule rather than positioning deck.
+- Killed the campaign / autonomous-run system. Replaced with human-in-the-loop via MCP elicitation at every funnel stage. The audit log is the quality gate.
+- Free research-preview tier, manually reviewed, with an auto-firing tier bump on signup. Trade-off: review labor. Buys product-market-fit signal and a referral surface.
+- Private-endpoint-only infra (EKS API, Aurora, Redis, internal ALBs). Build on GH-hosted runners, deploy via OIDC -> SSM -> bastion. Pattern applied uniformly across every service.
+
+## Contact
+
+- Email: arimgianni@gmail.com
+- LinkedIn DM: https://www.linkedin.com/in/realariharrison
+- Resume: in revision, available on request.
+
 ## Links
 
 - Website: https://realariharrison.github.io
+- Portfolio (one engine, six surfaces): https://realariharrison.github.io/portfolio.html
 - NovoMCP: https://novomcp.com
 - X / Twitter: https://x.com/realariharrison
 - Google Scholar: https://scholar.google.com/citations?hl=en&user=O3Bdfh8AAAAJ

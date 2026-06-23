@@ -1,8 +1,15 @@
 # Ari Harrison
 
-**Architect of the Engine Between Models and Decisions**
+**Founder, NovoMCP · Shipping AI-native chemistry across six surfaces.**
 
-The gap between foundation models and real decisions is architecture. Not prompts. Not wrappers. Prediction layers over 122M+ indexed compounds, compliance systems that understand jurisdictional complexity, an engine that turns conversation into computation.
+The interesting problem isn't getting a model to say something. It's building the system around the model so its output can be acted on — safely, correctly, repeatedly, with a record of what happened.
+
+## Now
+
+- Building: **NovoMCP** — one computational chemistry engine, six surfaces. Solo founder, ~30 services in production on AWS.
+- Open to: **product, AI, and 0-to-1 leadership conversations.** Bay Area or remote. Particularly interested in production AI systems, MCP-shaped infrastructure, and applied AI at companies where correctness matters.
+- Contact: arimgianni@gmail.com · [LinkedIn](https://www.linkedin.com/in/realariharrison/)
+- Backed by: NVIDIA Inception · AWS Activate · Microsoft Founders Hub
 
 ## One Engine, Six Surfaces
 
@@ -40,6 +47,17 @@ NVIDIA Inception · AWS Activate · Microsoft Founders Hub
 - [YouTube](https://www.youtube.com/@AriHarrison1)
 - [Writing](https://substack.com/@ariharrison)
 
+## Leadership decisions
+
+A selection of product, infra, and positioning calls made shipping NovoMCP (full version at [realariharrison.github.io/#leadership](https://realariharrison.github.io/#leadership)).
+
+- **Two MCP servers, not one** — governance separation between free-tier and paid-only tools
+- **Scale-to-zero by default** — every compute service ships with `min_replicas=0`
+- **"Engine" never "platform"** — locked public language to one positioning noun
+- **Killed the autonomous-campaign system** — replaced with human-in-the-loop via MCP elicitation
+- **Free research-preview tier** — manually reviewed, auto-firing tier bump on signup
+- **Private-endpoint-only infra** — build on GH-hosted runners, deploy via OIDC → SSM → bastion
+
 ---
 
-*Architecting the Logic, Not the Machine.*
+*The system that makes the agent safe to deploy is the product.*
