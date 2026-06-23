@@ -312,6 +312,184 @@
     color: var(--text-muted);
   }
 
+  /* PROOF CALLOUT — used inside case studies for high-signal evidence
+     (e.g. production MCP deployment under the MCP case). Visually anchored
+     by the accent border so it reads as the load-bearing detail. */
+  .case-proof {
+    margin-top: 32px;
+    padding: 28px 30px;
+    background: var(--bg);
+    border-left: 3px solid var(--accent);
+    border-top: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .case-proof-head {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .case-proof-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 14px;
+  }
+  .case-proof-body {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-soft);
+  }
+  .case-proof-body + .case-proof-body { margin-top: 10px; }
+  .case-proof-body strong { color: var(--text); font-weight: 500; }
+  .case-proof-body code {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--accent-soft);
+    background: rgba(184, 112, 75, 0.06);
+    padding: 1px 5px;
+  }
+  .case-proof-stats {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+  }
+  .case-proof-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .case-proof-stat-num {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .case-proof-stat-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* OPEN SOURCE SECTION — single-feature spotlight (NovoMD) */
+  .oss-block {
+    background: var(--bg-warm);
+    border: 1px solid var(--border);
+    padding: 44px 48px;
+    transition: background 400ms var(--ease);
+  }
+  .oss-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    margin-bottom: 14px;
+  }
+  .oss-title {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 18px;
+  }
+  .oss-title em { font-style: italic; color: var(--accent); font-weight: 300; }
+  .oss-lede {
+    font-family: var(--serif);
+    font-size: clamp(16px, 1.4vw, 19px);
+    line-height: 1.55;
+    color: var(--text-soft);
+    margin-bottom: 28px;
+    max-width: 70ch;
+  }
+  .oss-runtimes {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--border);
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+  }
+  .oss-runtime {
+    background: var(--bg);
+    padding: 18px 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .oss-runtime-name {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+  }
+  .oss-runtime-cmd {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+    word-break: break-word;
+  }
+  .oss-runtime-note {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-top: auto;
+  }
+  .oss-discipline {
+    border-top: 1px solid var(--border);
+    padding-top: 22px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--text-soft);
+    line-height: 1.7;
+    font-style: italic;
+    max-width: 70ch;
+  }
+  .oss-discipline strong { color: var(--text); font-style: normal; font-weight: 500; }
+  .oss-foot {
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px 32px;
+    align-items: center;
+  }
+  .oss-foot a {
+    font-size: 13px;
+    color: var(--accent);
+    border-bottom: 1px solid transparent;
+    transition: border-color 400ms var(--ease);
+  }
+  .oss-foot a:hover { border-bottom-color: var(--accent); }
+  .oss-foot-label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  @media (max-width: 900px) {
+    .oss-runtimes { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .oss-runtimes { grid-template-columns: 1fr; }
+    .oss-block { padding: 32px 24px; }
+  }
+
   /* DECISIONS LIST (cross-cutting) */
   .decisions {
     display: grid;
@@ -508,6 +686,19 @@
       <h3>The Outcome</h3>
       <p>Live on Claude AI, Claude Code, Cursor, ChatGPT (Plus / Pro / Business), and Gemini. <strong>69 tools</strong> exposed across the two servers — ADMET, FAVES compliance, docking, MD, FEP, QM, materials.</p>
       <p>Hosts: <code>ai.novomcp.com</code> · <code>compute.novomcp.com</code>.</p>
+    </div>
+  </div>
+
+  <div class="case-proof">
+    <div class="case-proof-head">Proof · Production MCP at scale</div>
+    <div class="case-proof-title">An MCP server is easy. Running one in production, across every major client, is the actual work.</div>
+    <p class="case-proof-body">A lot of teams now ship "an MCP server." What's been harder, and what NovoMCP runs daily: a <strong>two-server governance model</strong> on Anthropic's protocol with <strong>OAuth 2.1 + RFC 8693 token exchange</strong> for the paid tier, scoped Bearer keys with Redis-cached validation (5-minute TTL plus an in-memory fallback so the dashboard going down doesn't take MCP down with it), <strong>MCP elicitation</strong> driving a 12-stage human-in-the-loop funnel, and a separate identity service (<code>novomcp-auth</code>) that issues the exchange tokens.</p>
+    <p class="case-proof-body">Live <strong>across every major MCP client</strong>: Claude AI (web + desktop), Claude Code, Cursor, ChatGPT (Plus / Pro / Business), Gemini. One backend, one tool catalog, one billing path behind all of them.</p>
+    <div class="case-proof-stats">
+      <div class="case-proof-stat"><span class="case-proof-stat-num">2</span><span class="case-proof-stat-label">MCP servers, scoped</span></div>
+      <div class="case-proof-stat"><span class="case-proof-stat-num">69</span><span class="case-proof-stat-label">tools served</span></div>
+      <div class="case-proof-stat"><span class="case-proof-stat-num">5+</span><span class="case-proof-stat-label">clients in production</span></div>
+      <div class="case-proof-stat"><span class="case-proof-stat-num">122M</span><span class="case-proof-stat-label">molecules behind it</span></div>
     </div>
   </div>
 
@@ -711,6 +902,49 @@
     <a href="https://app.novomcp.com" target="_blank" rel="noopener">Open the dashboard</a>
   </div>
 </article>
+
+<!-- Open source -->
+<section>
+  <div class="section-label fade-in">Also shipping · Open source</div>
+  <div class="oss-block fade-in">
+    <div class="oss-tag">MIT · Local-first · MCP + CLI + Library + REST</div>
+    <h2 class="oss-title">NovoMD &mdash; <em>same multi-surface idea, smaller scope, fully open.</em></h2>
+    <p class="oss-lede">Turns a SMILES string into 32+ molecular descriptors from a 3D conformer &mdash; geometry, energy, electrostatics, surface, volume. Runs on your own machine, no account, no API key. The same one-engine-many-surfaces pattern as NovoMCP, applied at library scale, in the open.</p>
+
+    <div class="oss-runtimes">
+      <div class="oss-runtime">
+        <div class="oss-runtime-name">Python library</div>
+        <div class="oss-runtime-cmd">pip install novomd</div>
+        <div class="oss-runtime-note"><code>calculate_properties("CCO")</code> — RDKit, NumPy, SciPy install automatically.</div>
+      </div>
+      <div class="oss-runtime">
+        <div class="oss-runtime-name">CLI</div>
+        <div class="oss-runtime-cmd">novomd props "CCO"</div>
+        <div class="oss-runtime-note"><code>batch</code>, <code>explain</code>, <code>report</code> subcommands. CSV / TSV / JSON / HTML out.</div>
+      </div>
+      <div class="oss-runtime">
+        <div class="oss-runtime-name">MCP (Hugging Face)</div>
+        <div class="oss-runtime-cmd">quantnexusai-novomd.hf.space</div>
+        <div class="oss-runtime-note">Live on HF Spaces as a Gradio MCP endpoint. Add to Claude as a custom connector; works in any MCP client.</div>
+      </div>
+      <div class="oss-runtime">
+        <div class="oss-runtime-name">REST (Docker)</div>
+        <div class="oss-runtime-cmd">ghcr.io/realariharrison/novomd</div>
+        <div class="oss-runtime-note">FastAPI behind the same core. <code>X-API-Key</code> auth, <code>/health</code> open.</div>
+      </div>
+    </div>
+
+    <p class="oss-discipline"><strong>The design call: scope discipline.</strong> NovoMD computes descriptors and stops there &mdash; no ADMET, no pKa, no binding affinity, no solubility predictions. That boundary is documented in the README and shipped as an <em>agent skill</em> so AI assistants are told explicitly where the tool's authority ends. Determinism guarantee on top: same SMILES, identical descriptors, any machine.</p>
+
+    <div class="oss-foot">
+      <span class="oss-foot-label">Open source &rarr;</span>
+      <a href="https://github.com/realariharrison/NovoMD" target="_blank" rel="noopener">GitHub repo</a>
+      <a href="https://pypi.org/project/novomd/" target="_blank" rel="noopener">PyPI package</a>
+      <a href="https://huggingface.co/spaces/quantnexusai/novomd" target="_blank" rel="noopener">Hugging Face Space</a>
+      <a href="https://quantnexusai-novomd.hf.space/gradio_api/mcp/sse" target="_blank" rel="noopener">MCP endpoint</a>
+    </div>
+  </div>
+</section>
 
 <!-- Cross-cutting decisions -->
 <section>

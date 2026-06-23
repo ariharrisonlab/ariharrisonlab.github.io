@@ -5,6 +5,7 @@
 ## Now
 
 - Building: NovoMCP - one computational chemistry engine, six surfaces (MCP, REST API, NovoWorkbench desktop+cloud, Chrome extension, Word add-in, dashboard). Solo founder, ~30 services in production on AWS.
+- Open source: NovoMD - local-first molecular descriptor library, MIT-licensed, ships as a Python library + CLI + Hugging Face MCP endpoint + Docker REST. https://github.com/realariharrison/NovoMD
 - Open to: product, AI, and 0-to-1 leadership conversations. Bay Area or remote. Particularly interested in production AI systems, MCP-shaped infrastructure, and applied AI at companies where correctness matters.
 - Contact: arimgianni@gmail.com / LinkedIn (linkedin.com/in/realariharrison).
 - Backed by: NVIDIA Inception, AWS Activate, Microsoft Founders Hub.
@@ -38,7 +39,7 @@ Research on how domain structure shapes reasoning - and how reasoning systems ad
 
 ## Projects
 
-- Novo + Novo Compute (MCP surface): A domain-constrained reasoning system where models must operate through tools, data, and regulatory constraints to produce valid outputs. 69 tools across two MCP servers. Novo handles discovery intelligence - 122M+ compounds, ADMET predictions, FAVES V4 compliance, research search, lead optimization, the autonomous discovery funnel. Novo Compute handles simulation - GPU docking, GROMACS MD, quantum chemistry, neural network potentials, structure prediction, materials science. Two servers, not one: governance separation between free-tier and paid-only tools. https://novomcp.com/novo / https://novomcp.com/novo-compute
+- Novo + Novo Compute (MCP surface): A domain-constrained reasoning system where models must operate through tools, data, and regulatory constraints to produce valid outputs. 69 tools across two MCP servers. Novo handles discovery intelligence - 122M+ compounds, ADMET predictions, FAVES V4 compliance, research search, lead optimization, the autonomous discovery funnel. Novo Compute handles simulation - GPU docking, GROMACS MD, quantum chemistry, neural network potentials, structure prediction, materials science. Two servers, not one: governance separation between free-tier and paid-only tools. Production MCP at scale - OAuth 2.1 + RFC 8693 token exchange, Redis-cached key validation with in-memory fallback, MCP elicitation driving a 12-stage human-in-the-loop funnel, live across Claude AI (web + desktop), Claude Code, Cursor, ChatGPT (Plus/Pro/Business), and Gemini. https://novomcp.com/novo / https://novomcp.com/novo-compute
 
 - NovoWorkbench (workstation surface): One workbench, two runtimes - desktop (Tauri, Apple notarized, local files + offline screening) and cloud (in-browser at app.novomcp.com/workbench, zero install, instant updates). Same canvas, same funnel, same account, same credit balance across both. https://releases.novomcp.com
 
@@ -52,7 +53,9 @@ Research on how domain structure shapes reasoning - and how reasoning systems ad
 
 - FAVES V4 - Compliance Inline: Three-tier detection with 1,585 structural alert patterns, 8 jurisdictions, BOILED-Egg permeability, prior art checks. 100% sensitivity/specificity on 102-compound benchmark.
 
-- Product portfolio (https://realariharrison.github.io/portfolio.html): Each surface as a product case - problem, decision, build, outcome. Plus cross-cutting decisions: engine-first language, scale-to-zero by default, Azure to AWS migration, private-endpoint infra, research-preview tier model, human-in-the-loop over autonomy.
+- NovoMD (open source, MIT, https://github.com/realariharrison/NovoMD): Local-first molecular descriptor library. SMILES in, 32+ descriptors out from a 3D conformer (geometry, energy, electrostatics, surface, volume), calculated on the user's own machine with no account and no API key. Same multi-surface idea as NovoMCP, applied at library scale, fully open. Four runtimes from one core: pip-installable Python library, CLI with batch/explain/report subcommands, a hosted Hugging Face MCP endpoint (quantnexusai-novomd.hf.space) that works with Claude / Cursor / Continue / any MCP client, and a Docker REST service. Deliberately scoped: no ADMET, no pKa, no binding affinity, no solubility predictions - that boundary is documented in the README and shipped as an agent skill telling AI assistants explicitly where the tool's authority ends. Determinism guarantee: same SMILES, identical descriptors, any machine.
+
+- Product portfolio (https://realariharrison.github.io/portfolio.html): Each surface as a product case - problem, decision, build, outcome. Plus the Production MCP at scale callout, the Open Source section featuring NovoMD, and cross-cutting decisions: engine-first language, scale-to-zero by default, Azure to AWS migration, private-endpoint infra, research-preview tier model, human-in-the-loop over autonomy.
 
 ## Writing
 

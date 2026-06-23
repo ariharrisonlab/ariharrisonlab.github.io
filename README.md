@@ -22,6 +22,10 @@ The engine is the product. The surface is how you reach it.
 - **Word add-in** — Inline SMILES profiling in manuscripts and grants. Private beta.
 - **Dashboard** — `app.novomcp.com`. The spine — auth, keys, billing, jobs. Where every surface authenticates.
 
+## Also shipping · Open source
+
+- **[NovoMD](https://github.com/realariharrison/NovoMD)** (MIT) — Local-first molecular descriptors. SMILES → 32+ descriptors from a 3D conformer, calculated on your own machine, no account. Ships as Python library (`pip install novomd`) + CLI (`novomd props "CCO"`) + [Hugging Face MCP endpoint](https://huggingface.co/spaces/quantnexusai/novomd) (works with Claude, Cursor, any MCP client) + Docker REST service. The design call: scope discipline — no ADMET, no pKa, no binding, documented in the README and shipped as an agent skill.
+
 See the [full product portfolio →](https://realariharrison.github.io/portfolio.html)
 
 ## The Stack
