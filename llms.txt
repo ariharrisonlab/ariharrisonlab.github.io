@@ -7,7 +7,7 @@
 - Building: NovoMCP - one computational chemistry engine, six surfaces (MCP, REST API, NovoWorkbench desktop+cloud, Chrome extension, Word add-in, dashboard). Solo founder, ~30 services in production on AWS.
 - Open source: NovoMD - local-first molecular descriptor library, MIT-licensed, ships as a Python library + CLI + Hugging Face MCP endpoint + Docker REST. https://github.com/ariharrisonlab/NovoMD
 - Open to: product, AI, and 0-to-1 leadership conversations. Bay Area or remote. Particularly interested in production AI systems, MCP-shaped infrastructure, and applied AI at companies where correctness matters.
-- Contact: arimgianni@gmail.com / LinkedIn (linkedin.com/in/realariharrison).
+- Contact: arimgianni@gmail.com / LinkedIn (linkedin.com/in/ariharrisonlab).
 - Backed by: NVIDIA Inception, AWS Activate, Microsoft Founders Hub.
 
 ## About
@@ -64,7 +64,7 @@ Research on how domain structure shapes reasoning - and how reasoning systems ad
 - Scaling MCP: Lessons from 122M Compounds (2026.02)
 - From Conversational to Computational AI (2026.02)
 
-Writing available at: https://substack.com/@ariharrison
+Writing available at: https://substack.com/@ariharrisonlab
 
 ## Leadership decisions
 
@@ -80,7 +80,7 @@ Selected product, infra, and positioning calls made shipping NovoMCP. Posted in 
 ## Contact
 
 - Email: arimgianni@gmail.com
-- LinkedIn DM: https://www.linkedin.com/in/realariharrison
+- LinkedIn DM: https://www.linkedin.com/in/ariharrisonlab
 - Resume: in revision, available on request.
 
 ## Links
@@ -90,6 +90,6 @@ Selected product, infra, and positioning calls made shipping NovoMCP. Posted in 
 - NovoMCP: https://novomcp.com
 - X / Twitter: https://x.com/ariharrisonlab
 - Google Scholar: https://scholar.google.com/citations?hl=en&user=O3Bdfh8AAAAJ
-- LinkedIn: https://www.linkedin.com/in/realariharrison
+- LinkedIn: https://www.linkedin.com/in/ariharrisonlab
 - GitHub: https://github.com/ariharrisonlab
 - YouTube: https://www.youtube.com/@ariharrisonlab

@@ -8,7 +8,7 @@ The interesting problem isn't getting a model to say something. It's building th
 
 - Building: **NovoMCP**. One computational chemistry engine, six surfaces. Solo founder, ~30 services in production on AWS.
 - Open to: **product, AI, and 0-to-1 leadership conversations.** Bay Area or remote. Particularly interested in production AI systems, MCP-shaped infrastructure, and applied AI at companies where correctness matters.
-- Contact: arimgianni@gmail.com · [LinkedIn](https://www.linkedin.com/in/realariharrison/)
+- Contact: arimgianni@gmail.com · [LinkedIn](https://www.linkedin.com/in/ariharrisonlab/)
 - Backed by: NVIDIA Inception · AWS Activate · Microsoft Founders Hub
 
 ## One Engine, Six Surfaces
@@ -46,10 +46,10 @@ NVIDIA Inception · AWS Activate · Microsoft Founders Hub
 - [NovoMCP](https://novomcp.com)
 - [X / Twitter](https://x.com/ariharrisonlab)
 - [Google Scholar](https://scholar.google.com/citations?hl=en&user=O3Bdfh8AAAAJ)
-- [LinkedIn](https://www.linkedin.com/in/realariharrison/)
+- [LinkedIn](https://www.linkedin.com/in/ariharrisonlab/)
 - [GitHub](https://github.com/ariharrisonlab)
 - [YouTube](https://www.youtube.com/@ariharrisonlab)
-- [Writing](https://substack.com/@ariharrison)
+- [Writing](https://substack.com/@ariharrisonlab)
 
 ## Leadership decisions
 
