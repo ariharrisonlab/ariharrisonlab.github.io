@@ -1,10 +1,10 @@
 # Ari Harrison
 
-> Founder, NovoMCP. Shipping AI-native chemistry across six surfaces.
+> Founder, NovoMCP. Building the open computational chemistry engine for drug discovery and materials science.
 
 ## Now
 
-- Building: NovoMCP - one computational chemistry engine, six surfaces (MCP, REST API, NovoWorkbench desktop+cloud, Chrome extension, Word add-in, dashboard). Solo founder, ~30 services in production on AWS.
+- Building: NovoMCP - the open computational chemistry engine. MCP + REST, 67 tools, self-hostable under Apache-2.0 or run as a per-org cloud deployment. Solo founder.
 - Open source: NovoMD - local-first molecular descriptor library, MIT-licensed, ships as a Python library + CLI + Hugging Face MCP endpoint + Docker REST. https://github.com/ariharrisonlab/NovoMD
 - Open to: product, AI, and 0-to-1 leadership conversations. Bay Area or remote. Particularly interested in production AI systems, MCP-shaped infrastructure, and applied AI at companies where correctness matters.
 - Contact: arimgianni@gmail.com / LinkedIn (linkedin.com/in/ariharrisonlab).
@@ -14,18 +14,18 @@
 
 The interesting problem isn't getting a model to say something. It's building the system around the model so its output can be acted on - safely, correctly, repeatedly, with a record of what happened. That's the work.
 
-NovoMCP is what I built. One computational chemistry engine, 122M pre-computed molecules, 69 in-silico tools across ADMET, FAVES compliance, docking, molecular dynamics, FEP, and QM - shipped across six surfaces so chemists can reach it from wherever they already work. MCP for the AI assistants they already use (Novo for discovery, Novo Compute for GPU/quantum). REST API for the code they already write. NovoWorkbench (desktop and cloud) for the workstation they already trust. A Chrome extension for the molecular databases they already browse. A Word add-in for the documents they already write in. A dashboard that ties identity, credits, and audit across all of them. One account, one credit pool, one audit trail.
+NovoMCP is what I built. One computational chemistry engine, 67 in-silico tools across ADMET, docking, molecular dynamics, quantum chemistry, structure prediction, and compliance, that speaks both MCP (reachable from Claude Desktop, Cursor, Codex, Zed, and any MCP-compatible assistant) and REST (any pipeline that posts JSON). Two paths to run it: self-host it under Apache-2.0 on your own hardware, or run it as a per-org cloud deployment with the certified FAVES compliance API wrapped around it. Same engine either way.
 
-Two MCP servers (not one) for governance. Scale-to-zero by default for unit economics. "Engine" not "platform" for positioning. A free research-preview tier, manually reviewed, for go-to-market. The cuts matter as much as the builds.
+The engine, never the platform (positioning call). Scale-to-zero by default (unit economics call). Human-in-the-loop via MCP elicitation, not autonomous-agent-on-someone-else's-molecules (trust call). Open-sourced as an engine, not as a hosted product (moat call - the moat is FAVES-cert + operated cloud, not the code).
 
 Before NovoMCP: reinforcement learning agents for autonomous discovery in high-stakes manufacturing. The systems ran continuously, diagnosed their own failures, and improved without intervention. Different domain, same problem shape - the agent isn't the product; the system that makes the agent safe to deploy is the product. That's the throughline.
 
 ## The Stack
 
-- The Engine: 122M+ compounds, 100+ data fields each, sub-50ms
-- Tool Catalog: 69 in-silico tools across ADMET, FAVES, docking, MD, FEP, QM
-- Compliance: FAVES V4 - 8 jurisdictions, 1,585 structural alerts
-- Surfaces: MCP (Novo + Novo Compute) - REST API - NovoWorkbench (desktop + cloud) - Chrome extension - Word add-in - dashboard
+- The Engine: MCP + REST, 67 tools, ~14 always-available on a fresh clone
+- License: Apache-2.0 (orchestration core BSL 1.1 -> Apache 2029-07-12)
+- Compliance: FAVES V4 (hosted certified API) - 8 jurisdictions, 1,585 structural alerts
+- Surfaces: MCP + REST + Workbench (v1.5.x) + Chrome ext + Word add-in + bundled dashboard
 - Verticals: Drug discovery + materials science
 - Ecosystem: NVIDIA Inception, AWS Activate, Microsoft Founders Hub
 
@@ -33,29 +33,29 @@ Before NovoMCP: reinforcement learning agents for autonomous discovery in high-s
 
 Research on how domain structure shapes reasoning - and how reasoning systems adapt under different objective and constraint regimes.
 
-- FAVES V4: A Production-Deployed Compliance and Liability Screening System for Drug Discovery at 122M-Compound Scale (2026.05, ChemRxiv) - Production compliance and liability screening aligned to HHS/ONC FAVES and NIST AI 600-1. Single-API call returns regulatory status (DEA / FDA / CWC / EPA / EU REACH), 1,585 structural alerts, BOILED-Egg permeability, and InChIKey prior-art lookup. ~5 ms live latency, precomputed cache of 122,407,635 documents. Validated 362/362 compounds post-fix across five predetermined tests with documented governance bundle. DOI: 10.26434/chemrxiv.15003738/v2
+- FAVES V4: A Production-Deployed Compliance and Liability Screening System for Drug Discovery at 122M-Compound Scale (2026.05, ChemRxiv) - Production compliance and liability screening aligned to HHS/ONC FAVES and NIST AI 600-1. Single-API call returns regulatory status (DEA / FDA / CWC / EPA / EU REACH), 1,585 structural alerts, BOILED-Egg permeability, and InChIKey prior-art lookup. Validated 362/362 compounds post-fix across five predetermined tests with documented governance bundle. DOI: 10.26434/chemrxiv.15003738/v3
 
 - NovoExpert: State-of-the-Art ADMET Prediction on TDC Benchmarks (2026.04, ChemRxiv) - Five SOTA wins on Therapeutics Data Commons ADMET endpoints: CYP2D6 (0.778 AUPRC), CYP3A4 (0.916 AUPRC), CYP3A4 Substrate (0.648 AUPRC), Clearance Hepatocyte (0.602 Spearman), DILI (0.922 AUROC). CatBoost ensembles with MapLight and GIN fingerprints. DOI: 10.26434/chemrxiv.15000061/v2
 
 ## Projects
 
-- Novo + Novo Compute (MCP surface): A domain-constrained reasoning system where models must operate through tools, data, and regulatory constraints to produce valid outputs. 69 tools across two MCP servers. Novo handles discovery intelligence - 122M+ compounds, ADMET predictions, FAVES V4 compliance, research search, lead optimization, the autonomous discovery funnel. Novo Compute handles simulation - GPU docking, GROMACS MD, quantum chemistry, neural network potentials, structure prediction, materials science. Two servers, not one: governance separation between free-tier and paid-only tools. Production MCP at scale - OAuth 2.1 + RFC 8693 token exchange, Redis-cached key validation with in-memory fallback, MCP elicitation driving a 12-stage human-in-the-loop funnel, live across Claude AI (web + desktop), Claude Code, Cursor, ChatGPT (Plus/Pro/Business), and Gemini. https://novomcp.com/novo / https://novomcp.com/novo-compute
+- NovoMCP - the open computational chemistry engine (https://github.com/NovoMCP/novomcp): One engine, two surfaces (MCP + REST). 67 tools across cheminformatics, ADMET, docking, MD, quantum chemistry, structure prediction, materials science, and an 11-stage autonomous discovery funnel. ~14 tools work with a fresh clone; the rest unlock as you wire optional compute services. Apache-2.0 top-level; orchestration core BSL 1.1 -> Apache 2029-07-12. Works with Claude Desktop, Cursor, Codex, Zed, ChatGPT, Gemini, and any MCP-compatible assistant, or hit it from your own code over HTTP. https://novomcp.com/engine
 
-- NovoWorkbench (workstation surface): One workbench, two runtimes - desktop (Tauri, Apple notarized, local files + offline screening) and cloud (in-browser at app.novomcp.com/workbench, zero install, instant updates). Same canvas, same funnel, same account, same credit balance across both. https://releases.novomcp.com
+- FAVES certified compliance API: The moat around the OSS engine. Certified regulatory compliance for pharma / biotech pipelines - DEA schedules, EU REACH, PAINS filters, structural alerts, sponsor whitelists, PMDA / KFDA / TGA - plus the operational commitments a regulated submission needs (SLA, immutable audit-log retention, drift monitoring, IQ/OQ/PQ documentation, SAML SSO). Closed and paid; access on request. Not shipped with the OSS engine. https://novomcp.com/faves
 
-- Chrome extension (browser surface): Hover any SMILES on PubChem, ChEMBL, DrugBank, or preprints for instant ADMET, FAVES compliance, similarity search. Side panel for advanced compute. "Continue in AI" deep-links into MCP-connected assistants. Manifest V3, whitelisted hosts only. Chrome Web Store: nfnhfmfmaccidmepfhllcllnjopeonmf
+- NovoWorkbench - native desktop for the engine (design-partner preview): The molecule canvas, 3D viewers, and discovery funnel as a native desktop for macOS and Windows. Local RDKit, offline alert screening (PAINS + druglikeness rule sets), bring-your-own-LLM chat, model-agnostic. Tauri + Python sidecar; Apple Developer ID notarized (team 8N9K9B7Y69). Currently in design-partner preview; ships as OSS in v1.5.x per the product roadmap. https://novomcp.com/novoworkbench
 
-- Word add-in (editor surface, private beta): Inline SMILES profiling and FAVES tables in Word documents - manuscripts, protocols, grants. Office.js add-in, static-hosted manifest at addin.novomcp.com (S3 + CloudFront + ACM).
+- Chrome extension (browser surface): Hover any SMILES on PubChem, ChEMBL, DrugBank, or preprints for instant ADMET, compliance, similarity search. Side panel for advanced compute. "Continue in AI" deep-links into MCP-connected assistants. Manifest V3, whitelisted hosts only. Chrome Web Store: nfnhfmfmaccidmepfhllcllnjopeonmf. Repo: https://github.com/NovoMCP/novomcp-chrome-sideload
 
-- REST API (developer surface): Single endpoint shape - POST /v1/tools/{name} with Bearer key. Tool catalog is the OpenAPI 3.1 spec. Same backend as MCP, zero code duplication. https://novomcp.com/api
+- Word add-in (editor surface, private beta): Inline SMILES profiling and compliance tables in Word documents - manuscripts, protocols, grants. Office.js add-in, static-hosted manifest at addin.novomcp.com. Repo: https://github.com/NovoMCP/novomcp-word-sideload
 
-- Dashboard (control room): app.novomcp.com. Not a chemistry surface - the spine. Auth, API keys, billing, credit usage, pipeline jobs with email notifications, file uploads. Where every surface authenticates.
+- REST API (developer surface): Single endpoint shape - POST /v1/tools/{name} with Bearer key. Tool catalog is the OpenAPI 3.1 spec at api.novomcp.com/openapi.json. Same backend as MCP, zero code duplication. https://novomcp.com/api
 
-- FAVES V4 - Compliance Inline: Three-tier detection with 1,585 structural alert patterns, 8 jurisdictions, BOILED-Egg permeability, prior art checks. 100% sensitivity/specificity on 102-compound benchmark.
+- Bundled dashboard (control room): A minimal Next.js dashboard that ships bundled with the open engine at frontend-nextjs/ in the OSS repo. Runs on localhost when self-hosted; on the per-org subdomain in cloud deployments. Minimal today, growing with each release. https://github.com/NovoMCP/novomcp/tree/main/frontend-nextjs
 
-- NovoMD (open source, MIT, https://github.com/ariharrisonlab/NovoMD): Local-first molecular descriptor library. SMILES in, 32+ descriptors out from a 3D conformer (geometry, energy, electrostatics, surface, volume), calculated on the user's own machine with no account and no API key. Same multi-surface idea as NovoMCP, applied at library scale, fully open. Four runtimes from one core: pip-installable Python library, CLI with batch/explain/report subcommands, a hosted Hugging Face MCP endpoint (quantnexusai-novomd.hf.space) that works with Claude / Cursor / Continue / any MCP client, and a Docker REST service. Deliberately scoped: no ADMET, no pKa, no binding affinity, no solubility predictions - that boundary is documented in the README and shipped as an agent skill telling AI assistants explicitly where the tool's authority ends. Determinism guarantee: same SMILES, identical descriptors, any machine.
+- NovoMD (open source, MIT, https://github.com/ariharrisonlab/NovoMD): Local-first molecular descriptor library. SMILES in, 32+ descriptors out from a 3D conformer (geometry, energy, electrostatics, surface, volume), calculated on the user's own machine with no account and no API key. Four runtimes from one core: pip-installable Python library, CLI with batch/explain/report subcommands, a hosted Hugging Face MCP endpoint (quantnexusai-novomd.hf.space) that works with Claude / Cursor / Continue / any MCP client, and a Docker REST service. Deliberately scoped: no ADMET, no pKa, no binding affinity, no solubility predictions - that boundary is documented in the README and shipped as an agent skill telling AI assistants explicitly where the tool's authority ends. Determinism guarantee: same SMILES, identical descriptors, any machine.
 
-- Product portfolio (https://ariharrisonlab.github.io/portfolio.html): Each surface as a product case - problem, decision, build, outcome. Plus the Production MCP at scale callout, the Open Source section featuring NovoMD, and cross-cutting decisions: engine-first language, scale-to-zero by default, Azure to AWS migration, private-endpoint infra, research-preview tier model, human-in-the-loop over autonomy.
+- Product portfolio (https://ariharrisonlab.github.io/portfolio.html): Each surface as a product case - problem, decision, build, outcome. Plus cross-cutting decisions: engine-first language, scale-to-zero by default, Azure to AWS migration, private-endpoint infra, opening the engine at v1.0, and human-in-the-loop over autonomy.
 
 ## Writing
 
@@ -70,11 +70,11 @@ Writing available at: https://substack.com/@ariharrisonlab
 
 Selected product, infra, and positioning calls made shipping NovoMCP. Posted in full at https://ariharrisonlab.github.io/#leadership.
 
-- Two MCP servers, not one: governance separation between free-tier core tools and paid-only GPU/quantum. Different API key prefixes so a leaked core key can't burn compute budget.
+- Open the engine at v1.0.0: Apache-2.0 top-level, BSL 1.1 -> Apache 2029-07-12 for the orchestration core. The moat is FAVES certification + operated cloud + trained models, not the code that calls RDKit and orchestrates docking. Distribution flips from "sign up for our platform" to "clone the repo."
 - Scale-to-zero by default: every compute service ships with min_replicas=0; only public-path surfaces stay warm. Unit economics stay honest day one.
 - "Engine" never "platform": locked public language to "computational chemistry engine"; positioning rule rather than positioning deck.
 - Killed the campaign / autonomous-run system. Replaced with human-in-the-loop via MCP elicitation at every funnel stage. The audit log is the quality gate.
-- Free research-preview tier, manually reviewed, with an auto-firing tier bump on signup. Trade-off: review labor. Buys product-market-fit signal and a referral surface.
+- Self-hosted or cloud, no middle: killed the prior Free Trial / Core / Scale / Enterprise credit-tier ladder at the OSS launch. Two paths: self-hosted (free forever, Apache-2.0) or cloud deployment (contact for pricing). No self-serve middle tier.
 - Private-endpoint-only infra (EKS API, Aurora, Redis, internal ALBs). Build on GH-hosted runners, deploy via OIDC -> SSM -> bastion. Pattern applied uniformly across every service.
 
 ## Contact
@@ -86,8 +86,10 @@ Selected product, infra, and positioning calls made shipping NovoMCP. Posted in 
 ## Links
 
 - Website: https://ariharrisonlab.github.io
-- Portfolio (one engine, six surfaces): https://ariharrisonlab.github.io/portfolio.html
-- NovoMCP: https://novomcp.com
+- Portfolio: https://ariharrisonlab.github.io/portfolio.html
+- NovoMCP (marketing): https://novomcp.com
+- NovoMCP (repo): https://github.com/NovoMCP/novomcp
+- NovoMCP (docs): https://docs.novomcp.com/
 - X / Twitter: https://x.com/ariharrisonlab
 - Google Scholar: https://scholar.google.com/citations?hl=en&user=O3Bdfh8AAAAJ
 - LinkedIn: https://www.linkedin.com/in/ariharrisonlab
