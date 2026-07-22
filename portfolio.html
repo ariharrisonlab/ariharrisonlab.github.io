@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,23 +19,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   /* Palette matches novomcp.com (novo-website src/app/globals.css @theme). */
+  /* Light mode (default — matches novomcp.com's cream default) */
   :root {
-    --bg: #1A1714;
-    --bg-warm: #221E1A;
-    --bg-card-hover: #F5F1EB;
-    --text: #F4F1EC;
-    --text-soft: #B6AEA4;
-    --text-muted: #837C73;
-    --accent: #D4A88A;
-    --accent-soft: #B8704B;
-    --border: rgba(244, 241, 236, 0.10);
-    --nav-bg: rgba(26, 23, 20, 0.85);
-    --serif: 'Cormorant Garamond', Georgia, serif;
-    --sans: 'Inter', -apple-system, sans-serif;
-    --mono: 'JetBrains Mono', Monaco, monospace;
-    --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
-  }
-  [data-theme="light"] {
     --bg: #F5F1EB;
     --bg-warm: #EFE9E0;
     --bg-card-hover: #2D2A26;
@@ -46,6 +31,23 @@
     --accent-soft: #9E5C3A;
     --border: rgba(45, 42, 38, 0.10);
     --nav-bg: rgba(245, 241, 235, 0.85);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', Monaco, monospace;
+    --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  /* Dark mode (opt-in via theme toggle) */
+  [data-theme="dark"] {
+    --bg: #1A1714;
+    --bg-warm: #221E1A;
+    --bg-card-hover: #F5F1EB;
+    --text: #F4F1EC;
+    --text-soft: #B6AEA4;
+    --text-muted: #837C73;
+    --accent: #D4A88A;
+    --accent-soft: #B8704B;
+    --border: rgba(244, 241, 236, 0.10);
+    --nav-bg: rgba(26, 23, 20, 0.85);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -111,10 +113,10 @@
   }
   .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
   .theme-toggle svg { width: 16px; height: 16px; fill: currentColor; }
-  .theme-toggle .icon-sun { display: block; }
-  .theme-toggle .icon-moon { display: none; }
-  [data-theme="light"] .theme-toggle .icon-sun { display: none; }
-  [data-theme="light"] .theme-toggle .icon-moon { display: block; }
+  .theme-toggle .icon-sun { display: none; }
+  .theme-toggle .icon-moon { display: block; }
+  [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+  [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
   .hamburger {
     display: none; flex-direction: column; gap: 5px; cursor: pointer;
