@@ -17,7 +17,7 @@ The engine is the product. The surface is how you reach it.
 
 - **MCP**: Novo + Novo Compute. The chat surface. [Novo](https://novomcp.com/novo) · [Novo Compute](https://novomcp.com/novo-compute)
 - **REST API**: `api.novomcp.com`. Single endpoint shape, OpenAPI 3.1 catalog. [API docs](https://novomcp.com/api)
-- **NovoWorkbench**: The workstation. One workbench, two runtimes (desktop + cloud). Same account across both. [Download](https://releases.novomcp.com)
+- **NovoWorkbench**: The workstation. One workbench, two runtimes (desktop + cloud). Same account across both.
 - **Chrome extension**: Hover any SMILES for ADMET / FAVES. [Chrome Web Store](https://chromewebstore.google.com/detail/novomcp/nfnhfmfmaccidmepfhllcllnjopeonmf)
 - **Word add-in**: Inline SMILES profiling in manuscripts and grants. Private beta.
 - **Dashboard**: `app.novomcp.com`. The spine: auth, keys, billing, jobs. Where every surface authenticates.
