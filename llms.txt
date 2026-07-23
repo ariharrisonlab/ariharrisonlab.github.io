@@ -70,7 +70,7 @@ Writing available at: https://substack.com/@ariharrisonlab
 
 Selected product, infra, and positioning calls made shipping NovoMCP. Posted in full at https://ariharrisonlab.github.io/#leadership.
 
-- Open the engine at v1.0.0: Apache-2.0 top-level, BSL 1.1 -> Apache 2029-07-12 for the orchestration core. The moat is FAVES certification + operated cloud + trained models, not the code that calls RDKit and orchestrates docking. Distribution flips from "sign up for our platform" to "clone the repo."
+- Open the engine at v1.1.0: Apache-2.0 top-level, BSL 1.1 -> Apache 2029-07-12 for the orchestration core. The moat is FAVES certification + operated cloud + trained models, not the code that calls RDKit and orchestrates docking. Distribution flips from "sign up for our platform" to "clone the repo."
 - Scale-to-zero by default: every compute service ships with min_replicas=0; only public-path surfaces stay warm. Unit economics stay honest day one.
 - "Engine" never "platform": locked public language to "computational chemistry engine"; positioning rule rather than positioning deck.
 - Killed the campaign / autonomous-run system. Replaced with human-in-the-loop via MCP elicitation at every funnel stage. The audit log is the quality gate.
