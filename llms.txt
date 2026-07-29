@@ -4,17 +4,17 @@
 
 ## Now
 
-- Building: NovoMCP - the open computational chemistry engine. MCP + REST, 67 tools, self-hostable under Apache-2.0 or run as a per-org cloud deployment. Solo founder.
+- Building: NovoMCP - the open computational chemistry engine. MCP + REST, 68 tools, self-hostable under Apache-2.0 or run as a per-org cloud deployment. Clone it and it boots with zero external services - no auth, no account, no API key. Shipped through v1.2.0 (ALCHEMI-accelerated geometry). Solo founder.
 - Open source: NovoMD - local-first molecular descriptor library, MIT-licensed, ships as a Python library + CLI + Hugging Face MCP endpoint + Docker REST. https://github.com/ariharrisonlab/NovoMD
 - Open to: product, AI, and 0-to-1 leadership conversations. Bay Area or remote. Particularly interested in production AI systems, MCP-shaped infrastructure, and applied AI at companies where correctness matters.
-- Contact: arimgianni@gmail.com / LinkedIn (linkedin.com/in/ariharrisonlab).
+- Contact: ariharrisonlab@gmail.com / LinkedIn (linkedin.com/in/ariharrisonlab).
 - Backed by: NVIDIA Inception, AWS Activate, Microsoft Founders Hub.
 
 ## About
 
 The interesting problem isn't getting a model to say something. It's building the system around the model so its output can be acted on - safely, correctly, repeatedly, with a record of what happened. That's the work.
 
-NovoMCP is what I built. One computational chemistry engine, 67 in-silico tools across ADMET, docking, molecular dynamics, quantum chemistry, structure prediction, and compliance, that speaks both MCP (reachable from Claude Desktop, Cursor, Codex, Zed, and any MCP-compatible assistant) and REST (any pipeline that posts JSON). Two paths to run it: self-host it under Apache-2.0 on your own hardware, or run it as a per-org cloud deployment with the certified FAVES compliance API wrapped around it. Same engine either way.
+NovoMCP is what I built. One computational chemistry engine, 68 in-silico tools across ADMET, docking, molecular dynamics, quantum chemistry, structure prediction, and compliance, that speaks both MCP (reachable from Claude Desktop, Cursor, Codex, Zed, and any MCP-compatible assistant) and REST (any pipeline that posts JSON). It wraps established open compute (RDKit, GROMACS, AutoDock-GPU, OpenFold, Boltz, Gnina, xTB, ANI-2x, AIMNet2, MACE) rather than reimplementing it. Two paths to run it: self-host it under Apache-2.0 on your own hardware - it boots with zero external services, no auth, no account, no API key - or run it as a per-org cloud deployment with the certified FAVES compliance API wrapped around it. Same engine either way; a pluggable auth/metering/audit spine (NOVO_AUTH / NOVO_METER / NOVO_AUDIT = local / hosted / custom) swaps the two with no code fork.
 
 The engine, never the platform (positioning call). Scale-to-zero by default (unit economics call). Human-in-the-loop via MCP elicitation, not autonomous-agent-on-someone-else's-molecules (trust call). Open-sourced as an engine, not as a hosted product (moat call - the moat is FAVES-cert + operated cloud, not the code).
 
@@ -22,7 +22,10 @@ Before NovoMCP: reinforcement learning agents for autonomous discovery in high-s
 
 ## The Stack
 
-- The Engine: MCP + REST, 67 tools, ~14 always-available on a fresh clone
+- The Engine: MCP + REST, 68 tools, ~14 always-available on a fresh clone (now v1.2.0)
+- Runs local: boots with zero external services - no auth, no account, no API key; audit to ~/.novo/audit.jsonl
+- Pluggable spine: auth / metering / audit swap local <-> hosted <-> custom by env flag - same code standalone or operated
+- Wraps open compute: RDKit, GROMACS, AutoDock-GPU, OpenFold, Boltz, Gnina, xTB, ANI-2x, AIMNet2, MACE; ALCHEMI-accelerated NNP axis as of v1.2.0
 - License: Apache-2.0 (orchestration core BSL 1.1 -> Apache 2029-07-12)
 - Compliance: FAVES V4 (hosted certified API) - 8 jurisdictions, 1,585 structural alerts
 - Surfaces: MCP + REST + Workbench (v1.5.x) + Chrome ext + Word add-in + bundled dashboard
@@ -39,7 +42,7 @@ Research on how domain structure shapes reasoning - and how reasoning systems ad
 
 ## Projects
 
-- NovoMCP - the open computational chemistry engine (https://github.com/NovoMCP/novomcp): One engine, two surfaces (MCP + REST). 67 tools across cheminformatics, ADMET, docking, MD, quantum chemistry, structure prediction, materials science, and an 11-stage autonomous discovery funnel. ~14 tools work with a fresh clone; the rest unlock as you wire optional compute services. Apache-2.0 top-level; orchestration core BSL 1.1 -> Apache 2029-07-12. Works with Claude Desktop, Cursor, Codex, Zed, ChatGPT, Gemini, and any MCP-compatible assistant, or hit it from your own code over HTTP. https://novomcp.com/engine
+- NovoMCP - the open computational chemistry engine (https://github.com/NovoMCP/novomcp): One engine, two surfaces (MCP + REST). 68 tools across cheminformatics, ADMET, docking, MD, quantum chemistry, structure prediction, materials science, and an 11-stage autonomous discovery funnel. Clone it and it boots with zero external services - no auth, no account, no API key; ~14 tools work with a fresh clone, the rest unlock as you wire optional compute. A pluggable spine (auth / metering / audit) swaps local <-> hosted <-> custom by env flag - no OSS/enterprise fork. Wraps open compute (RDKit, GROMACS, AutoDock-GPU, OpenFold, Boltz, Gnina, xTB, ANI-2x, MACE) with an ALCHEMI-accelerated NNP axis as of v1.2.0. Apache-2.0 top-level; orchestration core BSL 1.1 -> Apache 2029-07-12. Works with Claude Desktop, Cursor, Codex, Zed, ChatGPT, Gemini, and any MCP-compatible assistant, or hit it from your own code over HTTP. https://novomcp.com/engine
 
 - FAVES certified compliance API: The moat around the OSS engine. Certified regulatory compliance for pharma / biotech pipelines - DEA schedules, EU REACH, PAINS filters, structural alerts, sponsor whitelists, PMDA / KFDA / TGA - plus the operational commitments a regulated submission needs (SLA, immutable audit-log retention, drift monitoring, IQ/OQ/PQ documentation, SAML SSO). Closed and paid; access on request. Not shipped with the OSS engine. https://novomcp.com/faves
 
@@ -70,7 +73,7 @@ Writing available at: https://substack.com/@ariharrisonlab
 
 Selected product, infra, and positioning calls made shipping NovoMCP. Posted in full at https://ariharrisonlab.github.io/#leadership.
 
-- Open the engine at v1.1.0: Apache-2.0 top-level, BSL 1.1 -> Apache 2029-07-12 for the orchestration core. The moat is FAVES certification + operated cloud + trained models, not the code that calls RDKit and orchestrates docking. Distribution flips from "sign up for our platform" to "clone the repo."
+- Open the engine at v1.0: Apache-2.0 top-level, BSL 1.1 -> Apache 2029-07-12 for the orchestration core. The moat is FAVES certification + operated cloud + trained models, not the code that calls RDKit and orchestrates docking. Distribution flips from "sign up for our platform" to "clone the repo."
 - Scale-to-zero by default: every compute service ships with min_replicas=0; only public-path surfaces stay warm. Unit economics stay honest day one.
 - "Engine" never "platform": locked public language to "computational chemistry engine"; positioning rule rather than positioning deck.
 - Killed the campaign / autonomous-run system. Replaced with human-in-the-loop via MCP elicitation at every funnel stage. The audit log is the quality gate.
@@ -79,7 +82,7 @@ Selected product, infra, and positioning calls made shipping NovoMCP. Posted in 
 
 ## Contact
 
-- Email: arimgianni@gmail.com
+- Email: ariharrisonlab@gmail.com
 - LinkedIn DM: https://www.linkedin.com/in/ariharrisonlab
 - Resume: in revision, available on request.
 

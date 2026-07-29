@@ -888,7 +888,7 @@
 
 <section class="hero" id="hero">
   <h1 class="fade-in">Founder, NovoMCP.<br>The open computational<br>chemistry engine<br><em>for drug discovery and materials.</em></h1>
-  <p class="hero-sub fade-in">Open-sourced July 2026 under Apache-2.0. MCP + REST, 68 tools, self-hostable or cloud-deployed. The system between foundation models and high-stakes decisions, under real constraints. Previously: reinforcement learning agents for autonomous discovery in manufacturing. The domain changed; the systems thinking didn't.</p>
+  <p class="hero-sub fade-in">Open-sourced July 2026 under Apache-2.0. MCP + REST, 68 tools, self-hostable or cloud-deployed — clone it and it boots with zero external services: no auth, no account, no API key. The system between foundation models and high-stakes decisions, under real constraints. Previously: reinforcement learning agents for autonomous discovery in manufacturing. The domain changed; the systems thinking didn't.</p>
 
   <div class="metrics-strip fade-in">
     <div class="metric"><span class="metric-num">68</span><span class="metric-label">tools in the engine</span></div>
@@ -931,7 +931,8 @@
       <div class="now-label">Recently</div>
       <div class="now-value">
         <ul>
-          <li><strong>Open-sourced NovoMCP v1.1.0</strong> (July 2026) — engine + wrappers + surfaces + trained models under Apache-2.0; orchestration core under BSL 1.1 → Apache 2029-07-12</li>
+          <li><strong>Open-sourced NovoMCP</strong> (July 2026, v1.0.0) — engine + open-compute wrappers + surfaces + trained models under Apache-2.0; orchestration core under BSL 1.1 → Apache 2029-07-12. Boots with zero external services: no auth, no account, no API key</li>
+          <li>Shipped through <strong>v1.2.0</strong> — ALCHEMI-accelerated geometry with a pluggable NNP engine axis (<code>ase</code> ↔ <code>alchemi</code>, <code>crest</code> ↔ <code>alchemi</code>), plus a pluggable auth / metering / audit spine so the same code runs standalone or hosted</li>
           <li>Consolidated ~30 services Azure → AWS with zero customer-visible downtime, then trimmed the hosted footprint down to <code>api.novomcp.com</code> for the OSS launch</li>
           <li>Five SOTA wins on TDC ADMET (NovoExpert: CYP2D6, CYP3A4, CYP3A4 Substrate, Clearance Hepatocyte, DILI); preprint on ChemRxiv</li>
           <li>Shipped FAVES V4 certified compliance API for regulated pharma pipelines; preprint on ChemRxiv</li>
@@ -963,7 +964,10 @@
     <div class="about-aside fade-in">
       <h3>The Stack</h3>
       <ul>
-        <li><span>The Engine</span>MCP + REST, 68 tools, ~14 always-available on a fresh clone</li>
+        <li><span>The Engine</span>MCP + REST, 68 tools, ~14 always-available on a fresh clone (now v1.2.0)</li>
+        <li><span>Runs Local</span>Boots with zero external services — no auth, no account, no API key; audit to <code>~/.novo/audit.jsonl</code></li>
+        <li><span>Pluggable Spine</span>Auth · metering · audit swap local ↔ hosted ↔ custom via env flags — same code standalone or operated</li>
+        <li><span>Wraps Open Compute</span>RDKit · GROMACS · AutoDock-GPU · OpenFold · Boltz · Gnina · xTB · ANI-2x · AIMNet2 · MACE</li>
         <li><span>License</span>Apache-2.0 (orchestration core BSL 1.1 → Apache 2029-07-12)</li>
         <li><span>Compliance</span>FAVES V4 (hosted) — 8 jurisdictions, 1,585 structural alerts</li>
         <li><span>Surfaces</span>MCP · REST · Workbench (v1.5.x) · Chrome ext · Word add-in · bundled dashboard</li>
@@ -980,7 +984,7 @@
   <div class="leadership-grid">
     <div class="decision-card fade-in">
       <div class="decision-head">Distribution · Moat</div>
-      <div class="decision-title">Open the engine at v1.1.0.</div>
+      <div class="decision-title">Open the engine at v1.0.</div>
       <p class="decision-body">The straightforward call would have been to keep the engine closed and sell it as a hosted platform. I open-sourced it instead — Apache-2.0 top level, BSL 1.1 → Apache 2029-07-12 for the orchestration core. The moat is <strong>FAVES certification + operated cloud + trained models</strong>, not the code that calls RDKit and orchestrates docking.</p>
       <p class="decision-result">Distribution flips from "sign up for our platform" to "clone the repo." Adoption compounds where the platform pitch couldn't reach — researchers, students, engineers wiring the engine into their own agents. The regulated buyers still need certified compliance; that's what they buy.</p>
     </div>
@@ -1055,7 +1059,7 @@
     <div class="project-card fade-in">
       <div class="project-tag">Open source · Engine</div>
       <div class="project-name">NovoMCP — the open computational chemistry engine</div>
-      <div class="project-desc">One engine, two surfaces (MCP + REST). 68 tools across cheminformatics, ADMET, docking, MD, quantum chemistry, structure prediction, materials science, and an 11-stage autonomous discovery funnel. ~14 tools work with a fresh clone; the rest unlock as you wire optional compute services. Apache-2.0 top-level; orchestration core BSL 1.1 → Apache 2029-07-12. Works with Claude Desktop, Cursor, Codex, Zed, ChatGPT, Gemini, and any MCP-compatible assistant, or hit it from your own code over HTTP.</div>
+      <div class="project-desc">One engine, two surfaces (MCP + REST). 68 tools across cheminformatics, ADMET, docking, MD, quantum chemistry, structure prediction, materials science, and an 11-stage autonomous discovery funnel. Clone it and it boots with zero external services — no auth, no account, no API key; ~14 tools work on a fresh clone, the rest unlock as you wire optional compute. A pluggable spine (auth / metering / audit) swaps local ↔ hosted ↔ custom by env flag. Wraps open compute — RDKit, GROMACS, AutoDock-GPU, OpenFold, Boltz, Gnina, xTB, ANI-2x, MACE — with an ALCHEMI-accelerated NNP axis as of v1.2.0. Apache-2.0 top-level; orchestration core BSL 1.1 → Apache 2029-07-12. Works with Claude Desktop, Cursor, Codex, Zed, ChatGPT, Gemini, and any MCP-compatible assistant, or hit it from your own code over HTTP.</div>
       <a href="https://github.com/NovoMCP/novomcp" target="_blank" class="project-link">Repo →</a> &nbsp;&nbsp; <a href="https://novomcp.com/engine" target="_blank" class="project-link">novomcp.com/engine →</a> &nbsp;&nbsp; <a href="https://docs.novomcp.com/" target="_blank" class="project-link">Docs →</a>
     </div>
     <div class="project-card fade-in">
@@ -1177,7 +1181,7 @@
   <div class="contact-block fade-in">
     <p>Open to product, AI, and 0-to-1 leadership conversations. Bay Area or remote. Particularly interested in production AI systems, MCP-shaped infrastructure, and applied AI at companies where correctness matters.</p>
     <div class="contact-links">
-      <a href="mailto:arimgianni@gmail.com"><code>arimgianni@gmail.com</code></a>
+      <a href="mailto:ariharrisonlab@gmail.com"><code>ariharrisonlab@gmail.com</code></a>
       <a href="https://www.linkedin.com/in/ariharrisonlab/" target="_blank" rel="noopener">LinkedIn DM &rarr;</a>
       <a href="portfolio.html">Portfolio &rarr;</a>
     </div>

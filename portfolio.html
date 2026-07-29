@@ -641,10 +641,11 @@
 
 <section class="hero">
   <h1 class="fade-in">The open engine.<br><em>And every surface that reaches it.</em></h1>
-  <p class="hero-sub fade-in">Product portfolio for <a href="https://novomcp.com/engine" target="_blank" rel="noopener">NovoMCP</a> — the open computational chemistry engine, open-sourced July 2026 under Apache-2.0. One engine (MCP + REST, 68 tools), one 11-stage discovery funnel, and the surfaces that reach it: chat, code, desktop, browser, editor, and the bundled dashboard that ships with the engine itself. Each case below is a product decision: where it lives, who it's for, what trade-off it pays. The problem, the call, the build, the outcome.</p>
+  <p class="hero-sub fade-in">Product portfolio for <a href="https://novomcp.com/engine" target="_blank" rel="noopener">NovoMCP</a> — the open computational chemistry engine, open-sourced July 2026 under Apache-2.0 and shipped through v1.2.0. Clone it and it boots with zero external services — no auth, no account, no API key. One engine (MCP + REST, 68 tools), one 11-stage discovery funnel, and the surfaces that reach it: chat, code, desktop, browser, editor, and the bundled dashboard that ships with the engine itself. Each case below is a product decision: where it lives, who it's for, what trade-off it pays. The problem, the call, the build, the outcome.</p>
   <div class="hero-meta fade-in">
     <span><strong>Apache-2.0</strong> license</span>
     <span><strong>68</strong> tools in the engine</span>
+    <span><strong>0</strong> external services to boot</span>
     <span><strong>11</strong> autonomous funnel stages</span>
     <span><strong>1</strong> engine underneath</span>
   </div>
@@ -977,6 +978,16 @@
       <h3>Human-in-the-loop, not autonomous</h3>
       <p>The discovery funnel is 11 stages in the open engine (FEP was extracted per the cleave; available as a paid Novo Compute service). It runs as an MCP server inside the user's assistant, every stage prompts the user via MCP elicitation. <strong>Not</strong> a standalone autonomous agent running on someone else's compounds.</p>
       <p>The audit trail records every gate, every decision, every tool call. Pipeline audits are the quality gates; the funnel is what's audited.</p>
+    </div>
+    <div class="decision fade-in">
+      <h3>The pluggable spine: local ↔ hosted, one codebase</h3>
+      <p>Auth, metering, and audit are three swappable implementations behind stable protocols, chosen by env flag (<code>NOVO_AUTH</code> / <code>NOVO_METER</code> / <code>NOVO_AUDIT</code> = <code>local</code> · <code>hosted</code> · <code>custom</code>). A fresh clone runs the <code>local</code> spine — no auth, no credit accounting, audit to <code>~/.novo/audit.jsonl</code>. The hosted deployment runs the <em>same engine code</em> with the <code>hosted</code> spine wired in.</p>
+      <p>No OSS-vs-enterprise fork. The open engine is the product; auth / metering / audit is a runtime boundary, not a feature gate. Set the flags to <code>custom</code> and drop in your own implementations against the three protocols.</p>
+    </div>
+    <div class="decision fade-in">
+      <h3>Wrap open compute, add an accelerated axis</h3>
+      <p>The engine wraps established open tools — <strong>RDKit, GROMACS, AutoDock-GPU, OpenFold, Boltz, Gnina, xTB, ANI-2x, AIMNet2, MACE</strong> — rather than reimplementing them. That's what "open computational chemistry engine" means: the orchestration and governance are the work, not the physics.</p>
+      <p>As of <strong>v1.2.0</strong>, geometry tools take an engine axis (<code>ase</code> ↔ <code>alchemi</code>, <code>crest</code> ↔ <code>alchemi</code>): the same tool call runs the open reference path or an ALCHEMI-accelerated NNP path, chosen per call. Acceleration is a pluggable axis, not a rewrite.</p>
     </div>
   </div>
 </section>
