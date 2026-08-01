@@ -6,7 +6,7 @@ The interesting problem isn't getting a model to say something. It's building th
 
 ## Now
 
-- Building: **NovoMCP** — the open computational chemistry engine. Open-sourced July 2026 under Apache-2.0, shipped through **v1.2.0**. MCP + REST, 68 tools. Clone it and it boots with zero external services — no auth, no account, no API key. Self-host it, or run it as a per-org cloud deployment. Solo founder.
+- Building: **NovoMCP** — the open computational chemistry engine. Open-sourced July 2026 under Apache-2.0, shipped through **v1.4.0**. MCP + REST, 68 tools. Clone it and it boots with zero external services — no auth, no account, no API key. Self-host it, or run it as a per-org cloud deployment. Solo founder.
 - Open to: **product, AI, and 0-to-1 leadership conversations.** Bay Area or remote. Particularly interested in production AI systems, MCP-shaped infrastructure, and applied AI at companies where correctness matters.
 - Contact: ariharrisonlab@gmail.com · [LinkedIn](https://www.linkedin.com/in/ariharrisonlab/)
 - Backed by: NVIDIA Inception · AWS Activate · Microsoft Founders Hub
@@ -24,16 +24,18 @@ The engine is the product. The surface is how you reach it. Each surface is a th
 
 ## Also shipping · Open source
 
+- **[novomcp-lite](https://github.com/NovoMCP/novomcp-lite)** (Apache-2.0). A lightweight, standalone version of NovoMCP's cheminformatics — for when you just want the wrappers, not the whole engine. `pip install novomcp-lite` — eight zero-config tools (RDKit properties, profiling, synthetic-accessibility scoring, PAINS/BRENK alerts, library screening + ChEMBL / ClinicalTrials.gov / bioRxiv search), as a Python library or an MCP server. It's the same code the full engine runs on, so the numbers match — just without the rest of the platform. Prompted by user feedback; on PyPI (v0.1.0).
+- **Open compute-service wrappers** (Apache-2.0). The engine's GPU services ship as standalone repos, each deployable on its own: [gromacs-md](https://github.com/NovoMCP/gromacs-md) (GROMACS MD), [novomcp-nnp](https://github.com/NovoMCP/novomcp-nnp) (neural-network potentials), [novomcp-qm](https://github.com/NovoMCP/novomcp-qm) (quantum chemistry).
 - **[NovoMD](https://github.com/ariharrisonlab/NovoMD)** (MIT). Local-first molecular descriptors. SMILES → 32+ descriptors from a 3D conformer, calculated on your own machine, no account. Ships as Python library (`pip install novomd`) + CLI (`novomd props "CCO"`) + [Hugging Face MCP endpoint](https://huggingface.co/spaces/quantnexusai/novomd) (works with Claude, Cursor, any MCP client) + Docker REST service. The design call: scope discipline. No ADMET, no pKa, no binding. Documented in the README and shipped as an agent skill.
 
 See the [full product portfolio →](https://ariharrisonlab.github.io/portfolio.html)
 
 ## The Stack
 
-- **The Engine**: MCP + REST, 68 tools, ~14 always-available on a fresh clone (now v1.2.0)
+- **The Engine**: MCP + REST, 68 tools, ~14 always-available on a fresh clone (now v1.4.0)
 - **Runs local**: boots with zero external services — no auth, no account, no API key; audit to `~/.novo/audit.jsonl`
 - **Pluggable spine**: auth / metering / audit swap local ↔ hosted ↔ custom by env flag — same code standalone or operated, no OSS/enterprise fork
-- **Wraps open compute**: RDKit · GROMACS · AutoDock-GPU · OpenFold · Boltz · Gnina · xTB · ANI-2x · AIMNet2 · MACE; ALCHEMI-accelerated NNP axis as of v1.2.0
+- **Wraps open compute**: RDKit · GROMACS · AutoDock-GPU · OpenFold · Boltz · Gnina · xTB · ANI-2x · AIMNet2 · MACE; ALCHEMI-accelerated engine axis across geometry, energy, and conformer search (through v1.3.0); in-process cheminformatics sourced from the open novomcp-lite package (v1.4.0)
 - **License**: Apache-2.0 top-level (orchestration core BSL 1.1 → Apache 2029-07-12)
 - **Compliance**: FAVES V4 (hosted certified API) — 8 jurisdictions, 1,585 structural alerts
 - **Verticals**: Drug discovery + materials science

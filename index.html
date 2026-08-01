@@ -932,11 +932,13 @@
       <div class="now-value">
         <ul>
           <li><strong>Open-sourced NovoMCP</strong> (July 2026, v1.0.0) — engine + open-compute wrappers + surfaces + trained models under Apache-2.0; orchestration core under BSL 1.1 → Apache 2029-07-12. Boots with zero external services: no auth, no account, no API key</li>
-          <li>Shipped through <strong>v1.2.0</strong> — ALCHEMI-accelerated geometry with a pluggable NNP engine axis (<code>ase</code> ↔ <code>alchemi</code>, <code>crest</code> ↔ <code>alchemi</code>), plus a pluggable auth / metering / audit spine so the same code runs standalone or hosted</li>
+          <li>Shipped through <strong>v1.4.0</strong> — ALCHEMI-accelerated engine axis across geometry, energy, and conformer search (<code>ase</code> ↔ <code>alchemi</code>, <code>crest</code> ↔ <code>alchemi</code>; same tool call, open reference path or GPU path chosen per call), plus a pluggable auth / metering / audit spine so the same code runs standalone or hosted</li>
           <li>Consolidated ~30 services Azure → AWS with zero customer-visible downtime, then trimmed the hosted footprint down to <code>api.novomcp.com</code> for the OSS launch</li>
           <li>Five SOTA wins on TDC ADMET (NovoExpert: CYP2D6, CYP3A4, CYP3A4 Substrate, Clearance Hepatocyte, DILI); preprint on ChemRxiv</li>
           <li>Shipped FAVES V4 certified compliance API for regulated pharma pipelines; preprint on ChemRxiv</li>
           <li>Published Chrome Web Store extension; sideload Word add-in in private beta</li>
+          <li>Published the engine's GPU compute services as standalone open repos — <a href="https://github.com/NovoMCP/gromacs-md" target="_blank" rel="noopener">gromacs-md</a> (GROMACS MD), <a href="https://github.com/NovoMCP/novomcp-nnp" target="_blank" rel="noopener">novomcp-nnp</a> (neural-network potentials), <a href="https://github.com/NovoMCP/novomcp-qm" target="_blank" rel="noopener">novomcp-qm</a> (quantum chemistry)</li>
+          <li>Shipped <a href="https://github.com/NovoMCP/novomcp-lite" target="_blank" rel="noopener">novomcp-lite</a> — a lightweight, standalone version of the engine's cheminformatics (Apache-2.0, <code>pip install novomcp-lite</code>): eight zero-config tools, library or MCP server; same code as the full engine, minus the rest of the platform</li>
           <li>Open-sourced <a href="https://github.com/ariharrisonlab/NovoMD" target="_blank" rel="noopener">NovoMD</a>, local-first molecular descriptors, MIT-licensed, shipping as library + CLI + Hugging Face MCP + Docker REST</li>
         </ul>
       </div>
@@ -964,7 +966,7 @@
     <div class="about-aside fade-in">
       <h3>The Stack</h3>
       <ul>
-        <li><span>The Engine</span>MCP + REST, 68 tools, ~14 always-available on a fresh clone (now v1.2.0)</li>
+        <li><span>The Engine</span>MCP + REST, 68 tools, ~14 always-available on a fresh clone (now v1.4.0)</li>
         <li><span>Runs Local</span>Boots with zero external services — no auth, no account, no API key; audit to <code>~/.novo/audit.jsonl</code></li>
         <li><span>Pluggable Spine</span>Auth · metering · audit swap local ↔ hosted ↔ custom via env flags — same code standalone or operated</li>
         <li><span>Wraps Open Compute</span>RDKit · GROMACS · AutoDock-GPU · OpenFold · Boltz · Gnina · xTB · ANI-2x · AIMNet2 · MACE</li>
@@ -1059,7 +1061,7 @@
     <div class="project-card fade-in">
       <div class="project-tag">Open source · Engine</div>
       <div class="project-name">NovoMCP — the open computational chemistry engine</div>
-      <div class="project-desc">One engine, two surfaces (MCP + REST). 68 tools across cheminformatics, ADMET, docking, MD, quantum chemistry, structure prediction, materials science, and an 11-stage autonomous discovery funnel. Clone it and it boots with zero external services — no auth, no account, no API key; ~14 tools work on a fresh clone, the rest unlock as you wire optional compute. A pluggable spine (auth / metering / audit) swaps local ↔ hosted ↔ custom by env flag. Wraps open compute — RDKit, GROMACS, AutoDock-GPU, OpenFold, Boltz, Gnina, xTB, ANI-2x, MACE — with an ALCHEMI-accelerated NNP axis as of v1.2.0. Apache-2.0 top-level; orchestration core BSL 1.1 → Apache 2029-07-12. Works with Claude Desktop, Cursor, Codex, Zed, ChatGPT, Gemini, and any MCP-compatible assistant, or hit it from your own code over HTTP.</div>
+      <div class="project-desc">One engine, two surfaces (MCP + REST). 68 tools across cheminformatics, ADMET, docking, MD, quantum chemistry, structure prediction, materials science, and an 11-stage autonomous discovery funnel. Clone it and it boots with zero external services — no auth, no account, no API key; ~14 tools work on a fresh clone, the rest unlock as you wire optional compute. A pluggable spine (auth / metering / audit) swaps local ↔ hosted ↔ custom by env flag. Wraps open compute — RDKit, GROMACS, AutoDock-GPU, OpenFold, Boltz, Gnina, xTB, ANI-2x, MACE — with an ALCHEMI-accelerated axis across geometry, energy, and conformer search (through v1.3.0), and sources its in-process cheminformatics from the open novomcp-lite package (v1.4.0). Apache-2.0 top-level; orchestration core BSL 1.1 → Apache 2029-07-12. Works with Claude Desktop, Cursor, Codex, Zed, ChatGPT, Gemini, and any MCP-compatible assistant, or hit it from your own code over HTTP.</div>
       <a href="https://github.com/NovoMCP/novomcp" target="_blank" class="project-link">Repo →</a> &nbsp;&nbsp; <a href="https://novomcp.com/engine" target="_blank" class="project-link">novomcp.com/engine →</a> &nbsp;&nbsp; <a href="https://docs.novomcp.com/" target="_blank" class="project-link">Docs →</a>
     </div>
     <div class="project-card fade-in">
@@ -1073,6 +1075,12 @@
       <div class="project-name">NovoWorkbench — native desktop for the engine</div>
       <div class="project-desc">The molecule canvas, 3D viewers, and discovery funnel as a native desktop for macOS and Windows. Local RDKit, offline alert screening (PAINS + druglikeness rule sets), bring-your-own-LLM chat, model-agnostic. Tauri + Python sidecar; Apple Developer ID notarized (team 8N9K9B7Y69). Currently in design-partner preview; ships as OSS in v1.5.x per the product roadmap.</div>
       <a href="https://novomcp.com/novoworkbench" target="_blank" class="project-link">About NovoWorkbench →</a> &nbsp;&nbsp; <a href="https://novomcp.com/sales-inquiry" target="_blank" class="project-link">Talk to us about early access →</a>
+    </div>
+    <div class="project-card fade-in">
+      <div class="project-tag">Open source · Apache-2.0</div>
+      <div class="project-name">novomcp-lite — NovoMCP's cheminformatics, standalone</div>
+      <div class="project-desc">A lightweight version for people who just want the wrappers, not the whole engine. <code>pip install novomcp-lite</code> — eight zero-config tools (RDKit properties, profiling, synthetic-accessibility, PAINS/BRENK alerts, library screening, plus ChEMBL / ClinicalTrials.gov / bioRxiv search), as a Python library or an MCP server. Two dependencies, no keys. It's the exact code the full engine runs on, so the numbers match — just without the rest of the platform. Prompted by a researcher who wired the engine up to his agent and asked for a lighter build.</div>
+      <a href="https://github.com/NovoMCP/novomcp-lite" target="_blank" class="project-link">GitHub →</a> &nbsp;&nbsp; <a href="https://pypi.org/project/novomcp-lite/" target="_blank" class="project-link">PyPI →</a>
     </div>
     <div class="project-card fade-in">
       <div class="project-tag">Open source · MIT</div>

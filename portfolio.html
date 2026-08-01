@@ -641,7 +641,7 @@
 
 <section class="hero">
   <h1 class="fade-in">The open engine.<br><em>And every surface that reaches it.</em></h1>
-  <p class="hero-sub fade-in">Product portfolio for <a href="https://novomcp.com/engine" target="_blank" rel="noopener">NovoMCP</a> — the open computational chemistry engine, open-sourced July 2026 under Apache-2.0 and shipped through v1.2.0. Clone it and it boots with zero external services — no auth, no account, no API key. One engine (MCP + REST, 68 tools), one 11-stage discovery funnel, and the surfaces that reach it: chat, code, desktop, browser, editor, and the bundled dashboard that ships with the engine itself. Each case below is a product decision: where it lives, who it's for, what trade-off it pays. The problem, the call, the build, the outcome.</p>
+  <p class="hero-sub fade-in">Product portfolio for <a href="https://novomcp.com/engine" target="_blank" rel="noopener">NovoMCP</a> — the open computational chemistry engine, open-sourced July 2026 under Apache-2.0 and shipped through v1.4.0. Clone it and it boots with zero external services — no auth, no account, no API key. One engine (MCP + REST, 68 tools), one 11-stage discovery funnel, and the surfaces that reach it: chat, code, desktop, browser, editor, and the bundled dashboard that ships with the engine itself. Each case below is a product decision: where it lives, who it's for, what trade-off it pays. The problem, the call, the build, the outcome.</p>
   <div class="hero-meta fade-in">
     <span><strong>Apache-2.0</strong> license</span>
     <span><strong>68</strong> tools in the engine</span>
@@ -906,6 +906,32 @@
 <section>
   <div class="section-label fade-in">Also shipping · Open source</div>
   <div class="oss-block fade-in">
+    <div class="oss-tag">Apache-2.0 · The engine's open core · Library + MCP</div>
+    <h2 class="oss-title">novomcp-lite. <em>NovoMCP's cheminformatics, standalone — the lightweight version.</em></h2>
+    <p class="oss-lede">The lighter way to use NovoMCP's cheminformatics without standing up the whole engine. Eight zero-config tools — RDKit properties, profiling, synthetic-accessibility, PAINS/BRENK alerts, library screening, plus ChEMBL / ClinicalTrials.gov / bioRxiv search — as a two-dependency package. No keys, no account, no services. Prompted by a researcher who wired NovoMCP up to his own agent and asked for a lighter, wrappers-only build.</p>
+
+    <div class="oss-runtimes">
+      <div class="oss-runtime">
+        <div class="oss-runtime-name">Python library</div>
+        <div class="oss-runtime-cmd">pip install novomcp-lite</div>
+        <div class="oss-runtime-note"><code>from novomcp_tools import compute_properties</code> — call the tools directly, two dependencies.</div>
+      </div>
+      <div class="oss-runtime">
+        <div class="oss-runtime-name">MCP server</div>
+        <div class="oss-runtime-cmd">pip install "novomcp-lite[mcp]"</div>
+        <div class="oss-runtime-note">Point Claude, or any agent, at the same eight tools. Same code either way.</div>
+      </div>
+    </div>
+
+    <p class="oss-discipline"><strong>The design call: one implementation, no drift.</strong> novomcp-lite isn't a fork of the engine — the full NovoMCP platform imports the exact same code. So the numbers from the two-dependency library are, to the decimal, the numbers from the full engine. The open core isn't a marketing cut-down; it's what the product runs on.</p>
+
+    <div class="oss-foot">
+      <span class="oss-foot-label">Open source &rarr;</span>
+      <a href="https://github.com/NovoMCP/novomcp-lite" target="_blank" rel="noopener">GitHub repo</a>
+      <a href="https://pypi.org/project/novomcp-lite/" target="_blank" rel="noopener">PyPI package</a>
+    </div>
+  </div>
+  <div class="oss-block fade-in">
     <div class="oss-tag">MIT · Local-first · MCP + CLI + Library + REST</div>
     <h2 class="oss-title">NovoMD. <em>Same multi-surface idea, smaller scope, fully open.</em></h2>
     <p class="oss-lede">Turns a SMILES string into 32+ molecular descriptors from a 3D conformer, geometry, energy, electrostatics, surface, volume. Runs on your own machine, no account, no API key. The same one-engine-many-surfaces pattern as NovoMCP, applied at library scale, in the open.</p>
@@ -986,8 +1012,8 @@
     </div>
     <div class="decision fade-in">
       <h3>Wrap open compute, add an accelerated axis</h3>
-      <p>The engine wraps established open tools — <strong>RDKit, GROMACS, AutoDock-GPU, OpenFold, Boltz, Gnina, xTB, ANI-2x, AIMNet2, MACE</strong> — rather than reimplementing them. That's what "open computational chemistry engine" means: the orchestration and governance are the work, not the physics.</p>
-      <p>As of <strong>v1.2.0</strong>, geometry tools take an engine axis (<code>ase</code> ↔ <code>alchemi</code>, <code>crest</code> ↔ <code>alchemi</code>): the same tool call runs the open reference path or an ALCHEMI-accelerated NNP path, chosen per call. Acceleration is a pluggable axis, not a rewrite.</p>
+      <p>The engine wraps established open tools — <strong>RDKit, GROMACS, AutoDock-GPU, OpenFold, Boltz, Gnina, xTB, ANI-2x, AIMNet2, MACE</strong> — rather than reimplementing them. That's what "open computational chemistry engine" means: the orchestration and governance are the work, not the physics. NovoMCP's own GPU service wrappers ship as standalone open repos too — <a href="https://github.com/NovoMCP/gromacs-md" target="_blank" rel="noopener">gromacs-md</a> (MD), <a href="https://github.com/NovoMCP/novomcp-nnp" target="_blank" rel="noopener">novomcp-nnp</a> (neural-network potentials), <a href="https://github.com/NovoMCP/novomcp-qm" target="_blank" rel="noopener">novomcp-qm</a> (quantum chemistry) — each deployable on its own.</p>
+      <p>As of <strong>v1.3.0</strong>, geometry, single-point energy, and conformer-search tools take an engine axis (<code>ase</code> ↔ <code>alchemi</code>, <code>crest</code> ↔ <code>alchemi</code>): the same tool call runs the open reference path or an ALCHEMI-accelerated GPU path, chosen per call. Acceleration is a pluggable axis, not a rewrite. As of <strong>v1.4.0</strong>, the engine's in-process cheminformatics is sourced from the open <a href="https://github.com/NovoMCP/novomcp-lite" target="_blank" rel="noopener">novomcp-lite</a> package — the exact code the two-dependency library ships, so the platform and the library never diverge.</p>
     </div>
   </div>
 </section>
