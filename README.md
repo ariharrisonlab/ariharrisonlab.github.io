@@ -32,7 +32,7 @@ See the [full product portfolio →](https://ariharrisonlab.github.io/portfolio.
 
 ## The Stack
 
-- **The Engine**: MCP + REST, 68 tools, ~14 always-available on a fresh clone (now v1.4.0)
+- **The Engine**: MCP + REST, 68 tools, 11 always-available on a fresh clone (now v1.4.0)
 - **Runs local**: boots with zero external services — no auth, no account, no API key; audit to `~/.novo/audit.jsonl`
 - **Pluggable spine**: auth / metering / audit swap local ↔ hosted ↔ custom by env flag — same code standalone or operated, no OSS/enterprise fork
 - **Wraps open compute**: RDKit · GROMACS · AutoDock-GPU · OpenFold · Boltz · Gnina · xTB · ANI-2x · AIMNet2 · MACE; ALCHEMI-accelerated engine axis across geometry, energy, and conformer search (through v1.3.0); in-process cheminformatics sourced from the open novomcp-lite package (v1.4.0)
