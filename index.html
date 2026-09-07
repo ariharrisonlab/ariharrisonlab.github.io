@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ari Harrison, Founder, NovoMCP · The open computational chemistry engine</title>
-<meta name="description" content="Founder of NovoMCP — the open computational chemistry engine for drug discovery and materials science. Apache-2.0, MCP + REST, 68 tools. Previously: reinforcement learning agents for autonomous discovery in high-stakes manufacturing.">
+<meta name="description" content="Founder of NovoMCP, the open computational chemistry engine for drug discovery and materials science. Apache-2.0, MCP + REST, 69 tools. Previously: reinforcement-learning agents for autonomous discovery in high-stakes manufacturing.">
 <meta property="og:title" content="Ari Harrison, Founder, NovoMCP">
-<meta property="og:description" content="Building the open computational chemistry engine. The system between foundation models and high-stakes decisions, under real constraints.">
+<meta property="og:description" content="The system between a foundation model and a decision that matters. Building the open computational chemistry engine, under real constraints.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ariharrisonlab.github.io">
 <meta property="og:image" content="https://ariharrisonlab.github.io/og-image.png">
@@ -15,1241 +15,506 @@
 <meta name="twitter:description" content="Building the open computational chemistry engine. Previously: autonomous discovery in high-stakes manufacturing.">
 <meta name="twitter:image" content="https://ariharrisonlab.github.io/og-image.png">
 <link rel="canonical" href="https://ariharrisonlab.github.io">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231A1714'/><text x='50' y='68' font-family='Georgia,serif' font-size='42' font-weight='400' fill='%23D4A88A' text-anchor='middle'>AH</text></svg>">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230B0E11'/><text x='50' y='70' font-family='monospace' font-size='52' font-weight='700' fill='%2335D2C3' text-anchor='middle'>▮</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* Palette matches novomcp.com (novo-website src/app/globals.css @theme). */
-  /* Light mode (default — matches novomcp.com's cream default) */
-  :root {
-    --bg: #F5F1EB;
-    --bg-warm: #EFE9E0;
-    --bg-card-hover: #2D2A26;
-    --text: #2D2A26;
-    --text-soft: #6B6560;
-    --text-muted: #9C9690;
-    --accent: #B8704B;
-    --accent-soft: #9E5C3A;
-    --border: rgba(45, 42, 38, 0.10);
-    --nav-bg: rgba(245, 241, 235, 0.85);
-    --serif: 'Cormorant Garamond', Georgia, serif;
-    --sans: 'Inter', -apple-system, sans-serif;
-    --mono: 'JetBrains Mono', Monaco, monospace;
-    --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  :root{
+    --ground:#0B0E11; --panel:#12171B; --panel-2:#0E1317;
+    --line:#20272D; --line-soft:#161C21;
+    --ink:#E8ECEE; --soft:#949EA4; --mute:#59636A;
+    --signal:#35D2C3; --signal-dim:#1E8079;
+    --sans:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --ease:cubic-bezier(.22,.61,.36,1);
   }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ground);color:var(--ink);
+    font-family:var(--sans);font-size:15px;line-height:1.65;font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+    background-size:64px 64px;background-position:-1px -1px;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+  a{color:var(--signal);text-decoration:none;transition:color .3s var(--ease)}
+  a:hover{color:var(--ink)}
+  ::selection{background:var(--signal-dim);color:var(--ink)}
+  :focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+  code{font-family:var(--mono);font-size:.86em;color:var(--ink);background:var(--panel);padding:1px 5px;border:1px solid var(--line)}
+  .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+  .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+  .tag b{color:var(--signal);font-weight:400}
 
-  /* Dark mode (opt-in via theme toggle) */
-  [data-theme="dark"] {
-    --bg: #1A1714;
-    --bg-warm: #221E1A;
-    --bg-card-hover: #F5F1EB;
-    --text: #F4F1EC;
-    --text-soft: #B6AEA4;
-    --text-muted: #837C73;
-    --accent: #D4A88A;
-    --accent-soft: #B8704B;
-    --border: rgba(244, 241, 236, 0.10);
-    --nav-bg: rgba(26, 23, 20, 0.85);
-  }
+  /* top bar */
+  header.bar{position:sticky;top:0;z-index:50;background:rgba(11,14,17,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  header.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:54px}
+  .brand{font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--ink);font-weight:500}
+  .brand .sq{color:var(--signal)}
+  .nav-right{display:flex;align-items:center;gap:28px}
+  .nav-links{display:flex;gap:26px;list-style:none}
+  .nav-links a{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+  .nav-links a:hover{color:var(--signal)}
+  .status-pill{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);display:flex;align-items:center;gap:8px}
+  .dot{width:7px;height:7px;background:var(--signal);border-radius:50%;animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(53,210,195,.5)}70%{box-shadow:0 0 0 7px rgba(53,210,195,0)}100%{box-shadow:0 0 0 0 rgba(53,210,195,0)}}
+  .hamburger{display:none;background:none;border:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
+  .hamburger span{display:block;width:22px;height:1.5px;background:var(--ink)}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--sans);
-    background: var(--bg);
-    color: var(--text);
-    font-size: 15px;
-    line-height: 1.7;
-    font-weight: 300;
-    -webkit-font-smoothing: antialiased;
-    transition: background 400ms var(--ease), color 400ms var(--ease);
-  }
-
-  /* Refined grain */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.015;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    z-index: 10000;
-  }
-
-  ::selection {
-    background: var(--accent-soft);
-    color: var(--text);
-  }
-
-  a {
-    color: var(--accent);
-    text-decoration: none;
-    transition: color 400ms var(--ease);
-  }
-  a:hover { color: var(--text); }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    padding: 20px 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    background: var(--nav-bg);
-    border-bottom: 1px solid transparent;
-    transition: border-color 400ms var(--ease), background 400ms var(--ease);
-  }
-  nav.scrolled { border-bottom-color: var(--border); }
-
-  .nav-name {
-    font-family: var(--serif);
-    font-size: 20px;
-    font-weight: 400;
-    color: var(--text);
-    letter-spacing: -0.01em;
-  }
-
-  .nav-right {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-  }
-  .nav-links a {
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    transition: color 400ms var(--ease);
-    position: relative;
-  }
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--accent);
-    transition: width 400ms var(--ease);
-  }
-  .nav-links a:hover { color: var(--text); }
-  .nav-links a:hover::after { width: 100%; }
-
-  .theme-toggle {
-    background: none;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    transition: all 400ms var(--ease);
-    flex-shrink: 0;
-  }
-  .theme-toggle:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-  }
-  .theme-toggle svg {
-    width: 16px;
-    height: 16px;
-    fill: currentColor;
-  }
-  .theme-toggle .icon-sun { display: none; }
-  .theme-toggle .icon-moon { display: block; }
-  [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
-  [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
-
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 8px;
-    background: none;
-    border: none;
-  }
-  .hamburger span {
-    display: block;
-    width: 22px;
-    height: 1.5px;
-    background: var(--text);
-    transition: all 300ms var(--ease);
-  }
-
-  /* SECTIONS */
-  section {
-    padding: 120px 48px 80px;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 40px;
-  }
-  .section-label::before {
-    content: '';
-    display: inline-block;
-    width: 24px;
-    height: 1px;
-    background: var(--accent);
-    margin-right: 12px;
-    vertical-align: middle;
-  }
+  /* section scaffold */
+  section{padding:92px 0 8px;position:relative}
+  .field-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:14px;margin-bottom:34px}
+  .field-label::after{content:"";height:1px;flex:1;background:var(--line)}
+  .field-label .idx{color:var(--signal)}
+  .field-label .cmt{color:var(--mute);text-transform:none;letter-spacing:.04em}
 
   /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 80px;
-    position: relative;
-  }
+  .hero{padding-top:68px;border-bottom:1px solid var(--line);padding-bottom:0}
+  .hero .eyebrow{margin-bottom:30px}
+  .hero h1{font-size:clamp(38px,6.4vw,80px);line-height:.99;font-weight:700;letter-spacing:-.035em;text-wrap:balance;margin-bottom:26px;color:var(--ink)}
+  .hero h1 .cy{color:var(--signal)}
+  .hero .lede{max-width:62ch;color:var(--soft);font-size:16.5px;line-height:1.75}
+  .hero .lede b{color:var(--ink);font-weight:600}
+  .hero-links{display:flex;flex-wrap:wrap;gap:22px;margin-top:36px}
+  .hero-links a{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--soft);padding-bottom:5px;border-bottom:1px solid var(--line)}
+  .hero-links a:hover{color:var(--signal);border-bottom-color:var(--signal)}
 
-  .hero h1 {
-    font-family: var(--serif);
-    font-size: clamp(42px, 6vw, 72px);
-    font-weight: 300;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    margin-bottom: 32px;
-  }
-  .hero h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
+  /* characteristics table */
+  .chars{margin-top:46px;border-top:1px solid var(--line)}
+  .char{display:grid;grid-template-columns:52px 1fr auto;align-items:baseline;gap:20px;padding:15px 4px;border-bottom:1px solid var(--line);transition:background .3s var(--ease),padding .3s var(--ease)}
+  .char:hover{background:var(--panel);padding-left:14px}
+  .char .k{font-family:var(--mono);font-size:11px;color:var(--mute);letter-spacing:.1em}
+  .char .v{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+  .char .n{font-family:var(--mono);font-size:26px;font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+  .char .n .u{font-size:12px;color:var(--signal);letter-spacing:.04em;margin-left:3px}
 
-  .hero-sub {
-    font-size: 17px;
-    color: var(--text-soft);
-    max-width: 540px;
-    line-height: 1.8;
-    font-weight: 300;
-  }
-
-  .hero-links {
-    display: flex;
-    gap: 24px;
-    margin-top: 48px;
-  }
-  .hero-links a {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-    transition: all 400ms var(--ease);
-  }
-  .hero-links a:hover {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-  }
-  .hero-links a svg {
-    width: 16px;
-    height: 16px;
-    fill: currentColor;
-  }
-
-  /* Metrics strip, scannable proof. Reused below hero so a recruiter
-     scrolling the home page sees the numbers in 2 seconds. */
-  .metrics-strip {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 48px;
-    margin-top: 56px;
-    padding-top: 32px;
-    border-top: 1px solid var(--border);
-  }
-  .metric { display: flex; flex-direction: column; gap: 4px; }
-  .metric-num {
-    font-family: var(--serif);
-    font-size: 32px;
-    font-weight: 400;
-    color: var(--accent);
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-  .metric-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-
-  /* "Now" strip, current status / availability for hiring inbound */
-  .now-strip {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 28px 32px;
-    padding: 36px 40px;
-    background: var(--bg-warm);
-    transition: background 400ms var(--ease);
-    border-left: 2px solid var(--accent);
-  }
-  .now-row { display: contents; }
-  .now-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    padding-top: 4px;
-  }
-  .now-value {
-    font-size: 15px;
-    color: var(--text);
-    line-height: 1.65;
-  }
-  .now-value strong { font-weight: 500; color: var(--accent); }
-  .now-value a { color: var(--accent); border-bottom: 1px solid transparent; }
-  .now-value a:hover { border-bottom-color: var(--accent); color: var(--text); }
-  .now-value ul { list-style: none; padding: 0; margin: 0; }
-  .now-value li { padding: 3px 0; }
-  .now-value li::before {
-    content: '· ';
-    color: var(--accent);
-  }
-
-  /* Leadership decisions grid, exec-brief shaped */
-  .leadership-intro {
-    font-size: 16px;
-    color: var(--text-soft);
-    line-height: 1.8;
-    max-width: 680px;
-    margin-bottom: 40px;
-  }
-  .leadership-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-  .decision-card {
-    background: var(--bg-warm);
-    padding: 32px 32px 28px;
-    transition: background 400ms var(--ease);
-  }
-  .decision-head {
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--accent-soft);
-    margin-bottom: 14px;
-  }
-  .decision-title {
-    font-family: var(--serif);
-    font-size: 21px;
-    font-weight: 400;
-    color: var(--text);
-    line-height: 1.25;
-    margin-bottom: 14px;
-  }
-  .decision-body {
-    font-size: 14px;
-    color: var(--text-soft);
-    line-height: 1.75;
-  }
-  .decision-body + .decision-body { margin-top: 12px; }
-  .decision-result {
-    margin-top: 18px;
-    padding-top: 14px;
-    border-top: 1px solid var(--border);
-    font-size: 13px;
-    color: var(--text-muted);
-    font-style: italic;
-    line-height: 1.65;
-  }
-
-  /* Contact section, single block, no clutter */
-  .contact-block {
-    padding: 48px;
-    background: var(--bg-warm);
-    transition: background 400ms var(--ease);
-    border-left: 2px solid var(--accent);
-  }
-  .contact-block p {
-    font-family: var(--serif);
-    font-size: clamp(20px, 2.2vw, 26px);
-    font-weight: 300;
-    line-height: 1.4;
-    color: var(--text);
-    margin-bottom: 28px;
-  }
-  .contact-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 28px;
-  }
-  .contact-links a {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-    transition: all 400ms var(--ease);
-  }
-  .contact-links a:hover { color: var(--text); border-bottom-color: var(--accent); }
-  .contact-links a code {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: inherit;
-  }
-  .contact-note {
-    font-family: var(--mono);
-    font-size: 11.5px;
-    letter-spacing: 0.04em;
-    color: var(--text-muted);
-    margin-top: 24px;
-    font-style: normal !important;
-  }
-
-  .scroll-indicator {
-    position: absolute;
-    bottom: 40px;
-    left: 0;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    animation: float 3s ease-in-out infinite;
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(6px); }
-  }
+  /* generic rows (Status / Stack) */
+  .rows{border-top:1px solid var(--line)}
+  .row{display:grid;grid-template-columns:158px 1fr;gap:32px;padding:24px 4px;border-bottom:1px solid var(--line)}
+  .row .rk{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);padding-top:5px}
+  .row .rv{color:var(--soft);font-size:14.5px;line-height:1.7}
+  .row .rv b{color:var(--ink);font-weight:600}
+  .ship{list-style:none;display:flex;flex-direction:column;gap:11px}
+  .ship li{display:grid;grid-template-columns:16px 1fr;gap:10px;align-items:baseline}
+  .ship li::before{content:"→";color:var(--signal);font-family:var(--mono);font-size:12px}
 
   /* ABOUT */
-  .about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: start;
-  }
+  .about{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}
+  .about-text p{color:var(--soft);font-size:15.5px;line-height:1.85;max-width:60ch}
+  .about-text p+p{margin-top:20px}
+  .about-text b{color:var(--ink);font-weight:600}
+  .about-text em{font-style:italic;color:var(--ink)}
+  .spec{border:1px solid var(--line);background:var(--panel-2)}
+  .spec .sh{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);padding:16px 20px;border-bottom:1px solid var(--line)}
+  .spec dl{margin:0}
+  .spec .srow{display:grid;grid-template-columns:118px 1fr;gap:14px;padding:12px 20px;border-bottom:1px solid var(--line-soft);font-size:12.5px;line-height:1.55}
+  .spec .srow:last-child{border-bottom:none}
+  .spec dt{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding-top:2px}
+  .spec dd{color:var(--soft);margin:0}
+  .spec dd b{color:var(--ink);font-weight:600}
 
-  .about-text {
-    font-size: 16px;
-    color: var(--text-soft);
-    line-height: 1.9;
-  }
-  .about-text p + p { margin-top: 24px; }
+  /* DECISIONS */
+  .decks{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .deck{background:var(--panel-2);padding:28px 28px 26px;display:flex;flex-direction:column;gap:13px;transition:background .35s var(--ease)}
+  .deck:hover{background:var(--panel)}
+  .deck .dh{display:flex;justify-content:space-between;align-items:center}
+  .deck .dcat{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal)}
+  .deck .dnum{font-family:var(--mono);font-size:10px;color:var(--mute)}
+  .deck h3{font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.2;color:var(--ink)}
+  .deck .body{font-size:13.5px;color:var(--soft);line-height:1.7}
+  .deck .body b{color:var(--ink);font-weight:600}
+  .deck .res{margin-top:auto;padding-top:13px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:11.5px;line-height:1.6;color:var(--mute)}
+  .deck .res span{color:var(--signal);letter-spacing:.1em}
 
-  .about-aside {
-    padding: 40px;
-    background: var(--bg-warm);
-    transition: background 400ms var(--ease);
-  }
-
-  .about-aside h3 {
-    font-family: var(--serif);
-    font-size: 18px;
-    font-weight: 400;
-    margin-bottom: 24px;
-    color: var(--text);
-  }
-
-  .about-aside ul { list-style: none; }
-
-  .about-aside li {
-    font-size: 14px;
-    color: var(--text-soft);
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .about-aside li:last-child { border-bottom: none; }
-
-  .about-aside li span {
-    display: block;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 4px;
-  }
+  /* BOUNDARIES */
+  .bounds{border:1px solid var(--line);border-left:2px solid var(--signal);background:linear-gradient(180deg,var(--panel-2),transparent)}
+  .bounds .bhead{padding:26px 30px 20px;border-bottom:1px solid var(--line)}
+  .bounds .bhead h3{font-size:22px;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+  .bounds .bhead p{color:var(--soft);font-size:14.5px;max-width:66ch;margin-top:8px}
+  .blist{list-style:none}
+  .blist li{display:grid;grid-template-columns:186px 1fr;gap:28px;padding:17px 30px;border-bottom:1px solid var(--line-soft);font-size:13.5px;color:var(--soft);line-height:1.6}
+  .blist li:last-child{border-bottom:none}
+  .blist .bt{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);padding-top:2px}
 
   /* PUBLICATIONS */
-  .pub-list { list-style: none; }
-
-  .pub-item {
-    padding: 32px 0;
-    border-bottom: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 32px;
-    align-items: start;
-    transition: all 400ms var(--ease);
-  }
-  .pub-item:first-child { border-top: 1px solid var(--border); }
-  .pub-item:hover { padding-left: 16px; }
-
-  .pub-year {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--text-muted);
-    padding-top: 4px;
-  }
-
-  .pub-title {
-    font-family: var(--serif);
-    font-size: 22px;
-    font-weight: 400;
-    color: var(--text);
-    margin-bottom: 8px;
-    line-height: 1.3;
-  }
-
-  .pub-venue {
-    font-size: 13px;
-    color: var(--text-muted);
-    font-style: italic;
-    margin-bottom: 12px;
-  }
-
-  .pub-desc {
-    font-size: 14px;
-    color: var(--text-soft);
-    line-height: 1.7;
-  }
-
-  .pub-link {
-    display: inline-block;
-    margin-top: 12px;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    border-bottom: 1px solid transparent;
-    transition: border-color 400ms var(--ease);
-  }
-  .pub-link:hover { border-bottom-color: var(--accent); }
+  .pubs{list-style:none;border-top:1px solid var(--line)}
+  .pub{display:grid;grid-template-columns:88px 1fr;gap:28px;padding:28px 4px;border-bottom:1px solid var(--line);transition:padding .3s var(--ease)}
+  .pub:hover{padding-left:12px}
+  .pub .py{font-family:var(--mono);font-size:12px;color:var(--mute);padding-top:4px}
+  .pub h3{font-size:19px;font-weight:600;letter-spacing:-.01em;line-height:1.3;color:var(--ink);margin-bottom:6px;text-wrap:balance}
+  .pub .pv{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--signal);text-transform:uppercase;margin-bottom:12px}
+  .pub .pd{font-size:13.5px;color:var(--soft);line-height:1.7;max-width:74ch}
+  .pub .pd b{color:var(--ink);font-weight:600}
+  .pub .pl{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:11px;letter-spacing:.06em}
 
   /* PROJECTS */
-  .project-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-  }
+  .projs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .proj{background:var(--panel-2);padding:28px;display:flex;flex-direction:column;transition:background .35s var(--ease)}
+  .proj:hover{background:var(--panel)}
+  .proj .pt{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);margin-bottom:14px}
+  .proj h3{font-size:19px;font-weight:700;letter-spacing:-.02em;line-height:1.25;color:var(--ink);margin-bottom:12px}
+  .proj .pb{font-size:13px;color:var(--soft);line-height:1.65;flex:1}
+  .proj .pb b{color:var(--ink);font-weight:600}
+  .proj .plinks{display:flex;flex-wrap:wrap;gap:16px;margin-top:18px}
+  .proj .plinks a{font-family:var(--mono);font-size:11px;letter-spacing:.04em}
 
-  .project-card {
-    padding: 48px 40px;
-    background: var(--bg-warm);
-    transition: all 400ms var(--ease);
-    cursor: default;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-  .project-card:hover { background: var(--bg-card-hover); }
-  .project-card:hover .project-tag,
-  .project-card:hover .project-name,
-  .project-card:hover .project-desc,
-  .project-card:hover .project-link { color: var(--bg); }
-  .project-card:hover .project-tag { color: var(--accent); }
-  .project-card:hover .project-link { color: var(--accent); }
+  /* WRITING */
+  .writing{list-style:none;border-top:1px solid var(--line)}
+  .post{display:grid;grid-template-columns:100px 1fr;gap:28px;padding:22px 4px;border-bottom:1px solid var(--line);align-items:baseline;transition:padding .3s var(--ease)}
+  .post:hover{padding-left:12px}
+  .post .pdate{font-family:var(--mono);font-size:12px;color:var(--mute)}
+  .post h3{font-size:17px;font-weight:600;color:var(--ink);letter-spacing:-.01em;transition:color .3s var(--ease)}
+  .post:hover h3{color:var(--signal)}
+  .post .pex{font-size:13px;color:var(--soft);margin-top:6px;line-height:1.6}
+  .more{display:inline-flex;align-items:center;gap:8px;margin-top:26px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);border-bottom:1px solid transparent;padding-bottom:3px}
+  .more:hover{border-bottom-color:var(--signal)}
 
-  .project-tag {
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 16px;
-    transition: color 400ms var(--ease);
-  }
+  /* CONTACT */
+  .contact{border:1px solid var(--line);padding:44px 40px;background:var(--panel-2)}
+  .contact p.big{font-size:clamp(19px,2.3vw,26px);font-weight:600;letter-spacing:-.02em;line-height:1.35;color:var(--ink);max-width:38ch;text-wrap:balance}
+  .clinks{display:flex;flex-wrap:wrap;gap:24px;margin-top:26px}
+  .clinks a{font-family:var(--mono);font-size:13px;letter-spacing:.02em;padding-bottom:5px;border-bottom:1px solid var(--line)}
+  .clinks a:hover{border-bottom-color:var(--signal)}
+  .cnote{font-family:var(--mono);font-size:11px;color:var(--mute);margin-top:22px;letter-spacing:.05em}
 
-  .project-name {
-    font-family: var(--serif);
-    font-size: 26px;
-    font-weight: 400;
-    color: var(--text);
-    margin-bottom: 16px;
-    transition: color 400ms var(--ease);
-  }
+  footer{margin-top:92px;border-top:1px solid var(--line)}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;padding:26px 32px;flex-wrap:wrap;gap:16px}
+  footer .fl{font-family:var(--mono);font-size:11px;color:var(--mute);letter-spacing:.05em;max-width:52ch}
+  footer .fr{display:flex;gap:20px;list-style:none}
+  footer .fr a{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+  footer .fr a:hover{color:var(--signal)}
 
-  .project-desc {
-    font-size: 14px;
-    color: var(--text-soft);
-    line-height: 1.7;
-    transition: color 400ms var(--ease);
-    flex: 1;
-  }
+  /* reveal */
+  .rev{opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .rev.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.rev{opacity:1;transform:none;transition:none}.dot{animation:none}html{scroll-behavior:auto}}
 
-  .project-link {
-    display: inline-block;
-    margin-top: 20px;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    transition: color 400ms var(--ease);
-  }
-
-  /* BLOG / WRITINGS */
-  .blog-list { list-style: none; }
-
-  .blog-item {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 32px;
-    padding: 28px 0;
-    border-bottom: 1px solid var(--border);
-    align-items: baseline;
-    transition: all 400ms var(--ease);
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-  }
-  .blog-item:first-child { border-top: 1px solid var(--border); }
-  .blog-item:hover { padding-left: 16px; }
-
-  .blog-date {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text-muted);
-  }
-
-  .blog-title {
-    font-family: var(--serif);
-    font-size: 20px;
-    font-weight: 400;
-    color: var(--text);
-    transition: color 400ms var(--ease);
-  }
-  .blog-item:hover .blog-title { color: var(--accent); }
-
-  .blog-excerpt {
-    font-size: 14px;
-    color: var(--text-soft);
-    margin-top: 8px;
-    line-height: 1.6;
-  }
-
-  .blog-loading {
-    padding: 40px 0;
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 14px;
-  }
-
-  .blog-empty {
-    padding: 40px 0;
-    color: var(--text-muted);
-    font-style: italic;
-  }
-
-  /* VIDEOS */
-  .video-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 24px;
-  }
-
-  .video-card {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 400ms var(--ease);
-    text-decoration: none;
-    color: inherit;
-  }
-  .video-card:hover { transform: translateY(-4px); }
-
-  .video-thumb {
-    width: 100%;
-    aspect-ratio: 16/9;
-    background: var(--bg-warm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .video-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .video-play {
-    position: absolute;
-    width: 48px;
-    height: 48px;
-    border: 2px solid rgba(255,255,255,0.8);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 400ms var(--ease);
-  }
-  .video-card:hover .video-play {
-    background: var(--accent);
-    border-color: var(--accent);
-    transform: scale(1.1);
-  }
-  .video-play svg {
-    width: 16px;
-    height: 16px;
-    fill: white;
-    margin-left: 2px;
-  }
-
-  .video-info { padding: 16px 0; }
-
-  .video-title {
-    font-family: var(--serif);
-    font-size: 18px;
-    font-weight: 400;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-
-  .video-meta {
-    font-size: 12px;
-    color: var(--text-muted);
-  }
-
-  .view-more {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 32px;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    border-bottom: 1px solid transparent;
-    transition: all 400ms var(--ease);
-  }
-  .view-more:hover {
-    border-bottom-color: var(--accent);
-  }
-  .view-more svg {
-    width: 14px;
-    height: 14px;
-    fill: currentColor;
-  }
-
-  /* FOOTER */
-  footer {
-    padding: 80px 48px 40px;
-    max-width: 1000px;
-    margin: 0 auto;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-
-  .footer-left {
-    font-family: var(--serif);
-    font-size: 24px;
-    font-weight: 300;
-    color: var(--text);
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 24px;
-    list-style: none;
-  }
-  .footer-links a {
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .footer-links a:hover { color: var(--accent); }
-
-  .footer-copy {
-    text-align: center;
-    padding: 40px 48px;
-    font-size: 12px;
-    color: var(--text-muted);
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  /* ANIMATIONS */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 800ms var(--ease), transform 800ms var(--ease);
-  }
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* MOBILE */
-  @media (max-width: 768px) {
-    nav { padding: 16px 24px; }
-    .nav-links { display: none; }
-    .hamburger { display: flex; }
-    .nav-right { gap: 16px; }
-
-    .nav-links.open {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: var(--bg);
-      padding: 24px;
-      gap: 16px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    section { padding: 80px 24px 60px; }
-
-    .about-content { grid-template-columns: 1fr; gap: 40px; }
-    .project-grid { grid-template-columns: 1fr; }
-    .video-grid { grid-template-columns: 1fr 1fr; }
-    .blog-item { grid-template-columns: 1fr; gap: 4px; }
-    .pub-item { grid-template-columns: 1fr; gap: 8px; }
-    .leadership-grid { grid-template-columns: 1fr; }
-    .metrics-strip { gap: 28px; margin-top: 40px; padding-top: 24px; }
-    .metric-num { font-size: 26px; }
-    .now-strip { grid-template-columns: 1fr; gap: 6px 0; padding: 28px 24px; }
-    .now-label { padding-top: 16px; }
-    .now-row:first-child .now-label { padding-top: 0; }
-    .contact-block { padding: 32px 28px; }
-
-    .hero-links { flex-wrap: wrap; gap: 16px; }
-
-    footer { flex-direction: column; gap: 24px; align-items: flex-start; }
-    .scroll-indicator { display: none; }
-  }
-
-  @media (max-width: 480px) {
-    .hero h1 { font-size: 36px; }
-    .video-grid { grid-template-columns: 1fr; }
+  @media (max-width:860px){
+    .wrap{padding:0 20px}
+    .nav-links{display:none}
+    .nav-links.open{display:flex;flex-direction:column;position:absolute;top:54px;left:0;right:0;background:var(--ground);border-bottom:1px solid var(--line);padding:20px 24px;gap:16px}
+    .hamburger{display:flex}
+    .about{grid-template-columns:1fr;gap:36px}
+    .decks,.projs{grid-template-columns:1fr}
+    .row,.blist li,.pub,.post{grid-template-columns:1fr;gap:8px}
+    .spec .srow{grid-template-columns:104px 1fr}
+    .char{grid-template-columns:42px 1fr auto;gap:12px}
+    section{padding:70px 0 8px}
   }
 </style>
 </head>
 <body>
 
-<nav id="nav">
-  <a href="#" class="nav-name">Ari Harrison</a>
-  <div class="nav-right">
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#now">Now</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="#leadership">Leadership</a></li>
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="#blog">Writing</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-      <svg class="icon-sun" viewBox="0 0 24 24"><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
-      <svg class="icon-moon" viewBox="0 0 24 24"><path d="M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z"/></svg>
-    </button>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<section class="hero" id="hero">
-  <h1 class="fade-in">Founder, NovoMCP.<br>The open computational<br>chemistry engine<br><em>for drug discovery and materials.</em></h1>
-  <p class="hero-sub fade-in">Open-sourced July 2026 under Apache-2.0. MCP + REST, 68 tools, self-hostable or cloud-deployed — clone it and it boots with zero external services: no auth, no account, no API key. The system between foundation models and high-stakes decisions, under real constraints. Previously: reinforcement learning agents for autonomous discovery in manufacturing. The domain changed; the systems thinking didn't.</p>
-
-  <div class="metrics-strip fade-in">
-    <div class="metric"><span class="metric-num">68</span><span class="metric-label">tools in the engine</span></div>
-    <div class="metric"><span class="metric-num">Apache-2.0</span><span class="metric-label">license</span></div>
-    <div class="metric"><span class="metric-num">11</span><span class="metric-label">autonomous funnel stages</span></div>
-    <div class="metric"><span class="metric-num">5</span><span class="metric-label">SOTA wins on TDC ADMET</span></div>
-    <div class="metric"><span class="metric-num">3</span><span class="metric-label">accelerators backing</span></div>
-  </div>
-
-  <div class="hero-links fade-in">
-    <a href="https://x.com/ariharrisonlab" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-      X / Twitter
-    </a>
-    <a href="https://scholar.google.com/citations?hl=en&user=O3Bdfh8AAAAJ" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
-      Scholar
-    </a>
-    <a href="https://www.linkedin.com/in/ariharrisonlab/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-      LinkedIn
-    </a>
-    <a href="https://github.com/ariharrisonlab" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-      GitHub
-    </a>
-  </div>
-
-  <div class="scroll-indicator">↓ Scroll</div>
-</section>
-
-<section id="now">
-  <div class="section-label fade-in">Now</div>
-  <div class="now-strip fade-in">
-    <div class="now-row">
-      <div class="now-label">Building</div>
-      <div class="now-value"><strong>NovoMCP</strong>: the open computational chemistry engine. MCP + REST, 68 tools, self-hostable under Apache-2.0 or run as a per-org cloud deployment. Solo founder.</div>
+<header class="bar">
+  <div class="wrap">
+    <a href="#top" class="brand"><span class="sq">▮</span> ARI HARRISON</a>
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#status">Status</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="#decisions">Decisions</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#writing">Writing</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <span class="status-pill"><span class="dot"></span> Open to leadership roles</span>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
-    <div class="now-row">
-      <div class="now-label">Recently</div>
-      <div class="now-value">
-        <ul>
-          <li><strong>Open-sourced NovoMCP</strong> (July 2026, v1.0.0) — engine + open-compute wrappers + surfaces + trained models under Apache-2.0; orchestration core under BSL 1.1 → Apache 2029-07-12. Boots with zero external services: no auth, no account, no API key</li>
-          <li>Shipped through <strong>v1.4.0</strong> — ALCHEMI-accelerated engine axis across geometry, energy, and conformer search (<code>ase</code> ↔ <code>alchemi</code>, <code>crest</code> ↔ <code>alchemi</code>; same tool call, open reference path or GPU path chosen per call), plus a pluggable auth / metering / audit spine so the same code runs standalone or hosted</li>
-          <li>Consolidated ~30 services Azure → AWS with zero customer-visible downtime, then trimmed the hosted footprint down to <code>api.novomcp.com</code> for the OSS launch</li>
-          <li>Five SOTA wins on TDC ADMET (NovoExpert: CYP2D6, CYP3A4, CYP3A4 Substrate, Clearance Hepatocyte, DILI); preprint on ChemRxiv</li>
-          <li>Shipped FAVES V4 certified compliance API for regulated pharma pipelines; preprint on ChemRxiv</li>
-          <li>Published Chrome Web Store extension; sideload Word add-in in private beta</li>
-          <li>Published the engine's GPU compute services as standalone open repos — <a href="https://github.com/NovoMCP/gromacs-md" target="_blank" rel="noopener">gromacs-md</a> (GROMACS MD), <a href="https://github.com/NovoMCP/novomcp-nnp" target="_blank" rel="noopener">novomcp-nnp</a> (neural-network potentials), <a href="https://github.com/NovoMCP/novomcp-qm" target="_blank" rel="noopener">novomcp-qm</a> (quantum chemistry)</li>
-          <li>Shipped <a href="https://github.com/NovoMCP/novomcp-lite" target="_blank" rel="noopener">novomcp-lite</a> — a lightweight, standalone version of the engine's cheminformatics (Apache-2.0, <code>pip install novomcp-lite</code>): eight zero-config tools, library or MCP server; same code as the full engine, minus the rest of the platform</li>
-          <li>Open-sourced <a href="https://github.com/ariharrisonlab/NovoMD" target="_blank" rel="noopener">NovoMD</a>, local-first molecular descriptors, MIT-licensed, shipping as library + CLI + Hugging Face MCP + Docker REST</li>
-        </ul>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero" id="top">
+    <div class="eyebrow tag rev">Founder <b>·</b> NovoMCP <b>·</b> the open computational chemistry engine</div>
+    <h1 class="rev">The system between a model<br>and a decision that <span class="cy">matters.</span></h1>
+    <p class="lede rev">Getting a model to say something is easy. Building the system so its answer can be acted on is the work: safely, correctly, repeatedly, with a record of what happened. <b>NovoMCP is what I built:</b> the open computational chemistry engine, MCP + REST, Apache-2.0, boots with zero external services. Before it, reinforcement-learning agents for autonomous discovery in high-stakes manufacturing. The domain changed; the systems thinking did not.</p>
+
+    <div class="hero-links rev">
+      <a href="https://github.com/ariharrisonlab" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://scholar.google.com/citations?hl=en&user=O3Bdfh8AAAAJ" target="_blank" rel="noopener">Google Scholar ↗</a>
+      <a href="https://www.linkedin.com/in/ariharrisonlab/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://x.com/ariharrisonlab" target="_blank" rel="noopener">X ↗</a>
+    </div>
+
+    <div class="chars">
+      <div class="char rev"><span class="k">01</span><span class="v">Tools in the engine</span><span class="n">69</span></div>
+      <div class="char rev"><span class="k">02</span><span class="v">Run on a fresh clone · zero wiring</span><span class="n">14</span></div>
+      <div class="char rev"><span class="k">03</span><span class="v">Autonomous discovery funnel</span><span class="n">11<span class="u">stages</span></span></div>
+      <div class="char rev"><span class="k">04</span><span class="v">Endpoints beat the current TDC #1</span><span class="n">3<span class="u">/22</span></span></div>
+      <div class="char rev"><span class="k">05</span><span class="v">License</span><span class="n" style="font-size:19px">Apache-2.0</span></div>
+      <div class="char rev"><span class="k">06</span><span class="v">Backing · NVIDIA / AWS / Microsoft</span><span class="n">3</span></div>
+    </div>
+  </section>
+
+  <section id="status">
+    <div class="field-label rev"><span class="idx">§</span> Status <span class="cmt">// current</span></div>
+    <div class="rows">
+      <div class="row rev">
+        <div class="rk">Building</div>
+        <div class="rv"><b>NovoMCP</b>: the open computational chemistry engine. MCP + REST, 69 tools, self-hostable under Apache-2.0 or run as a per-org cloud deployment. Solo founder.</div>
+      </div>
+      <div class="row rev">
+        <div class="rk">Shipped</div>
+        <div class="rv">
+          <ul class="ship">
+            <li>Open-sourced NovoMCP at v1.0 (July 2026): engine, compute wrappers, surfaces, and trained models under Apache-2.0; orchestration core BSL 1.1 → Apache 2029-07-12. Boots with no auth, no account, no API key.</li>
+            <li>Shipped through <b>v1.4.0</b>: an ALCHEMI-accelerated axis across geometry, energy, and conformer search (<code>ase</code> ↔ <code>alchemi</code>, <code>crest</code> ↔ <code>alchemi</code>, same tool call, reference path or GPU path chosen per call), plus a pluggable auth / metering / audit spine so the same code runs standalone or hosted.</li>
+            <li>Consolidated ~30 services from Azure to AWS with no customer-visible downtime, then trimmed the hosted footprint to <code>api.novomcp.com</code> for the OSS launch.</li>
+            <li>Three audited wins over the current TDC ADMET #1 (NovoExpert); FAVES V4 compliance API for regulated pipelines; both on ChemRxiv.</li>
+            <li>Published the engine's GPU compute services as standalone open repos: <a href="https://github.com/NovoMCP/gromacs-md" target="_blank" rel="noopener">gromacs-md</a>, <a href="https://github.com/NovoMCP/novomcp-nnp" target="_blank" rel="noopener">novomcp-nnp</a>, <a href="https://github.com/NovoMCP/novomcp-qm" target="_blank" rel="noopener">novomcp-qm</a>.</li>
+            <li>Shipped <a href="https://github.com/NovoMCP/novomcp-lite" target="_blank" rel="noopener">novomcp-lite</a>, the cheminformatics standalone: 9 zero-config tools, <code>pip install novomcp-lite</code>. Open-sourced <a href="https://github.com/ariharrisonlab/NovoMD" target="_blank" rel="noopener">NovoMD</a> (MIT): local-first molecular descriptors as library, CLI, Hugging Face MCP, and Docker REST.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row rev">
+        <div class="rk">Backed by</div>
+        <div class="rv">NVIDIA Inception <span class="mono" style="color:var(--mute)">·</span> AWS Activate <span class="mono" style="color:var(--mute)">·</span> Microsoft Founders Hub</div>
+      </div>
+      <div class="row rev">
+        <div class="rk">Open to</div>
+        <div class="rv"><b>Product, AI, and 0-to-1 leadership conversations.</b> San Francisco / Bay Area or remote. Production AI systems, MCP-shaped infrastructure, and applied AI where correctness is the requirement. <a href="#contact">Reach me ↓</a></div>
       </div>
     </div>
-    <div class="now-row">
-      <div class="now-label">Backed by</div>
-      <div class="now-value">NVIDIA Inception · AWS Activate · Microsoft Founders Hub</div>
-    </div>
-    <div class="now-row">
-      <div class="now-label">Open to</div>
-      <div class="now-value"><strong>Product, AI, and 0-to-1 leadership conversations.</strong> San Francisco / Bay Area or remote. Particularly interested in production AI systems, MCP-shaped infrastructure, and applied AI at companies where correctness matters. <a href="#contact">Reach me &darr;</a></div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="about">
-  <div class="section-label fade-in">About</div>
-  <div class="about-content">
-    <div class="about-text fade-in">
-      <p>The interesting problem isn't getting a model to <em>say</em> something. It's building the system around the model so its output can be acted on: safely, correctly, repeatedly, with a record of what happened. That's the work.</p>
-      <p><strong>NovoMCP</strong> is what I built. One computational chemistry engine, 68 in-silico tools across ADMET, docking, molecular dynamics, quantum chemistry, structure prediction, and compliance, that speaks both <strong>MCP</strong> (reachable from Claude Desktop, Cursor, Codex, Zed, and any MCP-compatible assistant) and <strong>REST</strong> (any pipeline that posts JSON). Two paths to run it: self-host it under Apache-2.0 on your own hardware, or run it as a per-org cloud deployment with the certified FAVES compliance API wrapped around it. Same engine either way.</p>
-      <p>The engine, never the platform (positioning call). Scale-to-zero by default (unit economics call). Human-in-the-loop via MCP elicitation, not autonomous-agent-on-someone-else's-molecules (trust call). Open-sourced as an engine, not as a hosted product (moat call — the moat is FAVES-cert + operated cloud, not the code). <a href="portfolio.html">See the full product portfolio &rarr;</a></p>
-      <p><strong>Before NovoMCP</strong>: reinforcement learning agents for autonomous discovery in high-stakes manufacturing. The systems ran continuously, diagnosed their own failures, and improved without intervention. Different domain, same problem shape — the agent isn't the product; the system that makes the agent safe to deploy is the product. That's the throughline.</p>
+  <section id="about">
+    <div class="field-label rev"><span class="idx">§</span> About</div>
+    <div class="about">
+      <div class="about-text rev">
+        <p>The interesting problem is not getting a model to <em>say</em> something. It is building the system around the model so its output can be acted on: safely, correctly, repeatedly, with a record of what happened. That is the work.</p>
+        <p><b>NovoMCP is what I built.</b> One computational chemistry engine, 69 in-silico tools across ADMET, docking, molecular dynamics, quantum chemistry, structure prediction, and compliance, that speaks both <b>MCP</b> (Claude Desktop, Cursor, Codex, Zed, any MCP-compatible assistant) and <b>REST</b> (any pipeline that posts JSON). Two ways to run it: self-host under Apache-2.0 on your own hardware, or a per-org cloud deployment with the FAVES compliance API wrapped around it. Same engine either way.</p>
+        <p>Engine, never platform (positioning call). Scale-to-zero by default (unit-economics call). Human-in-the-loop via MCP elicitation, not an autonomous agent on someone else's molecules (trust call). Open-sourced as an engine, not a hosted product (moat call: the moat is FAVES compliance, the operated cloud, and the trained models, not the code). <a href="portfolio.html">See the full product portfolio →</a></p>
+        <p><b>Before NovoMCP:</b> reinforcement-learning agents for autonomous discovery in high-stakes manufacturing. The systems ran continuously, diagnosed their own failures, and improved without intervention. Different domain, same problem shape. The agent is not the product; the system that makes the agent safe to deploy is the product. That is the throughline.</p>
+      </div>
+      <div class="spec rev">
+        <div class="sh">The Stack</div>
+        <dl>
+          <div class="srow"><dt>The Engine</dt><dd>MCP + REST, <b>69 tools</b>, 14 always-available on a fresh clone (v1.4.0)</dd></div>
+          <div class="srow"><dt>Runs Local</dt><dd>Boots with zero external services. No auth, no account, no API key; audit to <code>~/.novo/audit.jsonl</code></dd></div>
+          <div class="srow"><dt>Pluggable Spine</dt><dd>Auth · metering · audit swap local ↔ hosted ↔ custom by env flag, same code standalone or operated</dd></div>
+          <div class="srow"><dt>Open Compute</dt><dd>RDKit · GROMACS · AutoDock-GPU · OpenFold · Boltz · Gnina · xTB · ANI-2x · AIMNet2 · MACE</dd></div>
+          <div class="srow"><dt>License</dt><dd>Apache-2.0 (orchestration core BSL 1.1 → Apache 2029-07-12)</dd></div>
+          <div class="srow"><dt>Compliance</dt><dd>FAVES V4 (hosted): 8 jurisdictions, 1,585 structural alerts</dd></div>
+          <div class="srow"><dt>Surfaces</dt><dd>MCP · REST · Workbench (v1.5.x) · Chrome ext · Word add-in · dashboard</dd></div>
+          <div class="srow"><dt>Verticals</dt><dd>Drug discovery + materials science</dd></div>
+          <div class="srow"><dt>Ecosystem</dt><dd>NVIDIA Inception · AWS Activate · Microsoft Founders Hub</dd></div>
+        </dl>
+      </div>
     </div>
-    <div class="about-aside fade-in">
-      <h3>The Stack</h3>
-      <ul>
-        <li><span>The Engine</span>MCP + REST, 68 tools, ~14 always-available on a fresh clone (now v1.4.0)</li>
-        <li><span>Runs Local</span>Boots with zero external services — no auth, no account, no API key; audit to <code>~/.novo/audit.jsonl</code></li>
-        <li><span>Pluggable Spine</span>Auth · metering · audit swap local ↔ hosted ↔ custom via env flags — same code standalone or operated</li>
-        <li><span>Wraps Open Compute</span>RDKit · GROMACS · AutoDock-GPU · OpenFold · Boltz · Gnina · xTB · ANI-2x · AIMNet2 · MACE</li>
-        <li><span>License</span>Apache-2.0 (orchestration core BSL 1.1 → Apache 2029-07-12)</li>
-        <li><span>Compliance</span>FAVES V4 (hosted) — 8 jurisdictions, 1,585 structural alerts</li>
-        <li><span>Surfaces</span>MCP · REST · Workbench (v1.5.x) · Chrome ext · Word add-in · bundled dashboard</li>
-        <li><span>Verticals</span>Drug discovery + materials science</li>
-        <li><span>Ecosystem</span>NVIDIA Inception · AWS Activate · Microsoft Founders Hub</li>
+  </section>
+
+  <section id="decisions">
+    <div class="field-label rev"><span class="idx">§</span> Decisions <span class="cmt">// how I decide what to build, cut, and delay</span></div>
+    <div class="decks">
+      <div class="deck rev">
+        <div class="dh"><span class="dcat">Distribution · Moat</span><span class="dnum">D-01</span></div>
+        <h3>I opened the engine at v1.0.</h3>
+        <p class="body">The straightforward call was to keep it closed and sell a hosted platform. I open-sourced it instead: Apache-2.0 top level, BSL 1.1 → Apache 2029 for the orchestration core. The moat is <b>compliance, the operated cloud, and the trained models</b>. Not the code that calls RDKit and orchestrates docking.</p>
+        <div class="res"><span>RESULT →</span> Distribution flips from "sign up" to "clone the repo." Adoption compounds where a platform pitch can't reach. Regulated buyers still need compliance under an SLA; that is what they buy.</div>
+      </div>
+      <div class="deck rev">
+        <div class="dh"><span class="dcat">Positioning · Copy</span><span class="dnum">D-02</span></div>
+        <h3>Engine, never platform.</h3>
+        <p class="body">Platform, OS, infrastructure, orchestration: every competitor uses those nouns, so they collide. I locked the public language to <b>computational chemistry engine</b>, with one test on every sentence: could a competitor put this on their homepage unchanged? If yes, replace the noun.</p>
+        <div class="res"><span>RESULT →</span> One word does the work of a positioning deck. Sales copy, marketing, the assistant's own prompts. The same word everywhere.</div>
+      </div>
+      <div class="deck rev">
+        <div class="dh"><span class="dcat">Trust · Cut</span><span class="dnum">D-03</span></div>
+        <h3>Killed the autonomous campaign system.</h3>
+        <p class="body">The original product had a campaign / quality-gate schema for autonomous runs. I cut it. <b>Human-in-the-loop via MCP elicitation</b> at every funnel stage replaced it. The user's own assistant prompts them at each gate.</p>
+        <div class="res"><span>RESULT →</span> Less code, a clearer trust model, and the funnel runs inside the assistant the user already trusts. The audit log is the quality gate now.</div>
+      </div>
+      <div class="deck rev">
+        <div class="dh"><span class="dcat">Infra · Unit economics</span><span class="dnum">D-04</span></div>
+        <h3>Scale-to-zero by default.</h3>
+        <p class="body">Every compute service ships with <b>min_replicas = 0</b>. Only the public-path surfaces keep a warm replica. Pre-warm is an opt-in tier capability, not a default cost. I carried the cold-start posture from Azure forward to AWS rather than retrofitting it later.</p>
+        <div class="res"><span>RESULT →</span> Unit economics stay honest from day one. The bill does not grow with idle.</div>
+      </div>
+      <div class="deck rev">
+        <div class="dh"><span class="dcat">Go-to-market · Pricing</span><span class="dnum">D-05</span></div>
+        <h3>Self-hosted or cloud. No middle.</h3>
+        <p class="body">The prior model had a Free / Core / Scale / Enterprise credit ladder. I killed all of it at the OSS launch. Two paths now: <b>self-hosted, free forever</b> (Apache-2.0) or <b>cloud deployment, contact for pricing</b> (per-org subdomain, SAML SSO, GPU pool, FAVES compliance). No self-serve middle tier.</p>
+        <div class="res"><span>RESULT →</span> The ladder was noise between the two real buyers: someone who runs the engine, and someone who wants it operated under an SLA. Removing the middle cut decision friction and a lot of billing complexity.</div>
+      </div>
+      <div class="deck rev">
+        <div class="dh"><span class="dcat">Infra · Security</span><span class="dnum">D-06</span></div>
+        <h3>Private-endpoint everything.</h3>
+        <p class="body">EKS API, Aurora, Redis, internal ALBs: all private. The catch is that GitHub-hosted CI runners can't reach any of it, so every <code>kubectl apply</code> times out. Rather than poke holes, I committed to <b>build on GH runners, deploy via OIDC → SSM → bastion</b>, applied uniformly across every NovoServices repo.</p>
+        <div class="res"><span>RESULT →</span> The pattern does not re-litigate per port. New services pick up a pre-wired bastion for free. Security posture is a default, not an exception.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="boundaries">
+    <div class="field-label rev"><span class="idx">§</span> Boundaries <span class="cmt">// what I don't claim</span></div>
+    <div class="bounds rev">
+      <div class="bhead">
+        <h3>Stated limits.</h3>
+        <p>A limit named plainly is the strongest credibility instrument available. Nobody fabricates a limitations page. Here is where the work stops.</p>
+      </div>
+      <ul class="blist">
+        <li><span class="bt">Clinical model</span>NovoExpert-3 is validated on cardiovascular and GI endpoints, and explicitly out-of-domain on oncology, CNS, and infectious. The model suppresses a number there rather than emit a low-confidence one.</li>
+        <li><span class="bt">ADMET wins</span>Three endpoints beat the current TDC #1 (MapLight+GNN) on AUPRC, margins +0.003 to +0.013. None clears the +0.02 landmark margin. Audited against the live TDC leaderboard, not self-reported.</li>
+        <li><span class="bt">FAVES</span>A screening and liability instrument, not a regulatory sign-off. It returns status, alerts, and provenance; a human owns the submission.</li>
+        <li><span class="bt">Workbench</span>Ships as open source in v1.5.x. Today it is a design-partner preview, not a public release.</li>
       </ul>
     </div>
-  </div>
-</section>
-
-<section id="leadership">
-  <div class="section-label fade-in">Leadership</div>
-  <p class="leadership-intro fade-in">A short selection of product, infra, and positioning calls made shipping NovoMCP. What I'd want a hiring manager to know is not what I built (that's the portfolio), but how I decide what to build, what to cut, and what to delay.</p>
-  <div class="leadership-grid">
-    <div class="decision-card fade-in">
-      <div class="decision-head">Distribution · Moat</div>
-      <div class="decision-title">Open the engine at v1.0.</div>
-      <p class="decision-body">The straightforward call would have been to keep the engine closed and sell it as a hosted platform. I open-sourced it instead — Apache-2.0 top level, BSL 1.1 → Apache 2029-07-12 for the orchestration core. The moat is <strong>FAVES certification + operated cloud + trained models</strong>, not the code that calls RDKit and orchestrates docking.</p>
-      <p class="decision-result">Distribution flips from "sign up for our platform" to "clone the repo." Adoption compounds where the platform pitch couldn't reach — researchers, students, engineers wiring the engine into their own agents. The regulated buyers still need certified compliance; that's what they buy.</p>
-    </div>
-    <div class="decision-card fade-in">
-      <div class="decision-head">Unit economics · Infra</div>
-      <div class="decision-title">Scale-to-zero by default.</div>
-      <p class="decision-body">Every compute service ships with <strong>min_replicas = 0</strong>. Only the public-path surfaces (the gateway, the dashboard, the frontend) keep a warm replica. Pre-warm is an opt-in tier capability, not a default cost.</p>
-      <p class="decision-result">Carried the Azure cold-start posture forward to AWS rather than retrofitting it later. Unit economics stay honest from day one; the bill doesn't grow with idle.</p>
-    </div>
-    <div class="decision-card fade-in">
-      <div class="decision-head">Positioning · Copy</div>
-      <div class="decision-title">Engine, never platform.</div>
-      <p class="decision-body">"Platform," "OS," "infrastructure," "operating layer," "orchestration", every competitor in the category uses those nouns. They collide. I locked the public language to <strong>computational chemistry engine</strong>, with a diagnostic test on every public sentence: could a competitor put this on their homepage unchanged? If yes, replace the noun.</p>
-      <p class="decision-result">One word does the work of a positioning deck. Sales script, marketing copy, the assistant's own elicitation prompts, same word everywhere.</p>
-    </div>
-    <div class="decision-card fade-in">
-      <div class="decision-head">Discipline · Cut</div>
-      <div class="decision-title">Killed the campaign system.</div>
-      <p class="decision-body">The original product had a campaign / iteration / quality-gate database schema for autonomous research runs. I cut it. <strong>Human-in-the-loop via MCP elicitation</strong> at every funnel stage replaced it. The user's AI assistant prompts the user at each gate.</p>
-      <p class="decision-result">Less code, clearer trust model, and the funnel runs inside the assistant the user already trusts, not as a standalone autonomous agent on someone else's compounds. The audit log is the quality gate now.</p>
-    </div>
-    <div class="decision-card fade-in">
-      <div class="decision-head">Go-to-market · Pricing</div>
-      <div class="decision-title">Self-hosted or cloud. No middle.</div>
-      <p class="decision-body">The prior model had a Free Trial / Core / Scale / Enterprise credit-tier ladder. I killed all of it at the OSS launch. Two paths now: <strong>Self-hosted, free forever</strong> (Apache-2.0, run it yourself) or <strong>Cloud deployment, contact for pricing</strong> (per-org subdomain, SAML SSO, GPU pool, certified FAVES). No self-serve middle tier.</p>
-      <p class="decision-result">The tier ladder was noise between the two real buyers — someone who wants to run the engine, and someone who wants us to operate it under an SLA with certified compliance. Removing the middle removes decision friction on both ends and cuts a bunch of billing complexity from the roadmap.</p>
-    </div>
-    <div class="decision-card fade-in">
-      <div class="decision-head">Infra · Security</div>
-      <div class="decision-title">Private-endpoint everything.</div>
-      <p class="decision-body">EKS API, Aurora, Redis, internal ALBs: all private. The catch: GitHub-hosted CI runners can't reach any of it, so every <code>kubectl apply</code> times out. Rather than poke holes, I committed to <strong>build on GH runners, deploy via OIDC → SSM → bastion</strong> and applied the pattern uniformly across every NovoServices repo.</p>
-      <p class="decision-result">Pattern doesn't re-litigate per port. Bastion comes pre-wired with kubectl, psql, EKS / Aurora / Secrets perms; new services pick it up for free. Security posture is a default, not an exception.</p>
-    </div>
-  </div>
-</section>
-
-<section id="publications">
-  <div class="section-label fade-in">Publications</div>
-  <p class="fade-in" style="font-size: 15px; color: var(--text-soft); margin-bottom: 32px; max-width: 600px; line-height: 1.8;">Research on how domain structure shapes reasoning - and how reasoning systems adapt under different objective and constraint regimes.</p>
-  <ul class="pub-list" id="pubList">
-    <li class="pub-item fade-in">
-      <div class="pub-year">2026.05</div>
-      <div>
-        <div class="pub-title">FAVES V4: A Production-Deployed Compliance and Liability Screening System for Drug Discovery at 122M-Compound Scale</div>
-        <div class="pub-venue">ChemRxiv Preprint</div>
-        <div class="pub-desc">
-          <strong>Key Finding:</strong> First cheminformatics screening system whose full HHS/ONC- and NIST AI 600-1-aligned governance scaffolding is described in operational detail. Validated 362/362 compounds post-fix across five predetermined tests. Single-API call returns regulatory status (DEA / FDA / CWC / EPA / EU REACH), 1,585 structural alerts via RDKit FilterCatalog, BOILED-Egg pharmacokinetic classification, and InChIKey prior-art lookup. ~5 ms live latency, precomputed cache of 122,407,635 documents.
-        </div>
-        <a href="https://chemrxiv.org/doi/full/10.26434/chemrxiv.15003738/v3" target="_blank" class="pub-link">Read on ChemRxiv →</a>
-      </div>
-    </li>
-    <li class="pub-item fade-in">
-      <div class="pub-year">2026.04</div>
-      <div>
-        <div class="pub-title">NovoExpert: State-of-the-Art ADMET Prediction on TDC Benchmarks</div>
-        <div class="pub-venue">ChemRxiv Preprint</div>
-        <div class="pub-desc">
-          <strong>Key Finding:</strong> Five SOTA wins on Therapeutics Data Commons ADMET endpoints - CYP2D6 (0.778 AUPRC), CYP3A4 (0.916 AUPRC), CYP3A4 Substrate (0.648 AUPRC), Clearance Hepatocyte (0.602 Spearman), and DILI (0.922 AUROC). CatBoost ensembles with MapLight (2573-bit) and GIN (300-dim) fingerprints, supplemented by Chemprop v2 D-MPNN for DILI.
-        </div>
-        <a href="https://chemrxiv.org/doi/full/10.26434/chemrxiv.15000061/v2" target="_blank" class="pub-link">Read on ChemRxiv →</a>
-      </div>
-    </li>
-  </ul>
-  <div style="margin-top: 32px;">
-    <a href="https://scholar.google.com/citations?hl=en&user=O3Bdfh8AAAAJ" target="_blank" class="pub-link fade-in">View all on Google Scholar →</a>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="section-label fade-in">Projects</div>
-  <div class="project-grid" id="projectGrid">
-    <div class="project-card fade-in">
-      <div class="project-tag">Open source · Engine</div>
-      <div class="project-name">NovoMCP — the open computational chemistry engine</div>
-      <div class="project-desc">One engine, two surfaces (MCP + REST). 68 tools across cheminformatics, ADMET, docking, MD, quantum chemistry, structure prediction, materials science, and an 11-stage autonomous discovery funnel. Clone it and it boots with zero external services — no auth, no account, no API key; ~14 tools work on a fresh clone, the rest unlock as you wire optional compute. A pluggable spine (auth / metering / audit) swaps local ↔ hosted ↔ custom by env flag. Wraps open compute — RDKit, GROMACS, AutoDock-GPU, OpenFold, Boltz, Gnina, xTB, ANI-2x, MACE — with an ALCHEMI-accelerated axis across geometry, energy, and conformer search (through v1.3.0), and sources its in-process cheminformatics from the open novomcp-lite package (v1.4.0). Apache-2.0 top-level; orchestration core BSL 1.1 → Apache 2029-07-12. Works with Claude Desktop, Cursor, Codex, Zed, ChatGPT, Gemini, and any MCP-compatible assistant, or hit it from your own code over HTTP.</div>
-      <a href="https://github.com/NovoMCP/novomcp" target="_blank" class="project-link">Repo →</a> &nbsp;&nbsp; <a href="https://novomcp.com/engine" target="_blank" class="project-link">novomcp.com/engine →</a> &nbsp;&nbsp; <a href="https://docs.novomcp.com/" target="_blank" class="project-link">Docs →</a>
-    </div>
-    <div class="project-card fade-in">
-      <div class="project-tag">Hosted · Certified</div>
-      <div class="project-name">FAVES certified compliance API</div>
-      <div class="project-desc">The moat around the OSS engine. Certified regulatory compliance for pharma / biotech pipelines — DEA schedules, EU REACH, PAINS filters, structural alerts, sponsor whitelists, PMDA / KFDA / TGA — plus the operational commitments a regulated submission needs (SLA, immutable audit-log retention, drift monitoring, IQ/OQ/PQ documentation, SAML SSO). Closed and paid; access on request. Not shipped with the OSS engine.</div>
-      <a href="https://novomcp.com/faves" target="_blank" class="project-link">novomcp.com/faves →</a> &nbsp;&nbsp; <a href="https://chemrxiv.org/doi/full/10.26434/chemrxiv.15003738/v3" target="_blank" class="project-link">FAVES V4 preprint →</a>
-    </div>
-    <div class="project-card fade-in">
-      <div class="project-tag">Preview · Workstation</div>
-      <div class="project-name">NovoWorkbench — native desktop for the engine</div>
-      <div class="project-desc">The molecule canvas, 3D viewers, and discovery funnel as a native desktop for macOS and Windows. Local RDKit, offline alert screening (PAINS + druglikeness rule sets), bring-your-own-LLM chat, model-agnostic. Tauri + Python sidecar; Apple Developer ID notarized (team 8N9K9B7Y69). Currently in design-partner preview; ships as OSS in v1.5.x per the product roadmap.</div>
-      <a href="https://novomcp.com/novoworkbench" target="_blank" class="project-link">About NovoWorkbench →</a> &nbsp;&nbsp; <a href="https://novomcp.com/sales-inquiry" target="_blank" class="project-link">Talk to us about early access →</a>
-    </div>
-    <div class="project-card fade-in">
-      <div class="project-tag">Open source · Apache-2.0</div>
-      <div class="project-name">novomcp-lite — NovoMCP's cheminformatics, standalone</div>
-      <div class="project-desc">A lightweight version for people who just want the wrappers, not the whole engine. <code>pip install novomcp-lite</code> — eight zero-config tools (RDKit properties, profiling, synthetic-accessibility, PAINS/BRENK alerts, library screening, plus ChEMBL / ClinicalTrials.gov / bioRxiv search), as a Python library or an MCP server. Two dependencies, no keys. It's the exact code the full engine runs on, so the numbers match — just without the rest of the platform. Prompted by a researcher who wired the engine up to his agent and asked for a lighter build.</div>
-      <a href="https://github.com/NovoMCP/novomcp-lite" target="_blank" class="project-link">GitHub →</a> &nbsp;&nbsp; <a href="https://pypi.org/project/novomcp-lite/" target="_blank" class="project-link">PyPI →</a>
-    </div>
-    <div class="project-card fade-in">
-      <div class="project-tag">Open source · MIT</div>
-      <div class="project-name">NovoMD - Local-first molecular descriptors</div>
-      <div class="project-desc">SMILES in, 32+ molecular descriptors out, from a real 3D conformer. Geometry, energy, electrostatics, surface and volume - calculated on your own machine, no account, no API key. Ships as a Python library, a CLI, a Hugging Face MCP endpoint, and a Docker REST service - the same one-engine-many-surfaces pattern, applied at library scale, fully open. <strong>The design call: scope discipline.</strong> No ADMET, no pKa, no binding - documented in the README and shipped as an agent skill so AI assistants are told explicitly where the tool's authority ends.</div>
-      <a href="https://github.com/ariharrisonlab/NovoMD" target="_blank" class="project-link">GitHub →</a> &nbsp;&nbsp; <a href="https://huggingface.co/spaces/quantnexusai/novomd" target="_blank" class="project-link">Hugging Face MCP →</a>
-    </div>
-    <div class="project-card fade-in">
-      <div class="project-tag">Systems · Autonomy</div>
-      <div class="project-name">Autonomous Systems</div>
-      <div class="project-desc">Before NovoMCP: reinforcement learning agents in high-stakes manufacturing environments. Continuous operation. Self-diagnosing on failure. Improving without intervention. The architectural pattern is the same - agents that pursue objectives, not just answer questions. The domain changed. The systems thinking didn't.</div>
-    </div>
-    <div class="project-card fade-in">
-      <div class="project-tag">Portfolio · Surfaces</div>
-      <div class="project-name">One engine, multiple surfaces</div>
-      <div class="project-desc">A separate product portfolio walking through the engine and its surfaces as individual cases — the problem, the product decision, the build trade-offs, the outcome. Engine (MCP + REST) · Workbench · Chrome extension · Word add-in · bundled dashboard · FAVES certified API. Plus the cross-cutting decisions underneath — engine-first language, scale-to-zero by default, Azure→AWS migration, private-endpoint infra, opening the engine at v1.0, and human-in-the-loop over autonomy.</div>
-      <a href="portfolio.html" class="project-link">Open the portfolio →</a>
-    </div>
-  </div>
-</section>
-
-<section id="blog">
-  <div class="section-label fade-in">Writing</div>
-  <ul class="blog-list">
-    <a href="https://substack.com/home/post/p-195517589" target="_blank" class="blog-item fade-in">
-      <div class="blog-date">2026.04</div>
-      <div>
-        <div class="blog-title">Server-Side Tool Search for a 62-Tool MCP Platform</div>
-        <div class="blog-excerpt">What happens when the AI vendor's fix doesn't reach you. In-memory semantic retrieval, 25ms per query, 100% recall - and the latent bugs it surfaced.</div>
-      </div>
-    </a>
-    <a href="https://novoquantnexus.substack.com/p/why-most-ai-pilots-fail-the-missing" target="_blank" class="blog-item fade-in">
-      <div class="blog-date">2026.02</div>
-      <div>
-        <div class="blog-title">Why Most AI Pilots Fail: The Missing Infrastructure Layer</div>
-        <div class="blog-excerpt">Reasoning is only 10% of the battle. The other 90% is the architectural "bridge" that enables reliable action in regulated domains.</div>
-      </div>
-    </a>
-    <a href="https://novoquantnexus.substack.com/p/scaling-mcp-lessons-from-100m-records" target="_blank" class="blog-item fade-in">
-      <div class="blog-date">2026.02</div>
-      <div>
-        <div class="blog-title">Scaling MCP: Lessons from 122M Compounds</div>
-        <div class="blog-excerpt">What changes when you shift from query-time computation to a pre-computed prediction engine. A deep dive into sub-50ms latency for agents.</div>
-      </div>
-    </a>
-    <a href="https://novoquantnexus.substack.com/p/from-conversational-to-computational" target="_blank" class="blog-item fade-in">
-      <div class="blog-date">2026.02</div>
-      <div>
-        <div class="blog-title">From Conversational to Computational AI</div>
-        <div class="blog-excerpt">How the engine moves models beyond chat interfaces and into high-stakes decision pipelines.</div>
-      </div>
-    </a>
-  </ul>
-  <a href="https://substack.com/@ariharrisonlab" target="_blank" class="view-more fade-in">
-    <svg viewBox="0 0 24 24"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
-    View All on Substack
-  </a>
-</section>
-
-<!--
-  Videos section hidden pending re-record as 9:16 short-form (YouTube
-  Shorts / TikTok / LinkedIn). Originals (Enterprise MCP / Agentic
-  Infrastructure / CLI vs MCP) are too rough for a hiring landing page.
-  Restore this block when the new shorts are live; markup preserved
-  verbatim below for the swap-in.
-
-  <section id="videos">
-    <div class="section-label fade-in">Videos</div>
-    <div class="video-grid" id="videoGrid">
-      <a href="https://youtu.be/CfhlqyE-DKY" target="_blank" class="video-card fade-in">
-        <div class="video-thumb">
-          <img src="img/enterprise_mcp.png" alt="Enterprise MCP" loading="lazy">
-          <div class="video-play">
-            <svg viewBox="0 0 24 24"><polygon points="8,5 20,12 8,19"/></svg>
-          </div>
-        </div>
-        <div class="video-info"><div class="video-title">Enterprise MCP</div></div>
-      </a>
-      <a href="https://youtu.be/TpJLnVJhb0Y" target="_blank" class="video-card fade-in">
-        <div class="video-thumb">
-          <img src="img/agentic_infrastructure.png" alt="Agentic Infrastructure" loading="lazy">
-          <div class="video-play">
-            <svg viewBox="0 0 24 24"><polygon points="8,5 20,12 8,19"/></svg>
-          </div>
-        </div>
-        <div class="video-info"><div class="video-title">Agentic Infrastructure</div></div>
-      </a>
-      <a href="https://youtu.be/ocnLDzottfA" target="_blank" class="video-card fade-in">
-        <div class="video-thumb">
-          <img src="img/cli_vs_mcp.png" alt="CLI vs MCP" loading="lazy">
-          <div class="video-play">
-            <svg viewBox="0 0 24 24"><polygon points="8,5 20,12 8,19"/></svg>
-          </div>
-        </div>
-        <div class="video-info"><div class="video-title">CLI vs MCP</div></div>
-      </a>
-    </div>
-    <a href="https://www.youtube.com/@ariharrisonlab" target="_blank" class="view-more fade-in">
-      View More on YouTube
-    </a>
   </section>
--->
 
-<section id="contact">
-  <div class="section-label fade-in">Contact</div>
-  <div class="contact-block fade-in">
-    <p>Open to product, AI, and 0-to-1 leadership conversations. Bay Area or remote. Particularly interested in production AI systems, MCP-shaped infrastructure, and applied AI at companies where correctness matters.</p>
-    <div class="contact-links">
-      <a href="mailto:ariharrisonlab@gmail.com"><code>ariharrisonlab@gmail.com</code></a>
-      <a href="https://www.linkedin.com/in/ariharrisonlab/" target="_blank" rel="noopener">LinkedIn DM &rarr;</a>
-      <a href="portfolio.html">Portfolio &rarr;</a>
+  <section id="publications">
+    <div class="field-label rev"><span class="idx">§</span> Publications <span class="cmt">// A. Harrison, 2026 · measured, sourced</span></div>
+    <ul class="pubs">
+      <li class="pub rev">
+        <div class="py">2026.05</div>
+        <div>
+          <h3>FAVES V4: A Production-Deployed Compliance and Liability Screening System for Drug Discovery at 122M-Compound Scale</h3>
+          <div class="pv">ChemRxiv Preprint</div>
+          <p class="pd">First cheminformatics screening system whose full HHS/ONC- and NIST AI 600-1-aligned governance is described in operational detail. Validated <b>362/362</b> compounds post-fix across five predetermined tests. A single API call returns regulatory status (DEA / FDA / CWC / EPA / EU REACH), 1,585 structural alerts via RDKit FilterCatalog, BOILED-Egg pharmacokinetic classification, and InChIKey prior-art lookup. ~5 ms live latency, precomputed cache of <b>122,407,635</b> documents.</p>
+          <a href="https://chemrxiv.org/doi/full/10.26434/chemrxiv.15003738/v3" target="_blank" rel="noopener" class="pl">Read on ChemRxiv →</a>
+        </div>
+      </li>
+      <li class="pub rev">
+        <div class="py">2026.04</div>
+        <div>
+          <h3>NovoExpert-2: ADMET Prediction via Gradient-Boosted Trees on MapLight Fingerprints and GIN Embeddings</h3>
+          <div class="pv">ChemRxiv Preprint</div>
+          <p class="pd"><b>Three audited wins</b> over the current TDC #1 (MapLight+GNN) on AUPRC, TDC's standard metric for these endpoints: CYP3A4 Substrate, Carbon-Mangels (+0.013); Clearance Hepatocyte, AZ (+0.011); and DILI (+0.003 to +0.006). None clears the +0.02 landmark margin. CatBoost ensembles with MapLight (2573-bit) and GIN (300-dim) fingerprints, plus Chemprop v2 D-MPNN for DILI.</p>
+          <a href="https://chemrxiv.org/doi/full/10.26434/chemrxiv.15000061/v2" target="_blank" rel="noopener" class="pl">Read on ChemRxiv →</a>
+        </div>
+      </li>
+    </ul>
+    <div style="margin-top:26px"><a href="https://scholar.google.com/citations?hl=en&user=O3Bdfh8AAAAJ" target="_blank" rel="noopener" class="pl mono rev" style="font-size:11px;letter-spacing:.06em">View all on Google Scholar →</a></div>
+  </section>
+
+  <section id="projects">
+    <div class="field-label rev"><span class="idx">§</span> Projects <span class="cmt">// what shipped</span></div>
+    <div class="projs">
+      <div class="proj rev">
+        <div class="pt">Open source · Engine</div>
+        <h3>NovoMCP</h3>
+        <p class="pb">One engine, two surfaces (MCP + REST). <b>69 tools</b> across cheminformatics, ADMET, docking, MD, quantum chemistry, structure prediction, materials science, and an 11-stage autonomous discovery funnel. Clone it and it boots with zero external services; <b>14 tools</b> work on a fresh clone, the rest unlock as you wire optional compute. A pluggable spine (auth / metering / audit) swaps local ↔ hosted ↔ custom by env flag. Wraps open compute (RDKit, GROMACS, AutoDock-GPU, OpenFold, Boltz, Gnina, xTB, ANI-2x, MACE) and sources its cheminformatics from the open novomcp-lite package (v1.4.0). Apache-2.0 top level; orchestration core BSL 1.1 → Apache 2029.</p>
+        <div class="plinks">
+          <a href="https://github.com/NovoMCP/novomcp" target="_blank" rel="noopener">Repo →</a>
+          <a href="https://novomcp.com/engine" target="_blank" rel="noopener">novomcp.com/engine →</a>
+          <a href="https://docs.novomcp.com/" target="_blank" rel="noopener">Docs →</a>
+        </div>
+      </div>
+      <div class="proj rev">
+        <div class="pt">Hosted · Compliance</div>
+        <h3>FAVES compliance API</h3>
+        <p class="pb">The moat around the OSS engine. Regulatory compliance for pharma and biotech pipelines: DEA schedules, EU REACH, PAINS filters, structural alerts, sponsor whitelists, PMDA / KFDA / TGA, plus the operational commitments a regulated submission needs (SLA, immutable audit-log retention, drift monitoring, IQ/OQ/PQ documentation, SAML SSO). Closed and paid; access on request. Not shipped with the OSS engine.</p>
+        <div class="plinks">
+          <a href="https://novomcp.com/faves" target="_blank" rel="noopener">novomcp.com/faves →</a>
+          <a href="https://chemrxiv.org/doi/full/10.26434/chemrxiv.15003738/v3" target="_blank" rel="noopener">FAVES V4 preprint →</a>
+        </div>
+      </div>
+      <div class="proj rev">
+        <div class="pt">Preview · Workstation</div>
+        <h3>NovoWorkbench</h3>
+        <p class="pb">The molecule canvas, 3D viewers, and discovery funnel as a native desktop for macOS and Windows. Local RDKit, offline alert screening (PAINS + druglikeness rule sets), bring-your-own-LLM chat, model-agnostic. Tauri + Python sidecar; Apple Developer ID notarized (team 8N9K9B7Y69). Design-partner preview; ships as OSS in v1.5.x.</p>
+        <div class="plinks">
+          <a href="https://novomcp.com/novoworkbench" target="_blank" rel="noopener">About →</a>
+          <a href="https://novomcp.com/sales-inquiry" target="_blank" rel="noopener">Request early access →</a>
+        </div>
+      </div>
+      <div class="proj rev">
+        <div class="pt">Open source · Apache-2.0</div>
+        <h3>novomcp-lite</h3>
+        <p class="pb">NovoMCP's cheminformatics, standalone, for people who want the wrappers rather than the whole engine. <code>pip install novomcp-lite</code>: <b>9 zero-config tools</b> (RDKit properties, profiling, synthetic-accessibility, PAINS/BRENK alerts, library screening, plus ChEMBL / ClinicalTrials.gov / bioRxiv / PubMed literature search), as a Python library or an MCP server. Two dependencies, no keys. The exact code the full engine runs on, so the numbers match. Prompted by a researcher who wired the engine to his agent and asked for a lighter build.</p>
+        <div class="plinks">
+          <a href="https://github.com/NovoMCP/novomcp-lite" target="_blank" rel="noopener">GitHub →</a>
+          <a href="https://pypi.org/project/novomcp-lite/" target="_blank" rel="noopener">PyPI →</a>
+        </div>
+      </div>
+      <div class="proj rev">
+        <div class="pt">Open source · MIT</div>
+        <h3>NovoMD</h3>
+        <p class="pb">SMILES in, 32+ molecular descriptors out, from a real 3D conformer. Geometry, energy, electrostatics, surface, and volume, calculated on your own machine, no account, no API key. Ships as a Python library, a CLI, a Hugging Face MCP endpoint, and a Docker REST service: the one-engine-many-surfaces pattern at library scale, fully open. <b>The design call: scope discipline.</b> No ADMET, no pKa, no binding, documented in the README and shipped as an agent skill so assistants are told explicitly where the tool's authority ends.</p>
+        <div class="plinks">
+          <a href="https://github.com/ariharrisonlab/NovoMD" target="_blank" rel="noopener">GitHub →</a>
+          <a href="https://huggingface.co/spaces/quantnexusai/novomd" target="_blank" rel="noopener">Hugging Face MCP →</a>
+        </div>
+      </div>
+      <div class="proj rev">
+        <div class="pt">Systems · Autonomy</div>
+        <h3>Autonomous Systems</h3>
+        <p class="pb">Before NovoMCP: reinforcement-learning agents in high-stakes manufacturing. Continuous operation. Self-diagnosing on failure. Improving without intervention. The architectural pattern is the same one NovoMCP runs on: agents that pursue objectives, not just answer questions. The domain changed. The systems thinking did not.</p>
+      </div>
     </div>
-    <p class="contact-note">Resume: in revision, available on request.</p>
-  </div>
-</section>
+  </section>
+
+  <section id="writing">
+    <div class="field-label rev"><span class="idx">§</span> Writing</div>
+    <ul class="writing">
+      <a href="https://substack.com/home/post/p-195517589" target="_blank" rel="noopener" class="post rev">
+        <div class="pdate">2026.04</div>
+        <div>
+          <h3>Server-Side Tool Search for a 62-Tool MCP Platform</h3>
+          <div class="pex">What happens when the AI vendor's fix doesn't reach you. In-memory semantic retrieval, 25 ms per query, 100% recall, and the latent bugs it surfaced.</div>
+        </div>
+      </a>
+      <a href="https://novoquantnexus.substack.com/p/why-most-ai-pilots-fail-the-missing" target="_blank" rel="noopener" class="post rev">
+        <div class="pdate">2026.02</div>
+        <div>
+          <h3>Why Most AI Pilots Fail: The Missing Infrastructure Layer</h3>
+          <div class="pex">Reasoning is only 10% of the battle. The other 90% is the architectural bridge that enables reliable action in regulated domains.</div>
+        </div>
+      </a>
+      <a href="https://novoquantnexus.substack.com/p/scaling-mcp-lessons-from-100m-records" target="_blank" rel="noopener" class="post rev">
+        <div class="pdate">2026.02</div>
+        <div>
+          <h3>Scaling MCP: Lessons from 122M Compounds</h3>
+          <div class="pex">What changes when you shift from query-time computation to a pre-computed prediction engine. Sub-50 ms latency for agents.</div>
+        </div>
+      </a>
+      <a href="https://novoquantnexus.substack.com/p/from-conversational-to-computational" target="_blank" rel="noopener" class="post rev">
+        <div class="pdate">2026.02</div>
+        <div>
+          <h3>From Conversational to Computational AI</h3>
+          <div class="pex">How the engine moves models beyond chat interfaces and into high-stakes decision pipelines.</div>
+        </div>
+      </a>
+    </ul>
+    <a href="https://substack.com/@ariharrisonlab" target="_blank" rel="noopener" class="more rev">All writing on Substack →</a>
+  </section>
+
+  <section id="contact">
+    <div class="field-label rev"><span class="idx">§</span> Contact</div>
+    <div class="contact rev">
+      <p class="big">Open to product, AI, and 0-to-1 leadership conversations.</p>
+      <div class="clinks">
+        <a href="mailto:ariharrisonlab@gmail.com">ariharrisonlab@gmail.com</a>
+        <a href="https://www.linkedin.com/in/ariharrisonlab/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/ariharrisonlab" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="portfolio.html">Portfolio →</a>
+      </div>
+      <p class="cnote">RESUME: in revision, available on request. // SF / Bay Area or remote.</p>
+    </div>
+  </section>
+
+</div>
 
 <footer>
-  <div class="footer-left">Building the systems that turn model reasoning into real-world decisions.</div>
-  <ul class="footer-links">
-    <li><a href="https://x.com/ariharrisonlab" target="_blank">X</a></li>
-    <li><a href="https://scholar.google.com/citations?hl=en&user=O3Bdfh8AAAAJ" target="_blank">Scholar</a></li>
-    <li><a href="https://www.linkedin.com/in/ariharrisonlab/" target="_blank">LinkedIn</a></li>
-    <li><a href="https://github.com/ariharrisonlab" target="_blank">GitHub</a></li>
-    <li><a href="https://www.youtube.com/@ariharrisonlab" target="_blank">YouTube</a></li>
-  </ul>
+  <div class="wrap">
+    <div class="fl">© 2026 ARI HARRISON · The systems that turn model reasoning into decisions you can act on.</div>
+    <ul class="fr">
+      <li><a href="https://x.com/ariharrisonlab" target="_blank" rel="noopener">X</a></li>
+      <li><a href="https://scholar.google.com/citations?hl=en&user=O3Bdfh8AAAAJ" target="_blank" rel="noopener">Scholar</a></li>
+      <li><a href="https://www.linkedin.com/in/ariharrisonlab/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://github.com/ariharrisonlab" target="_blank" rel="noopener">GitHub</a></li>
+    </ul>
+  </div>
 </footer>
-<div class="footer-copy">© 2026 Ari Harrison. Open to product, AI, and 0-to-1 leadership conversations.</div>
 
 <script>
-  // Theme toggle
-  const themeToggle = document.getElementById('themeToggle');
-  const root = document.documentElement;
-
-  function setTheme(theme) {
-    root.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }
-
-  // Load saved preference (default: dark)
-  const saved = localStorage.getItem('theme');
-  if (saved) setTheme(saved);
-
-  themeToggle.addEventListener('click', () => {
-    const current = root.getAttribute('data-theme');
-    setTheme(current === 'dark' ? 'light' : 'dark');
-  });
-
-  // Nav scroll effect
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 50);
-  });
-
-  // Hamburger menu
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
-
-  // Scroll animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  const ham=document.getElementById('hamburger'),nl=document.getElementById('navLinks');
+  ham.addEventListener('click',()=>nl.classList.toggle('open'));
+  nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
+  const io=new IntersectionObserver((es)=>{es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),Math.min(i*40,160));io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.rev').forEach(el=>io.observe(el));
 </script>
 
 </body>
