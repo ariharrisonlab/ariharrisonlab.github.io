@@ -97,8 +97,8 @@
   .row .rv{color:var(--soft);font-size:14.5px;line-height:1.7}
   .row .rv b{color:var(--ink);font-weight:600}
   .ship{list-style:none;display:flex;flex-direction:column;gap:11px}
-  .ship li{display:grid;grid-template-columns:16px 1fr;gap:10px;align-items:baseline}
-  .ship li::before{content:"→";color:var(--signal);font-family:var(--mono);font-size:12px}
+  .ship li{position:relative;padding-left:22px}
+  .ship li::before{content:"→";position:absolute;left:0;top:0;color:var(--signal);font-family:var(--mono);font-size:12px}
 
   /* ABOUT */
   .about{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}
