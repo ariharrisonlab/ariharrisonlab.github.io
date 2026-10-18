@@ -260,7 +260,7 @@
         <div class="rk">Shipped</div>
         <div class="rv">
           <ul class="ship">
-            <li>Open-sourced NovoMCP at v1.0 (July 2026): engine, compute wrappers, surfaces, and trained models under Apache-2.0; orchestration core BSL 1.1 → Apache 2029-07-12. Boots with no auth, no account, no API key.</li>
+            <li>Open-sourced NovoMCP at v1.0 (July 2026): engine, compute wrappers, surfaces, and trained models under Apache-2.0, with the model weights open on <a href="https://huggingface.co/NovoMCP" target="_blank" rel="noopener">Hugging Face</a>; orchestration core BSL 1.1 → Apache 2029-07-12. Boots with no auth, no account, no API key.</li>
             <li>Shipped through <b>v1.4.3</b>: an ALCHEMI-accelerated axis across geometry, energy, and conformer search (<code>ase</code> ↔ <code>alchemi</code>, <code>crest</code> ↔ <code>alchemi</code>, same tool call, reference path or GPU path chosen per call), plus a pluggable auth / metering / audit spine so the same code runs standalone or hosted. <code>pip install novomcp</code> since v1.4.1.</li>
             <li>Consolidated ~30 services from Azure to AWS with no customer-visible downtime, then trimmed the hosted footprint to <code>api.novomcp.com</code> for the OSS launch.</li>
             <li>Three audited wins over the current TDC ADMET #1 (NovoExpert); FAVES V4 compliance API for regulated pipelines; both on ChemRxiv.</li>
@@ -287,7 +287,7 @@
       <div class="about-text rev">
         <p>The interesting problem is not getting a model to <em>say</em> something. It is building the system around the model so its output can be acted on: safely, correctly, repeatedly, with a record of what happened. That is the work.</p>
         <p><b>NovoMCP is what I built.</b> One computational chemistry engine, 69 in-silico tools across ADMET, docking, molecular dynamics, quantum chemistry, structure prediction, and compliance, that speaks both <b>MCP</b> (Claude Desktop, Cursor, Codex, Zed, any MCP-compatible assistant) and <b>REST</b> (any pipeline that posts JSON). Two ways to run it: self-host under Apache-2.0 on your own hardware, or have NovoMCP set it up on your infrastructure, under a branded subdomain, with the hosted FAVES compliance API and FEP alongside. Same engine either way.</p>
-        <p>Engine, never platform (positioning call). Scale-to-zero by default (unit-economics call). Human-in-the-loop via MCP elicitation, not an autonomous agent on someone else's molecules (trust call). Open-sourced as an engine, not a hosted product (moat call: the moat is FAVES compliance, FEP, the deployment service, and the trained models, not the code). <a href="portfolio.html">See the full product portfolio →</a></p>
+        <p>Engine, never platform (positioning call). Scale-to-zero by default (unit-economics call). Human-in-the-loop via MCP elicitation, not an autonomous agent on someone else's molecules (trust call). Open-sourced as an engine, not a hosted product (moat call: the moat is FAVES compliance, FEP, and the deployment service, not the code or the models). <a href="portfolio.html">See the full product portfolio →</a></p>
         <p><b>Before NovoMCP:</b> reinforcement-learning agents for autonomous discovery in high-stakes manufacturing. The systems ran continuously, diagnosed their own failures, and improved without intervention. Different domain, same problem shape. The agent is not the product; the system that makes the agent safe to deploy is the product. That is the throughline.</p>
       </div>
       <div class="spec rev">
@@ -314,7 +314,7 @@
       <div class="deck rev">
         <div class="dh"><span class="dcat">Distribution · Moat</span><span class="dnum">D-01</span></div>
         <h3>I opened the engine at v1.0.</h3>
-        <p class="body">The straightforward call was to keep it closed and sell a hosted platform. I open-sourced it instead: Apache-2.0 top level, BSL 1.1 → Apache 2029 for the orchestration core. The moat is <b>compliance, FEP, the deployment service, and the trained models</b>. Not the code that calls RDKit and orchestrates docking.</p>
+        <p class="body">The straightforward call was to keep it closed and sell a hosted platform. I open-sourced it instead: Apache-2.0 top level, BSL 1.1 → Apache 2029 for the orchestration core. The moat is <b>compliance, FEP, and the deployment service</b>. Not the code that calls RDKit and orchestrates docking.</p>
         <div class="res"><span>RESULT →</span> Distribution flips from "sign up" to "clone the repo." Adoption compounds where a platform pitch can't reach. Regulated buyers still need compliance under an SLA; that is what they buy.</div>
       </div>
       <div class="deck rev">

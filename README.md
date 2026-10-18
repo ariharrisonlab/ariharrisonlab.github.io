@@ -61,7 +61,7 @@ NVIDIA Inception · AWS Activate · Microsoft Founders Hub
 
 A selection of product, infra, and positioning calls made shipping NovoMCP (full version at [ariharrisonlab.github.io/#leadership](https://ariharrisonlab.github.io/#leadership)).
 
-- **Open the engine at v1.0**: Apache-2.0 top-level, BSL 1.1 → Apache 2029-07-12 for the core. The moat is FAVES certification + FEP + the deployment service + trained models, not the code.
+- **Open the engine at v1.0**: Apache-2.0 top-level, BSL 1.1 → Apache 2029-07-12 for the core. The moat is FAVES certification + FEP + the deployment service, not the code or the open models.
 - **Two MCP servers, not one**: governance separation between free-tier and paid-only tools
 - **Scale-to-zero by default**: every compute service ships with `min_replicas=0`
 - **"Engine" never "platform"**: locked public language to one positioning noun
