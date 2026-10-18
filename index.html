@@ -261,11 +261,12 @@
         <div class="rv">
           <ul class="ship">
             <li>Open-sourced NovoMCP at v1.0 (July 2026): engine, compute wrappers, surfaces, and trained models under Apache-2.0; orchestration core BSL 1.1 → Apache 2029-07-12. Boots with no auth, no account, no API key.</li>
-            <li>Shipped through <b>v1.4.0</b>: an ALCHEMI-accelerated axis across geometry, energy, and conformer search (<code>ase</code> ↔ <code>alchemi</code>, <code>crest</code> ↔ <code>alchemi</code>, same tool call, reference path or GPU path chosen per call), plus a pluggable auth / metering / audit spine so the same code runs standalone or hosted.</li>
+            <li>Shipped through <b>v1.4.3</b>: an ALCHEMI-accelerated axis across geometry, energy, and conformer search (<code>ase</code> ↔ <code>alchemi</code>, <code>crest</code> ↔ <code>alchemi</code>, same tool call, reference path or GPU path chosen per call), plus a pluggable auth / metering / audit spine so the same code runs standalone or hosted. <code>pip install novomcp</code> since v1.4.1.</li>
             <li>Consolidated ~30 services from Azure to AWS with no customer-visible downtime, then trimmed the hosted footprint to <code>api.novomcp.com</code> for the OSS launch.</li>
             <li>Three audited wins over the current TDC ADMET #1 (NovoExpert); FAVES V4 compliance API for regulated pipelines; both on ChemRxiv.</li>
+            <li>Ported the engine's compute core to NVIDIA DGX Spark as <a href="https://novomcp.com/novo-station" target="_blank" rel="noopener">Novo Station</a>: GPU molecular dynamics, GPU docking, neural-network potentials, xTB, and 31 ADMET models on one GB10 desktop system, from one compose file. Measured at about 0.4× a datacenter L40S's raw MD speed and 1.2–1.5× its throughput per watt. Wrote up the five porting failures in a <a href="https://www.novomcp.com/news/what-actually-breaks-when-you-port-a-chemistry-stack-to-dgx-spark" target="_blank" rel="noopener">field report</a>; the reproducible workload is submitted to NVIDIA's DGX Spark playbooks.</li>
             <li>Published the engine's GPU compute services as standalone open repos: <a href="https://github.com/NovoMCP/gromacs-md" target="_blank" rel="noopener">gromacs-md</a>, <a href="https://github.com/NovoMCP/novomcp-nnp" target="_blank" rel="noopener">novomcp-nnp</a>, <a href="https://github.com/NovoMCP/novomcp-qm" target="_blank" rel="noopener">novomcp-qm</a>.</li>
-            <li>Shipped <a href="https://github.com/NovoMCP/novomcp-lite" target="_blank" rel="noopener">novomcp-lite</a>, the cheminformatics standalone: 9 zero-config tools, <code>pip install novomcp-lite</code>. Open-sourced <a href="https://github.com/ariharrisonlab/NovoMD" target="_blank" rel="noopener">NovoMD</a> (MIT): local-first molecular descriptors as library, CLI, Hugging Face MCP, and Docker REST.</li>
+            <li>Shipped <a href="https://github.com/NovoMCP/novomcp-lite" target="_blank" rel="noopener">novomcp-lite</a>, the cheminformatics standalone: 8 zero-config tools, <code>pip install novomcp-lite</code>. Open-sourced <a href="https://github.com/ariharrisonlab/NovoMD" target="_blank" rel="noopener">NovoMD</a> (MIT): local-first molecular descriptors as library, CLI, Hugging Face MCP, and Docker REST.</li>
           </ul>
         </div>
       </div>
@@ -292,8 +293,9 @@
       <div class="spec rev">
         <div class="sh">The Stack</div>
         <dl>
-          <div class="srow"><dt>The Engine</dt><dd>MCP + REST, <b>69 tools</b>, 14 always-available on a fresh clone (v1.4.0)</dd></div>
+          <div class="srow"><dt>The Engine</dt><dd>MCP + REST, <b>69 tools</b>, 14 always-available on a fresh clone (v1.4.3)</dd></div>
           <div class="srow"><dt>Runs Local</dt><dd>Boots with zero external services. No auth, no account, no API key; audit to <code>~/.novo/audit.jsonl</code></dd></div>
+          <div class="srow"><dt>Desktop GPU</dt><dd>Novo Station: the compute core on NVIDIA DGX Spark (GB10), one compose file</dd></div>
           <div class="srow"><dt>Pluggable Spine</dt><dd>Auth · metering · audit swap local ↔ hosted ↔ custom by env flag, same code standalone or operated</dd></div>
           <div class="srow"><dt>Open Compute</dt><dd>RDKit · GROMACS · AutoDock-GPU · OpenFold · Boltz · Gnina · xTB · ANI-2x · AIMNet2 · MACE</dd></div>
           <div class="srow"><dt>License</dt><dd>Apache-2.0 (orchestration core BSL 1.1 → Apache 2029-07-12)</dd></div>
@@ -359,6 +361,7 @@
         <li><span class="bt">Clinical model</span>NovoExpert-3 is validated on cardiovascular and GI endpoints, and explicitly out-of-domain on oncology, CNS, and infectious. The model suppresses a number there rather than emit a low-confidence one.</li>
         <li><span class="bt">ADMET wins</span>Three endpoints beat the current TDC #1 (MapLight+GNN) on AUPRC, margins +0.003 to +0.013. None clears the +0.02 landmark margin. Audited against the live TDC leaderboard, not self-reported.</li>
         <li><span class="bt">FAVES</span>A screening and liability instrument, not a regulatory sign-off. It returns status, alerts, and provenance; a human owns the submission.</li>
+        <li><span class="bt">Novo Station</span>The compute core, not the whole engine: structure prediction, generative design, and free-energy methods run on the standard deployment. Raw MD speed on GB10 is about 0.4× an L40S; the advantage is throughput per watt.</li>
         <li><span class="bt">Workbench</span>Ships as open source in v1.5.x. Today it is a design-partner preview, not a public release.</li>
       </ul>
     </div>
@@ -372,7 +375,7 @@
         <div>
           <h3>FAVES V4: A Production-Deployed Compliance and Liability Screening System for Drug Discovery at 122M-Compound Scale</h3>
           <div class="pv">ChemRxiv Preprint</div>
-          <p class="pd">First cheminformatics screening system whose full HHS/ONC- and NIST AI 600-1-aligned governance is described in operational detail. Validated <b>362/362</b> compounds post-fix across five predetermined tests. A single API call returns regulatory status (DEA / FDA / CWC / EPA / EU REACH), 1,585 structural alerts via RDKit FilterCatalog, BOILED-Egg pharmacokinetic classification, and InChIKey prior-art lookup. ~5 ms live latency, precomputed cache of <b>122,407,635</b> documents.</p>
+          <p class="pd">First cheminformatics screening system whose full HHS/ONC- and NIST AI 600-1-aligned governance is described in operational detail. Scored <b>341 of 342</b> across five predetermined tests; the one miss was a whitelist bug (a wrong SMILES for cortisol) that the full benchmark caught and change control fixed. A single API call returns regulatory status (DEA / FDA / CWC / EPA / EU REACH), 1,585 structural alerts via RDKit FilterCatalog, BOILED-Egg pharmacokinetic classification, and InChIKey prior-art lookup. About 0.45 s per call with a cached prior-art answer and about 3.1 s with a live PubChem lookup (May 2026 benchmark), over a precomputed cache of <b>122,407,635</b> documents.</p>
           <a href="https://chemrxiv.org/doi/full/10.26434/chemrxiv.15003738/v3" target="_blank" rel="noopener" class="pl">Read on ChemRxiv →</a>
         </div>
       </li>
@@ -395,11 +398,21 @@
       <div class="proj rev">
         <div class="pt">Open source · Engine</div>
         <h3>NovoMCP</h3>
-        <p class="pb">One engine, two surfaces (MCP + REST). <b>69 tools</b> across cheminformatics, ADMET, docking, MD, quantum chemistry, structure prediction, materials science, and an 11-stage autonomous discovery funnel. Clone it and it boots with zero external services; <b>14 tools</b> work on a fresh clone, the rest unlock as you wire optional compute. A pluggable spine (auth / metering / audit) swaps local ↔ hosted ↔ custom by env flag. Wraps open compute (RDKit, GROMACS, AutoDock-GPU, OpenFold, Boltz, Gnina, xTB, ANI-2x, MACE) and sources its cheminformatics from the open novomcp-lite package (v1.4.0). Apache-2.0 top level; orchestration core BSL 1.1 → Apache 2029.</p>
+        <p class="pb">One engine, two surfaces (MCP + REST). <b>69 tools</b> across cheminformatics, ADMET, docking, MD, quantum chemistry, structure prediction, materials science, and an 11-stage autonomous discovery funnel. Clone it and it boots with zero external services; <b>14 tools</b> work on a fresh clone, the rest unlock as you wire optional compute. A pluggable spine (auth / metering / audit) swaps local ↔ hosted ↔ custom by env flag. Wraps open compute (RDKit, GROMACS, AutoDock-GPU, OpenFold, Boltz, Gnina, xTB, ANI-2x, MACE) and sources its cheminformatics from the open novomcp-lite package (since v1.4.0). Apache-2.0 top level; orchestration core BSL 1.1 → Apache 2029.</p>
         <div class="plinks">
           <a href="https://github.com/NovoMCP/novomcp" target="_blank" rel="noopener">Repo →</a>
           <a href="https://novomcp.com/engine" target="_blank" rel="noopener">novomcp.com/engine →</a>
           <a href="https://docs.novomcp.com/" target="_blank" rel="noopener">Docs →</a>
+        </div>
+      </div>
+      <div class="proj rev">
+        <div class="pt">Open source · Local deployment</div>
+        <h3>Novo Station</h3>
+        <p class="pb">The NovoMCP compute core on NVIDIA DGX Spark: GPU molecular dynamics (GROMACS), GPU docking (AutoDock-GPU), MACE and ANI-2x potentials, the ALCHEMI toolkit, xTB / CREST, and 31 ADMET models, brought up on one GB10 desktop system from one compose file of prebuilt arm64 images. I measured it against a datacenter L40S: about 0.4× the raw MD speed at about a third of the power, so <b>1.2–1.5× the throughput per watt</b>. <b>The design call: name the edges.</b> Structure prediction, generative design, and free-energy methods are outside this release, and three default tools still query public databases (ChEMBL, RCSB, bioRxiv).</p>
+        <div class="plinks">
+          <a href="https://novomcp.com/novo-station" target="_blank" rel="noopener">novomcp.com/novo-station →</a>
+          <a href="https://docs.novomcp.com/novo-station-dgx-spark/" target="_blank" rel="noopener">Quickstart →</a>
+          <a href="https://www.novomcp.com/news/what-actually-breaks-when-you-port-a-chemistry-stack-to-dgx-spark" target="_blank" rel="noopener">Field report →</a>
         </div>
       </div>
       <div class="proj rev">
@@ -423,7 +436,7 @@
       <div class="proj rev">
         <div class="pt">Open source · Apache-2.0</div>
         <h3>novomcp-lite</h3>
-        <p class="pb">NovoMCP's cheminformatics, standalone, for people who want the wrappers rather than the whole engine. <code>pip install novomcp-lite</code>: <b>9 zero-config tools</b> (RDKit properties, profiling, synthetic-accessibility, PAINS/BRENK alerts, library screening, plus ChEMBL / ClinicalTrials.gov / bioRxiv / PubMed literature search), as a Python library or an MCP server. Two dependencies, no keys. The exact code the full engine runs on, so the numbers match. Prompted by a researcher who wired the engine to his agent and asked for a lighter build.</p>
+        <p class="pb">NovoMCP's cheminformatics, standalone, for people who want the wrappers rather than the whole engine. <code>pip install novomcp-lite</code>: <b>8 zero-config tools</b> (RDKit properties, profiling, synthetic-accessibility, PAINS/BRENK alerts, library screening, plus ChEMBL / ClinicalTrials.gov / bioRxiv search), as a Python library or an MCP server. Two dependencies, no keys. The exact code the full engine runs on, so the numbers match. Prompted by a researcher who wired the engine to his agent and asked for a lighter build.</p>
         <div class="plinks">
           <a href="https://github.com/NovoMCP/novomcp-lite" target="_blank" rel="noopener">GitHub →</a>
           <a href="https://pypi.org/project/novomcp-lite/" target="_blank" rel="noopener">PyPI →</a>
@@ -449,6 +462,13 @@
   <section id="writing">
     <div class="field-label rev"><span class="idx">§</span> Writing</div>
     <ul class="writing">
+      <a href="https://www.novomcp.com/news/what-actually-breaks-when-you-port-a-chemistry-stack-to-dgx-spark" target="_blank" rel="noopener" class="post rev">
+        <div class="pdate">2026.10</div>
+        <div>
+          <h3>What actually breaks when you port a chemistry stack to DGX Spark</h3>
+          <div class="pex">Five porting failures on GB10. Each one looked like the chip; all five resolved in packaging, threading, memory allocation, and versions.</div>
+        </div>
+      </a>
       <a href="https://substack.com/home/post/p-195517589" target="_blank" rel="noopener" class="post rev">
         <div class="pdate">2026.04</div>
         <div>
