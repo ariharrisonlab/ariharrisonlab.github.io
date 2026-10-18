@@ -60,7 +60,7 @@ Research on how domain structure shapes reasoning - and how reasoning systems ad
 
 - Word add-in (editor surface, private beta): Inline SMILES profiling and compliance tables in Word documents - manuscripts, protocols, grants. Office.js add-in, static-hosted manifest at addin.novomcp.com. Repo: https://github.com/NovoMCP/novomcp-word-sideload
 
-- REST API (developer surface): Single endpoint shape - POST /v1/tools/{name} with Bearer key. Tool catalog is the OpenAPI 3.1 spec at api.novomcp.com/openapi.json. Same backend as MCP, zero code duplication. https://novomcp.com/api
+- REST API (developer surface): Single endpoint shape - POST /v1/tools/{name}. Ships in the open engine (localhost:8018); the tool catalog is the OpenAPI 3.1 spec generated from the tool registry. Same backend as MCP, zero code duplication. It ran first as a hosted, metered gateway at api.novomcp.com; hosted billing was retired with the open-source release, and api.novomcp.com now carries the paid services (FAVES compliance and FEP). https://novomcp.com/api
 
 - Bundled dashboard (control room): A minimal Next.js dashboard that ships bundled with the open engine at frontend-nextjs/ in the OSS repo. Runs on localhost when self-hosted; on the per-org subdomain in cloud deployments. Minimal today, growing with each release. https://github.com/NovoMCP/novomcp/tree/main/frontend-nextjs
 

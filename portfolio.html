@@ -243,15 +243,15 @@
 
     <article class="case rev">
       <div class="chead">
-        <div><div class="ctag">02 · REST API · your own code</div><h2 class="ctitle">api.novomcp.com. <em>Bring your own model.</em></h2></div>
-        <span class="spill live">Live</span>
+        <div><div class="ctag">02 · REST API · your own code</div><h2 class="ctitle">The REST API. <em>Bring your own model.</em></h2></div>
+        <span class="spill live">Live · open source</span>
       </div>
-      <p class="coneliner">Call any of the 69 tools from your own code, or wire them into your own agent. One REST surface, OpenAPI 3.1 as the source of truth.</p>
+      <p class="coneliner">Call any of the 69 tools from your own code, or wire them into your own agent. One REST surface, shipped in the open engine, with OpenAPI 3.1 as the source of truth.</p>
       <div class="qgrid">
-        <div class="qcell"><h4>The Problem</h4><p>Some teams already have their own AI agent, their own automation, their own pipeline. They don't want OAuth flows, they don't want MCP. They want a Bearer key and a JSON body.</p></div>
-        <div class="qcell"><h4>The Decision</h4><p><b>One endpoint shape, not one route per tool.</b> Every tool is <code>POST /v1/tools/{name}</code> with a Bearer key. No bespoke per-tool routes to design, document, or version. The tool catalog <em>is</em> the live OpenAPI 3.1 spec, so there are no separate docs to drift.</p><p>The same backend serves MCP and REST; zero code duplicated for the second surface.</p></div>
-        <div class="qcell"><h4>The Build</h4><p>FastAPI proxy at <code>api.novomcp.com</code>, OpenAPI 3.1 generated from the tool registry, Bearer-key auth shared with MCP (the same key validates either surface). Rate limits and credit accounting share the same Aurora-backed billing path.</p></div>
-        <div class="qcell"><h4>The Outcome</h4><p>Live. Engineers who don't want a chat assistant can curl their way to ADMET in one command. The OpenAPI spec also feeds custom GPTs, agent frameworks, and Postman collections: same engine, no extra maintenance.</p></div>
+        <div class="qcell"><h4>The Problem</h4><p>Some teams already have their own AI agent, their own automation, their own pipeline. They don't want OAuth flows, they don't want MCP. They want an HTTP call and a JSON body.</p></div>
+        <div class="qcell"><h4>The Decision</h4><p><b>One endpoint shape, not one route per tool.</b> Every tool is <code>POST /v1/tools/{name}</code>. No bespoke per-tool routes to design, document, or version. The tool catalog <em>is</em> the live OpenAPI 3.1 spec, so there are no separate docs to drift.</p><p>The same backend serves MCP and REST; zero code duplicated for the second surface.</p></div>
+        <div class="qcell"><h4>The Build</h4><p>FastAPI, with OpenAPI 3.1 generated from the tool registry and auth shared with the MCP surface. It ran first as a hosted gateway at <code>api.novomcp.com</code>, with rate limits and credit accounting on an Aurora-backed billing path.</p><p>Hosted billing was retired with the open-source release. The same REST surface now ships in the open engine at <code>localhost:8018</code>, and <code>api.novomcp.com</code> carries the paid services: FAVES compliance and FEP.</p></div>
+        <div class="qcell"><h4>The Outcome</h4><p>Live in every self-hosted engine. Engineers who don't want a chat assistant can curl their way to ADMET in one command, against their own engine. The OpenAPI spec also feeds custom GPTs, agent frameworks, and Postman collections: same engine, no extra maintenance.</p></div>
       </div>
       <div class="cfoot">
         <span class="cfl">Live →</span>
