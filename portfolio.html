@@ -195,7 +195,7 @@
   <section class="hero" id="top">
     <div class="eyebrow tag rev">Portfolio <b>·</b> one engine, every surface</div>
     <h1 class="rev">The open engine, and every<br>surface that <span class="cy">reaches it.</span></h1>
-    <p class="lede rev">Product portfolio for <a href="https://novomcp.com/engine" target="_blank" rel="noopener">NovoMCP</a>, the open computational chemistry engine, open-sourced July 2026 under Apache-2.0 and shipped through v1.4.0. Clone it and it boots with zero external services: no auth, no account, no API key. One engine (MCP + REST, <b>69 tools</b>), one 11-stage discovery funnel, and the surfaces that reach it: chat, code, desktop, browser, editor, and the bundled dashboard. Each case below is a product decision: where it lives, who it's for, what trade-off it pays. The problem, the call, the build, the outcome.</p>
+    <p class="lede rev">Product portfolio for <a href="https://novomcp.com/engine" target="_blank" rel="noopener">NovoMCP</a>, the open computational chemistry engine, open-sourced July 2026 under Apache-2.0 and shipped through v1.4.3. Clone it and it boots with zero external services: no auth, no account, no API key. One engine (MCP + REST, <b>69 tools</b>), one 11-stage discovery funnel, and the surfaces that reach it: chat, code, desktop, browser, editor, and the bundled dashboard. Each case below is a product decision: where it lives, who it's for, what trade-off it pays. The problem, the call, the build, the outcome.</p>
     <div class="chars">
       <div class="char rev"><span class="k">01</span><span class="v">Tools in the engine</span><span class="n">69</span></div>
       <div class="char rev"><span class="k">02</span><span class="v">External services to boot</span><span class="n">0</span></div>
@@ -212,29 +212,29 @@
     <article class="case rev">
       <div class="chead">
         <div><div class="ctag">01 · MCP connector · AI assistants</div><h2 class="ctitle">Novo &amp; Novo Compute. <em>The chat surface.</em></h2></div>
-        <span class="spill live">Live</span>
+        <span class="spill">Retired · now open source</span>
       </div>
-      <p class="coneliner">Add Novo to Claude, ChatGPT, Gemini, or Cursor and run the full discovery funnel in chat, with human-in-the-loop confirmation at each stage.</p>
+      <p class="coneliner">Two hosted MCP servers ran the full discovery funnel inside Claude, ChatGPT, Gemini, and Cursor, with human-in-the-loop confirmation at each stage. Retired when the engine went open source; the same MCP surface now ships in the open engine.</p>
       <div class="qgrid">
         <div class="qcell"><h4>The Problem</h4><p>Chemists already live in Claude and ChatGPT. Asking them to leave their assistant for a separate product is adoption death. But "an MCP server" is not a product either; it is a protocol. The product call is what you ship through it.</p></div>
-        <div class="qcell"><h4>The Decision</h4><p><b>Two MCP servers, not one.</b> <code>Novo</code> exposes core tools on every tier including the free preview; <code>Novo Compute</code> exposes paid GPU/quantum tools. Different key prefixes (<code>nmcp_</code> vs <code>ncmcp_</code>) so a leaked core key cannot burn GPU budget.</p><p>Same Docker image; one env flag (<code>NOVO_SERVER_MODE</code>) toggles the tool catalog. Zero duplicated code, a separate governance surface.</p></div>
-        <div class="qcell"><h4>The Build</h4><p>FastAPI MCP server, OAuth + RFC 8693 token exchange (a separate <code>novomcp-auth</code> service), Redis-cached key validation with a 5-minute TTL and an in-memory fallback so dashboard outages don't take MCP down.</p><p>Funnel stages use MCP elicitation, so the assistant prompts the user at each gate. Never silent autonomy on someone else's compounds.</p></div>
-        <div class="qcell"><h4>The Outcome</h4><p>Live on Claude AI, Claude Code, Cursor, ChatGPT (Plus / Pro / Business), and Gemini. <b>69 tools</b> across the two-server split: ADMET, docking, MD, QM, structure prediction, materials, plus the hosted FAVES compliance API for regulated pipelines.</p><p>Self-hosted engines expose MCP at <code>localhost:8018/mcp</code>; cloud deployments run on a per-org subdomain.</p></div>
+        <div class="qcell"><h4>The Decision</h4><p><b>Two MCP servers, not one.</b> <code>Novo</code> exposed core tools on every tier including the free preview; <code>Novo Compute</code> exposed paid GPU/quantum tools. Different key prefixes (<code>nmcp_</code> vs <code>ncmcp_</code>) so a leaked core key could not burn GPU budget.</p><p>Same Docker image; one env flag (<code>NOVO_SERVER_MODE</code>) toggled the tool catalog. Zero duplicated code, a separate governance surface.</p></div>
+        <div class="qcell"><h4>The Build</h4><p>FastAPI MCP server, OAuth + RFC 8693 token exchange (a separate <code>novomcp-auth</code> service), Redis-cached key validation with a 5-minute TTL and an in-memory fallback so dashboard outages didn't take MCP down.</p><p>Funnel stages use MCP elicitation, so the assistant prompts the user at each gate. Never silent autonomy on someone else's compounds. That design carried into the open engine unchanged.</p></div>
+        <div class="qcell"><h4>The Outcome</h4><p>Ran in production on Claude AI, Claude Code, Cursor, ChatGPT (Plus / Pro / Business), and Gemini, serving <b>69 tools</b> across the two-server split: ADMET, docking, MD, QM, structure prediction, materials, plus the hosted FAVES compliance API for regulated pipelines.</p><p>Retired when the engine went open source. The hosted servers came down, and both toolsets now come from one MCP endpoint on the open engine, at <code>localhost:8018/mcp</code> when self-hosted or a per-org subdomain in cloud deployments.</p></div>
       </div>
       <div class="proof">
-        <div class="ph">Proof · Production MCP at scale</div>
-        <div class="pt">An MCP server is easy. Running one in production, across every major client, is the actual work.</div>
-        <p>A lot of teams now ship "an MCP server." What NovoMCP runs daily is harder: a <b>two-server governance model</b> on Anthropic's protocol with <b>OAuth 2.1 + RFC 8693 token exchange</b> for the paid tier, scoped Bearer keys with Redis-cached validation (5-minute TTL plus an in-memory fallback so the dashboard going down doesn't take MCP down with it), <b>MCP elicitation</b> driving an 11-stage human-in-the-loop funnel, and a separate identity service (<code>novomcp-auth</code>) that issues the exchange tokens.</p>
-        <p>Live <b>across every major MCP client</b>: Claude AI (web + desktop), Claude Code, Cursor, ChatGPT (Plus / Pro / Business), Gemini. One backend, one tool catalog, one billing path behind all of them.</p>
+        <div class="ph">Proof · Production MCP at scale, before the open release</div>
+        <div class="pt">An MCP server is easy. Running one in production, across every major client, was the actual work.</div>
+        <p>A lot of teams now ship "an MCP server." What NovoMCP ran daily was harder: a <b>two-server governance model</b> on Anthropic's protocol with <b>OAuth 2.1 + RFC 8693 token exchange</b> for the paid tier, scoped Bearer keys with Redis-cached validation (5-minute TTL plus an in-memory fallback so the dashboard going down doesn't take MCP down with it), <b>MCP elicitation</b> driving an 11-stage human-in-the-loop funnel, and a separate identity service (<code>novomcp-auth</code>) that issues the exchange tokens.</p>
+        <p>It ran <b>across every major MCP client</b>: Claude AI (web + desktop), Claude Code, Cursor, ChatGPT (Plus / Pro / Business), Gemini. One backend, one tool catalog, one billing path behind all of them.</p>
         <div class="pstats">
           <div class="pstat"><span class="pn">2</span><span class="pl">MCP servers, scoped</span></div>
           <div class="pstat"><span class="pn">69</span><span class="pl">tools served</span></div>
-          <div class="pstat"><span class="pn">5+</span><span class="pl">clients in production</span></div>
+          <div class="pstat"><span class="pn">5+</span><span class="pl">clients served in production</span></div>
           <div class="pstat"><span class="pn">Apache-2.0</span><span class="pl">license underneath</span></div>
         </div>
       </div>
       <div class="cfoot">
-        <span class="cfl">Live →</span>
+        <span class="cfl">Now →</span>
         <a href="https://novomcp.com/engine" target="_blank" rel="noopener">The engine</a>
         <a href="https://novomcp.com/novo-compute" target="_blank" rel="noopener">Novo Compute</a>
         <a href="https://github.com/NovoMCP/novomcp" target="_blank" rel="noopener">Repo</a>
@@ -284,12 +284,12 @@
         <div><div class="ctag">04 · Browser · Chrome extension</div><h2 class="ctitle">Hover any SMILES. <em>Get the profile.</em></h2></div>
         <span class="spill live">Live</span>
       </div>
-      <p class="coneliner">Profile cards on PubChem, ChEMBL, and preprints: ADMET, FAVES compliance, and similarity search across 122,454,458 compounds, on the page you're already on.</p>
+      <p class="coneliner">Profile cards on PubChem, ChEMBL, and preprints: ADMET, compliance, and similarity search, on the page you're already on.</p>
       <div class="qgrid">
         <div class="qcell"><h4>The Problem</h4><p>Pharma and academic chemists live on PubChem / ChEMBL / DrugBank / preprint sites for half their day. Every "go open the workbench, paste this in" is friction. The value has to come <em>to</em> the page they are already on.</p></div>
-        <div class="qcell"><h4>The Decision</h4><p><b>Show value before asking for a login.</b> Hover-card profiling runs against the free tier of the engine, with no account required for the basic ADMET and compliance read. The upgrade path is the side-panel advanced-compute tab and a "Continue in AI" deep-link.</p><p>Whitelisted hosts only, with no opportunistic SMILES detection across the open web. A privacy and safety call, not a technical one.</p></div>
+        <div class="qcell"><h4>The Decision</h4><p><b>Show value before asking for a login.</b> Hover-card profiling calls the engine directly (a local engine by default in the sideload build), with no account required for the basic profile read. The upgrade path is the side-panel advanced-compute tab and a "Continue in AI" deep-link.</p><p>Whitelisted hosts only, with no opportunistic SMILES detection across the open web. A privacy and safety call, not a technical one.</p></div>
         <div class="qcell"><h4>The Build</h4><p>Manifest V3, content scripts on whitelisted molecular databases and preprint servers, side-panel UI, and a "Continue in AI" deep-link that hands the current SMILES into any MCP-connected assistant via a session handoff.</p></div>
-        <div class="qcell"><h4>The Outcome</h4><p>Published on the Chrome Web Store. Funnels to the dashboard for users who want an account, and to the MCP surface for users who want to keep working in their assistant.</p></div>
+        <div class="qcell"><h4>The Outcome</h4><p>Published on the Chrome Web Store, with a <a href="https://github.com/NovoMCP/novomcp-chrome-sideload" target="_blank" rel="noopener">sideload build</a> that points at your own engine. "Continue in AI" hands off to the MCP surface for users who want to keep working in their assistant.</p></div>
       </div>
       <div class="cfoot">
         <span class="cfl">Live →</span>
@@ -343,10 +343,10 @@
     <div class="oss rev">
       <div class="ot">Apache-2.0 · The engine's open core · Library + MCP</div>
       <h3>novomcp-lite</h3>
-      <p class="olede">The lighter way to use NovoMCP's cheminformatics without standing up the whole engine. <b>Nine zero-config tools</b>: RDKit properties, profiling, synthetic-accessibility, PAINS/BRENK alerts, library screening, plus ChEMBL / ClinicalTrials.gov / bioRxiv / PubMed literature search, as a two-dependency package. No keys, no account, no services. Prompted by a researcher who wired NovoMCP up to his own agent and asked for a lighter, wrappers-only build.</p>
+      <p class="olede">The lighter way to use NovoMCP's cheminformatics without standing up the whole engine. <b>Eight zero-config tools</b>: RDKit properties, profiling, synthetic-accessibility, PAINS/BRENK alerts, library screening, plus ChEMBL / ClinicalTrials.gov / bioRxiv search, as a two-dependency package. No keys, no account, no services. Prompted by a researcher who wired NovoMCP up to his own agent and asked for a lighter, wrappers-only build.</p>
       <div class="rts">
         <div class="rt"><span class="rn">Python library</span><span class="rc">pip install novomcp-lite</span><span class="rnote">Call the tools directly, two dependencies.</span></div>
-        <div class="rt"><span class="rn">MCP server</span><span class="rc">pip install "novomcp-lite[mcp]"</span><span class="rnote">Point Claude, or any agent, at the same nine tools.</span></div>
+        <div class="rt"><span class="rn">MCP server</span><span class="rc">pip install "novomcp-lite[mcp]"</span><span class="rnote">Point Claude, or any agent, at the same eight tools.</span></div>
       </div>
       <p class="odisc"><b>The design call: one implementation, no drift.</b> novomcp-lite is not a fork of the engine; the full NovoMCP engine imports the exact same code. So the numbers from the two-dependency library are, to the decimal, the numbers from the full engine. The open core is not a marketing cut-down; it is what the product runs on.</p>
       <div class="ofoot"><span class="ofl">Open source →</span><a href="https://github.com/NovoMCP/novomcp-lite" target="_blank" rel="noopener">GitHub</a><a href="https://pypi.org/project/novomcp-lite/" target="_blank" rel="noopener">PyPI</a></div>
