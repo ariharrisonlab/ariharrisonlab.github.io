@@ -39,7 +39,7 @@ See the [full product portfolio →](https://ariharrisonlab.github.io/portfolio.
 - **Pluggable spine**: auth / metering / audit swap local ↔ hosted ↔ custom by env flag — same code standalone or operated, no OSS/enterprise fork
 - **Wraps open compute**: RDKit · GROMACS · AutoDock-GPU · OpenFold · Boltz · Gnina · xTB · ANI-2x · AIMNet2 · MACE; ALCHEMI-accelerated engine axis across geometry, energy, and conformer search (through v1.3.0); in-process cheminformatics sourced from the open novomcp-lite package (v1.4.0)
 - **License**: Apache-2.0 top-level (orchestration core BSL 1.1 → Apache 2029-07-12)
-- **Compliance**: FAVES V4 (hosted certified API) — 8 jurisdictions, 1,585 structural alerts
+- **Compliance**: FAVES V4 (hosted API) — 8 regulatory frameworks, 1,585 structural alerts
 - **Verticals**: Drug discovery + materials science
 
 ## Ecosystem
@@ -61,12 +61,12 @@ NVIDIA Inception · AWS Activate · Microsoft Founders Hub
 
 A selection of product, infra, and positioning calls made shipping NovoMCP (full version at [ariharrisonlab.github.io/#leadership](https://ariharrisonlab.github.io/#leadership)).
 
-- **Open the engine at v1.0**: Apache-2.0 top-level, BSL 1.1 → Apache 2029-07-12 for the core. The moat is FAVES certification + FEP + the deployment service, not the code or the open models.
+- **Open the engine at v1.0**: Apache-2.0 top-level, BSL 1.1 → Apache 2029-07-12 for the core. The moat is FAVES compliance + FEP + the deployment service, not the code or the open models.
 - **Two MCP servers, not one**: governance separation between free-tier and paid-only tools
 - **Scale-to-zero by default**: every compute service ships with `min_replicas=0`
 - **"Engine" never "platform"**: locked public language to one positioning noun
 - **Killed the autonomous-campaign system**: replaced with human-in-the-loop via MCP elicitation
-- **Self-hosted or set up for you, no middle**: killed the credit-tier ladder at the OSS launch — free-forever self-host, or a deployment service on your infrastructure with certified FAVES
+- **Self-hosted or set up for you, no middle**: killed the credit-tier ladder at the OSS launch — free-forever self-host, or a deployment service on your infrastructure with the FAVES API
 - **Private-endpoint-only infra**: build on GH-hosted runners, deploy via OIDC → SSM → bastion
 
 ---
