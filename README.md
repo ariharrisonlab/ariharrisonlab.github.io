@@ -33,7 +33,7 @@ See the [full product portfolio →](https://ariharrisonlab.github.io/portfolio.
 
 ## The Stack
 
-- **The Engine**: MCP + REST, 69 tools, 14 always-available on a fresh clone (now v1.4.3)
+- **The Engine**: MCP + REST, 69 tools, 18 always-available on a fresh clone (now v1.4.3)
 - **Desktop GPU**: [Novo Station](https://novomcp.com/novo-station), the compute core on NVIDIA DGX Spark (GB10)
 - **Runs local**: boots with zero external services — no auth, no account, no API key; audit to `~/.novo/audit.jsonl`
 - **Pluggable spine**: auth / metering / audit swap local ↔ hosted ↔ custom by env flag — same code standalone or operated, no OSS/enterprise fork
