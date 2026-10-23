@@ -9,7 +9,7 @@
 - Open source: novomcp-lite - a lightweight, standalone version of NovoMCP's cheminformatics (for when you just want the wrappers, not the whole engine), Apache-2.0, on PyPI (pip install novomcp-lite). Eight zero-config tools (RDKit properties/profiling/synthetic-accessibility/PAINS-BRENK alerts/library screening + ChEMBL/ClinicalTrials.gov/bioRxiv search) as a Python library or MCP server; same code as the full engine, so the numbers match - just without the rest of the engine. https://github.com/NovoMCP/novomcp-lite
 - Open source: the engine's GPU compute services ship as standalone Apache-2.0 repos, each deployable on its own - gromacs-md (GROMACS MD, https://github.com/NovoMCP/gromacs-md), novomcp-nnp (neural-network potentials, https://github.com/NovoMCP/novomcp-nnp), novomcp-qm (quantum chemistry, https://github.com/NovoMCP/novomcp-qm).
 - Open source: NovoMD - local-first molecular descriptor library, MIT-licensed, ships as a Python library + CLI + Hugging Face MCP endpoint + Docker REST. https://github.com/ariharrisonlab/NovoMD
-- Open to: product, AI, and 0-to-1 leadership conversations. Bay Area or remote. Particularly interested in production AI systems, MCP-shaped infrastructure, and applied AI at companies where correctness matters.
+- Open to: Product Manager and 0-to-1 product leadership roles. Bay Area or remote. Particularly interested in production AI systems, MCP-shaped infrastructure, and applied AI at companies where correctness matters.
 - Contact: ariharrisonlab@gmail.com / LinkedIn (linkedin.com/in/ariharrisonlab).
 - Backed by: NVIDIA Inception, AWS Activate, Microsoft Founders Hub.
 
