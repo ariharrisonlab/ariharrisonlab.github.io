@@ -23,7 +23,7 @@
   :root{
     --ground:#0B0E11; --panel:#12171B; --panel-2:#0E1317;
     --line:#20272D; --line-soft:#161C21;
-    --ink:#E8ECEE; --soft:#949EA4; --mute:#59636A;
+    --ink:#E8ECEE; --soft:#AAB3B8; --mute:#7C878E;
     --signal:#35D2C3; --signal-dim:#1E8079;
     --sans:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
     --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -35,7 +35,7 @@
     background:var(--ground);color:var(--ink);
     font-family:var(--sans);font-size:15px;line-height:1.65;font-weight:400;
     -webkit-font-smoothing:antialiased;
-    background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+    background-image:linear-gradient(rgba(22,28,33,.55) 1px,transparent 1px),linear-gradient(90deg,rgba(22,28,33,.55) 1px,transparent 1px);
     background-size:64px 64px;background-position:-1px -1px;
   }
   .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
@@ -45,7 +45,7 @@
   :focus-visible{outline:2px solid var(--signal);outline-offset:3px}
   code{font-family:var(--mono);font-size:.86em;color:var(--ink);background:var(--panel);padding:1px 5px;border:1px solid var(--line)}
   .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
-  .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+  .tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
   .tag b{color:var(--signal);font-weight:400}
 
   /* top bar */
@@ -55,7 +55,7 @@
   .brand .sq{color:var(--signal)}
   .nav-right{display:flex;align-items:center;gap:28px}
   .nav-links{display:flex;gap:26px;list-style:none}
-  .nav-links a{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+  .nav-links a{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
   .nav-links a:hover{color:var(--signal)}
   .status-pill{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);display:flex;align-items:center;gap:8px}
   .dot{width:7px;height:7px;background:var(--signal);border-radius:50%;animation:pulse 2.4s infinite}
@@ -65,7 +65,7 @@
 
   /* section scaffold */
   section{padding:92px 0 8px;position:relative}
-  .field-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:14px;margin-bottom:34px}
+  .field-label{font-family:var(--mono);font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:14px;margin-bottom:34px}
   .field-label::after{content:"";height:1px;flex:1;background:var(--line)}
   .field-label .idx{color:var(--signal)}
   .field-label .cmt{color:var(--mute);text-transform:none;letter-spacing:.04em}
@@ -77,7 +77,7 @@
   .hero h1 .cy{color:var(--signal)}
   .hero .lede{max-width:62ch;color:var(--soft);font-size:16.5px;line-height:1.75}
   .hero .lede b{color:var(--ink);font-weight:600}
-  .hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--ink);margin-top:22px;max-width:62ch;line-height:1.7}
+  .hero .sub{font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--ink);margin-top:22px;max-width:62ch;line-height:1.7}
   .hero-links{display:flex;flex-wrap:wrap;gap:22px;margin-top:36px}
   .hero-links a{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--soft);padding-bottom:5px;border-bottom:1px solid var(--line)}
   .hero-links a:hover{color:var(--signal);border-bottom-color:var(--signal)}
@@ -87,15 +87,15 @@
   .char{display:grid;grid-template-columns:52px 1fr auto;align-items:baseline;gap:20px;padding:15px 4px;border-bottom:1px solid var(--line);transition:background .3s var(--ease),padding .3s var(--ease)}
   .char:hover{background:var(--panel);padding-left:14px}
   .char .k{font-family:var(--mono);font-size:11px;color:var(--mute);letter-spacing:.1em}
-  .char .v{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+  .char .v{font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
   .char .n{font-family:var(--mono);font-size:26px;font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
   .char .n .u{font-size:12px;color:var(--signal);letter-spacing:.04em;margin-left:3px}
 
   /* generic rows (Status / Stack) */
   .rows{border-top:1px solid var(--line)}
   .row{display:grid;grid-template-columns:158px 1fr;gap:32px;padding:24px 4px;border-bottom:1px solid var(--line)}
-  .row .rk{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);padding-top:5px}
-  .row .rv{color:var(--soft);font-size:14.5px;line-height:1.7}
+  .row .rk{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);padding-top:5px}
+  .row .rv{color:var(--soft);font-size:15px;line-height:1.7}
   .row .rv b{color:var(--ink);font-weight:600}
   .ship{list-style:none;display:flex;flex-direction:column;gap:11px}
   .ship li{position:relative;padding-left:22px}
@@ -108,11 +108,11 @@
   .about-text b{color:var(--ink);font-weight:600}
   .about-text em{font-style:italic;color:var(--ink)}
   .spec{border:1px solid var(--line);background:var(--panel-2)}
-  .spec .sh{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);padding:16px 20px;border-bottom:1px solid var(--line)}
+  .spec .sh{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--signal);padding:16px 20px;border-bottom:1px solid var(--line)}
   .spec dl{margin:0}
-  .spec .srow{display:grid;grid-template-columns:118px 1fr;gap:14px;padding:12px 20px;border-bottom:1px solid var(--line-soft);font-size:12.5px;line-height:1.55}
+  .spec .srow{display:grid;grid-template-columns:118px 1fr;gap:14px;padding:12px 20px;border-bottom:1px solid var(--line-soft);font-size:13.5px;line-height:1.55}
   .spec .srow:last-child{border-bottom:none}
-  .spec dt{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding-top:2px}
+  .spec dt{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding-top:2px}
   .spec dd{color:var(--soft);margin:0}
   .spec dd b{color:var(--ink);font-weight:600}
 
@@ -121,13 +121,23 @@
   .deck{background:var(--panel-2);padding:28px 28px 26px;display:flex;flex-direction:column;gap:13px;transition:background .35s var(--ease)}
   .deck:hover{background:var(--panel)}
   .deck .dh{display:flex;justify-content:space-between;align-items:center}
-  .deck .dcat{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal)}
-  .deck .dnum{font-family:var(--mono);font-size:10px;color:var(--mute)}
+  .deck .dcat{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal)}
+  .deck .dnum{font-family:var(--mono);font-size:11px;color:var(--mute)}
   .deck h3{font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.2;color:var(--ink)}
-  .deck .body{font-size:13.5px;color:var(--soft);line-height:1.7}
+  .deck .body{font-size:14.5px;color:var(--soft);line-height:1.7}
   .deck .body b{color:var(--ink);font-weight:600}
-  .deck .res{margin-top:auto;padding-top:13px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:11.5px;line-height:1.6;color:var(--mute)}
-  .deck .res span{color:var(--signal);letter-spacing:.1em}
+  .deck .res{margin-top:auto;padding-top:13px;border-top:1px dashed var(--line);font-size:14px;line-height:1.65;color:var(--ink)}
+  .deck .res span{font-family:var(--mono);font-size:11.5px;color:var(--signal);letter-spacing:.1em;margin-right:4px}
+
+  /* PRACTICE */
+  .practice-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px 32px;margin-bottom:22px}
+  .practice-head h3{font-size:22px;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+  .practice-head p{color:var(--soft);font-size:15px;max-width:62ch}
+  .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-top:2px solid var(--signal)}
+  .pcell{background:var(--panel-2);padding:22px 24px 24px}
+  .pcell .pk{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--signal);margin-bottom:10px}
+  .pcell p{font-size:14.5px;color:var(--soft);line-height:1.65}
+  .pcell .pref{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em}
 
   /* BOUNDARIES */
   .bounds{border:1px solid var(--line);border-left:2px solid var(--signal);background:linear-gradient(180deg,var(--panel-2),transparent)}
@@ -135,9 +145,9 @@
   .bounds .bhead h3{font-size:22px;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
   .bounds .bhead p{color:var(--soft);font-size:14.5px;max-width:66ch;margin-top:8px}
   .blist{list-style:none}
-  .blist li{display:grid;grid-template-columns:186px 1fr;gap:28px;padding:17px 30px;border-bottom:1px solid var(--line-soft);font-size:13.5px;color:var(--soft);line-height:1.6}
+  .blist li{display:grid;grid-template-columns:186px 1fr;gap:28px;padding:17px 30px;border-bottom:1px solid var(--line-soft);font-size:14.5px;color:var(--soft);line-height:1.6}
   .blist li:last-child{border-bottom:none}
-  .blist .bt{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);padding-top:2px}
+  .blist .bt{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);padding-top:2px}
 
   /* PUBLICATIONS */
   .pubs{list-style:none;border-top:1px solid var(--line)}
@@ -146,7 +156,7 @@
   .pub .py{font-family:var(--mono);font-size:12px;color:var(--mute);padding-top:4px}
   .pub h3{font-size:19px;font-weight:600;letter-spacing:-.01em;line-height:1.3;color:var(--ink);margin-bottom:6px;text-wrap:balance}
   .pub .pv{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--signal);text-transform:uppercase;margin-bottom:12px}
-  .pub .pd{font-size:13.5px;color:var(--soft);line-height:1.7;max-width:74ch}
+  .pub .pd{font-size:14.5px;color:var(--soft);line-height:1.7;max-width:74ch}
   .pub .pd b{color:var(--ink);font-weight:600}
   .pub .pl{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:11px;letter-spacing:.06em}
 
@@ -154,9 +164,9 @@
   .projs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
   .proj{background:var(--panel-2);padding:28px;display:flex;flex-direction:column;transition:background .35s var(--ease)}
   .proj:hover{background:var(--panel)}
-  .proj .pt{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);margin-bottom:14px}
+  .proj .pt{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);margin-bottom:14px}
   .proj h3{font-size:19px;font-weight:700;letter-spacing:-.02em;line-height:1.25;color:var(--ink);margin-bottom:12px}
-  .proj .pb{font-size:13px;color:var(--soft);line-height:1.65;flex:1}
+  .proj .pb{font-size:14px;color:var(--soft);line-height:1.65;flex:1}
   .proj .pb b{color:var(--ink);font-weight:600}
   .proj .plinks{display:flex;flex-wrap:wrap;gap:16px;margin-top:18px}
   .proj .plinks a{font-family:var(--mono);font-size:11px;letter-spacing:.04em}
@@ -168,7 +178,7 @@
   .post .pdate{font-family:var(--mono);font-size:12px;color:var(--mute)}
   .post h3{font-size:17px;font-weight:600;color:var(--ink);letter-spacing:-.01em;transition:color .3s var(--ease)}
   .post:hover h3{color:var(--signal)}
-  .post .pex{font-size:13px;color:var(--soft);margin-top:6px;line-height:1.6}
+  .post .pex{font-size:14px;color:var(--soft);margin-top:6px;line-height:1.6}
   .more{display:inline-flex;align-items:center;gap:8px;margin-top:26px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);border-bottom:1px solid transparent;padding-bottom:3px}
   .more:hover{border-bottom-color:var(--signal)}
 
@@ -198,7 +208,7 @@
     .nav-links.open{display:flex;flex-direction:column;position:absolute;top:54px;left:0;right:0;background:var(--ground);border-bottom:1px solid var(--line);padding:20px 24px;gap:16px}
     .hamburger{display:flex}
     .about{grid-template-columns:1fr;gap:36px}
-    .decks,.projs{grid-template-columns:1fr}
+    .decks,.projs,.pgrid{grid-template-columns:1fr}
     .row,.blist li,.pub,.post{grid-template-columns:1fr;gap:8px}
     .spec .srow{grid-template-columns:104px 1fr}
     .char{grid-template-columns:42px 1fr auto;gap:12px}
@@ -213,10 +223,10 @@
     <a href="#top" class="brand"><span class="sq">▮</span> ARI HARRISON</a>
     <div class="nav-right">
       <ul class="nav-links" id="navLinks">
-        <li><a href="#status">Status</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="#decisions">Decisions</a></li>
-        <li><a href="#publications">Publications</a></li>
+        <li><a href="#practice">Practice</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="#writing">Writing</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -242,72 +252,12 @@
     </div>
 
     <div class="chars">
-      <div class="char rev"><span class="k">01</span><span class="v">Tools in the engine</span><span class="n">69</span></div>
-      <div class="char rev"><span class="k">02</span><span class="v">Run on a fresh clone · zero wiring</span><span class="n">18</span></div>
-      <div class="char rev"><span class="k">03</span><span class="v">Autonomous discovery funnel</span><span class="n">11<span class="u">stages</span></span></div>
-      <div class="char rev"><span class="k">04</span><span class="v">Endpoints beat the current TDC #1</span><span class="n">3<span class="u">/22</span></span></div>
-      <div class="char rev"><span class="k">05</span><span class="v">License</span><span class="n" style="font-size:19px">Apache-2.0</span></div>
+      <div class="char rev"><span class="k">01</span><span class="v">Product surfaces shipped on one engine</span><span class="n">6</span></div>
+      <div class="char rev"><span class="k">02</span><span class="v">Pricing · credit ladder collapsed to two paths</span><span class="n">4 → 2</span></div>
+      <div class="char rev"><span class="k">03</span><span class="v">Services moved Azure → AWS · no customer-visible downtime</span><span class="n">~30</span></div>
+      <div class="char rev"><span class="k">04</span><span class="v">Tools in the open engine</span><span class="n">69</span></div>
+      <div class="char rev"><span class="k">05</span><span class="v">Endpoints beat the current TDC #1</span><span class="n">3<span class="u">/22</span></span></div>
       <div class="char rev"><span class="k">06</span><span class="v">Backing · NVIDIA / AWS / Microsoft</span><span class="n">3</span></div>
-    </div>
-  </section>
-
-  <section id="status">
-    <div class="field-label rev"><span class="idx">§</span> Status <span class="cmt">// current</span></div>
-    <div class="rows">
-      <div class="row rev">
-        <div class="rk">Building</div>
-        <div class="rv"><b>NovoMCP</b>: the open computational chemistry engine. MCP + REST, 69 tools, self-hostable under Apache-2.0 or set up by NovoMCP on your infrastructure under a branded subdomain. Solo founder.</div>
-      </div>
-      <div class="row rev">
-        <div class="rk">Shipped</div>
-        <div class="rv">
-          <ul class="ship">
-            <li>Open-sourced NovoMCP at v1.0 (July 2026): engine, compute wrappers, surfaces, and trained models under Apache-2.0, with the model weights open on <a href="https://huggingface.co/NovoMCP" target="_blank" rel="noopener">Hugging Face</a>; orchestration core BSL 1.1 → Apache 2029-07-12. Boots with no auth, no account, no API key.</li>
-            <li>Shipped through <b>v1.4.3</b>: an ALCHEMI-accelerated axis across geometry, energy, and conformer search (<code>ase</code> ↔ <code>alchemi</code>, <code>crest</code> ↔ <code>alchemi</code>, same tool call, reference path or GPU path chosen per call), plus a pluggable auth / metering / audit spine so the same code runs standalone or hosted. <code>pip install novomcp</code> since v1.4.1.</li>
-            <li>Consolidated ~30 services from Azure to AWS with no customer-visible downtime, then trimmed the hosted footprint to <code>api.novomcp.com</code> for the OSS launch.</li>
-            <li>Three audited wins over the current TDC ADMET #1 (NovoExpert); FAVES V4 compliance API for regulated pipelines; both on ChemRxiv.</li>
-            <li>Ported the engine's compute core to NVIDIA DGX Spark as <a href="https://novomcp.com/novo-station" target="_blank" rel="noopener">Novo Station</a>: GPU molecular dynamics, GPU docking, neural-network potentials, xTB, and 31 ADMET models on one GB10 desktop system, from one compose file. Measured at about 0.4× a datacenter L40S's raw MD speed and 1.2–1.5× its throughput per watt. Wrote up the five porting failures in a <a href="https://www.novomcp.com/news/what-actually-breaks-when-you-port-a-chemistry-stack-to-dgx-spark" target="_blank" rel="noopener">field report</a>; the reproducible workload is submitted to NVIDIA's DGX Spark playbooks.</li>
-            <li>Published the engine's GPU compute services as standalone open repos: <a href="https://github.com/NovoMCP/gromacs-md" target="_blank" rel="noopener">gromacs-md</a>, <a href="https://github.com/NovoMCP/novomcp-nnp" target="_blank" rel="noopener">novomcp-nnp</a>, <a href="https://github.com/NovoMCP/novomcp-qm" target="_blank" rel="noopener">novomcp-qm</a>.</li>
-            <li>Shipped <a href="https://github.com/NovoMCP/novomcp-lite" target="_blank" rel="noopener">novomcp-lite</a>, the cheminformatics standalone: 8 zero-config tools, <code>pip install novomcp-lite</code>. Open-sourced <a href="https://github.com/ariharrisonlab/NovoMD" target="_blank" rel="noopener">NovoMD</a> (MIT): local-first molecular descriptors as library, CLI, Hugging Face MCP, and Docker REST.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="row rev">
-        <div class="rk">Backed by</div>
-        <div class="rv">NVIDIA Inception <span class="mono" style="color:var(--mute)">·</span> AWS Activate <span class="mono" style="color:var(--mute)">·</span> Microsoft Founders Hub</div>
-      </div>
-      <div class="row rev">
-        <div class="rk">Open to</div>
-        <div class="rv"><b>Product Manager and 0-to-1 product leadership roles.</b> San Francisco / Bay Area or remote. Production AI systems, MCP-shaped infrastructure, and applied AI where correctness is the requirement. <a href="#contact">Reach me ↓</a></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="about">
-    <div class="field-label rev"><span class="idx">§</span> About</div>
-    <div class="about">
-      <div class="about-text rev">
-        <p>The interesting problem is not getting a model to <em>say</em> something. It is building the system around the model so its output can be acted on: safely, correctly, repeatedly, with a record of what happened. That is the work.</p>
-        <p><b>NovoMCP is what I built.</b> One computational chemistry engine, 69 in-silico tools across ADMET, docking, molecular dynamics, quantum chemistry, structure prediction, and compliance, that speaks both <b>MCP</b> (Claude Desktop, Cursor, Codex, Zed, any MCP-compatible assistant) and <b>REST</b> (any pipeline that posts JSON). Two ways to run it: self-host under Apache-2.0 on your own hardware, or have NovoMCP set it up on your infrastructure, under a branded subdomain, with the hosted FAVES compliance API and FEP alongside. Same engine either way.</p>
-        <p><b>The product work, named plainly.</b> Discovery: the core problem was never model accuracy; it was that model output could not be acted on safely, so the product became the system around the model. Prioritization: what to build, what to cut (the autonomous campaign system), and what to delay. Go-to-market: an open engine for adoption, and a deployment service and hosted compliance API as the paid path. Constraints optimized for: unit economics (scale-to-zero), trust (human-in-the-loop, an audit trail on every run), and adoption (clone and run, no account).</p>
-        <p>Engine, never platform (positioning call). Scale-to-zero by default (unit-economics call). Human-in-the-loop via MCP elicitation, not an autonomous agent on someone else's molecules (trust call). Open-sourced as an engine, not a hosted product (moat call: the moat is FAVES compliance, FEP, and the deployment service, not the code or the models). <a href="portfolio.html">See the full product portfolio →</a></p>
-        <p><b>Before NovoMCP:</b> reinforcement-learning agents for autonomous discovery in high-stakes manufacturing. The systems ran continuously, diagnosed their own failures, and improved without intervention. Different domain, same problem shape. The agent is not the product; the system that makes the agent safe to deploy is the product. That is the throughline.</p>
-      </div>
-      <div class="spec rev">
-        <div class="sh">The Stack</div>
-        <dl>
-          <div class="srow"><dt>The Engine</dt><dd>MCP + REST, <b>69 tools</b>, 18 always-available on a fresh clone (v1.4.3)</dd></div>
-          <div class="srow"><dt>Runs Local</dt><dd>Boots with zero external services. No auth, no account, no API key; audit to <code>~/.novo/audit.jsonl</code></dd></div>
-          <div class="srow"><dt>Desktop GPU</dt><dd>Novo Station: the compute core on NVIDIA DGX Spark (GB10), one compose file</dd></div>
-          <div class="srow"><dt>Pluggable Spine</dt><dd>Auth · metering · audit swap local ↔ hosted ↔ custom by env flag, same code standalone or operated</dd></div>
-          <div class="srow"><dt>Open Compute</dt><dd>RDKit · GROMACS · AutoDock-GPU · OpenFold · Boltz · Gnina · xTB · ANI-2x · AIMNet2 · MACE</dd></div>
-          <div class="srow"><dt>License</dt><dd>Apache-2.0 (orchestration core BSL 1.1 → Apache 2029-07-12)</dd></div>
-          <div class="srow"><dt>Compliance</dt><dd>FAVES V4 (hosted): 8 regulatory frameworks, 1,585 structural alerts</dd></div>
-          <div class="srow"><dt>Surfaces</dt><dd>MCP · REST · Workbench (v1.5.x) · Chrome ext · Word add-in · dashboard</dd></div>
-          <div class="srow"><dt>Verticals</dt><dd>Drug discovery + materials science</dd></div>
-          <div class="srow"><dt>Ecosystem</dt><dd>NVIDIA Inception · AWS Activate · Microsoft Founders Hub</dd></div>
-        </dl>
-      </div>
     </div>
   </section>
 
@@ -345,29 +295,85 @@
         <div class="res"><span>RESULT →</span> The ladder was noise between the two real buyers: someone who runs the engine, and someone who wants it set up and supported. Removing the middle cut decision friction and a lot of billing complexity.</div>
       </div>
       <div class="deck rev">
-        <div class="dh"><span class="dcat">Infra · Security</span><span class="dnum">D-06</span></div>
-        <h3>Private-endpoint everything.</h3>
-        <p class="body">EKS API, Aurora, Redis, internal ALBs: all private. The catch is that GitHub-hosted CI runners can't reach any of it, so every <code>kubectl apply</code> times out. Rather than poke holes, I committed to <b>build on GH runners, deploy via OIDC → SSM → bastion</b>, applied uniformly across every NovoServices repo.</p>
-        <div class="res"><span>RESULT →</span> The pattern does not re-litigate per port. New services pick up a pre-wired bastion for free. Security posture is a default, not an exception.</div>
+        <div class="dh"><span class="dcat">Trust · Security</span><span class="dnum">D-06</span></div>
+        <h3>Security as a default, not a feature.</h3>
+        <p class="body">For a product sold into regulated pipelines, security posture has to be a property of the system, not something negotiated per service. Every hosted service went <b>private by default</b>, with one deploy path for all of them, even though it made CI slower to set up than opening a few holes would have.</p>
+        <div class="res"><span>RESULT →</span> One answer to "what's exposed?" for every service. New services inherit the same posture with no extra work and no exceptions to explain.</div>
       </div>
     </div>
   </section>
 
   <section id="practice">
     <div class="field-label rev"><span class="idx">§</span> Product practice <span class="cmt">// the work, in PM terms, with the evidence</span></div>
-    <div class="bounds rev">
-      <div class="bhead">
-        <h3>Solo, end to end.</h3>
-        <p>No team to delegate to, so every product function ran through one person. Each line points at where it shows up on this page. <a href="portfolio.html">Product case studies (problem, decision, outcome) →</a></p>
+    <div class="practice-head rev">
+      <h3>Solo, end to end.</h3>
+      <p>No team to delegate to, so every product function ran through one person. Each cell points at the evidence. <a href="portfolio.html">Product case studies (problem, decision, outcome) →</a></p>
+    </div>
+    <div class="pgrid rev">
+      <div class="pcell"><div class="pk">Problem framing</div><p>Reframed the product from "better predictions" to "predictions that can be acted on": compliance, provenance, and a record of each run.</p><a class="pref" href="#about">About →</a></div>
+      <div class="pcell"><div class="pk">Prioritization</div><p>Cut the autonomous campaign system for human-in-the-loop gates; retired the hosted platform to focus on the engine and two paid services.</p><a class="pref" href="#decisions">D-01 · D-03 →</a></div>
+      <div class="pcell"><div class="pk">Go-to-market</div><p>Open-source distribution, one positioning noun held across every surface, and pricing collapsed from a four-tier credit ladder to two paths.</p><a class="pref" href="#decisions">D-01 · D-02 · D-05 →</a></div>
+      <div class="pcell"><div class="pk">Unit economics</div><p>Scale-to-zero compute by default, so cost tracks use rather than idle capacity.</p><a class="pref" href="#decisions">D-04 →</a></div>
+      <div class="pcell"><div class="pk">Trust, regulated domain</div><p>FAVES compliance screening with stated limits, published validation, and an audit trail on every run.</p><a class="pref" href="#boundaries">Boundaries →</a></div>
+      <div class="pcell"><div class="pk">Execution</div><p>Engineering, infrastructure, docs, the marketing site, partner work with NVIDIA, and launch content, shipped as one person.</p><a class="pref" href="#status">Status →</a></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="field-label rev"><span class="idx">§</span> About</div>
+    <div class="about">
+      <div class="about-text rev">
+        <p>The interesting problem is not getting a model to <em>say</em> something. It is building the system around the model so its output can be acted on: safely, correctly, repeatedly, with a record of what happened. That is the work.</p>
+        <p><b>NovoMCP is what I built.</b> One computational chemistry engine, 69 in-silico tools across ADMET, docking, molecular dynamics, quantum chemistry, structure prediction, and compliance, that speaks both <b>MCP</b> (Claude Desktop, Cursor, Codex, Zed, any MCP-compatible assistant) and <b>REST</b> (any pipeline that posts JSON). Two ways to run it: self-host under Apache-2.0 on your own hardware, or have NovoMCP set it up on your infrastructure, under a branded subdomain, with the hosted FAVES compliance API and FEP alongside. Same engine either way.</p>
+        <p><b>The product work, named plainly.</b> Discovery: the core problem was never model accuracy; it was that model output could not be acted on safely, so the product became the system around the model. Prioritization: what to build, what to cut (the autonomous campaign system), and what to delay. Go-to-market: an open engine for adoption, and a deployment service and hosted compliance API as the paid path. Constraints optimized for: unit economics (scale-to-zero), trust (human-in-the-loop, an audit trail on every run), and adoption (clone and run, no account). <a href="portfolio.html">See the full product portfolio →</a></p>
+        <p><b>Before NovoMCP:</b> reinforcement-learning agents for autonomous discovery in high-stakes manufacturing. The systems ran continuously, diagnosed their own failures, and improved without intervention. Different domain, same problem shape. The agent is not the product; the system that makes the agent safe to deploy is the product. That is the throughline.</p>
       </div>
-      <ul class="blist">
-        <li><span class="bt">Problem framing</span>Reframed the product from "better predictions" to "predictions that can be acted on": compliance, provenance, and a record of each run (About).</li>
-        <li><span class="bt">Prioritization</span>Cut the autonomous campaign system for human-in-the-loop gates (D-03); retired the hosted platform to focus on the engine and two paid services (D-01).</li>
-        <li><span class="bt">Go-to-market</span>Open-source distribution, a positioning noun held across every surface, and pricing collapsed from a four-tier credit ladder to two paths (D-01, D-02, D-05).</li>
-        <li><span class="bt">Unit economics</span>Scale-to-zero compute by default, so cost tracks use rather than idle capacity (D-04).</li>
-        <li><span class="bt">Trust, regulated domain</span>FAVES compliance screening with stated limits, published validation, and an audit trail on every run (Boundaries).</li>
-        <li><span class="bt">Execution</span>Engineering, infrastructure, docs, the marketing site, partner work with NVIDIA, and launch content, shipped as one person (Status).</li>
-      </ul>
+      <div class="spec rev">
+        <div class="sh">The Stack</div>
+        <dl>
+          <div class="srow"><dt>The Engine</dt><dd>MCP + REST, <b>69 tools</b>, 18 always-available on a fresh clone (v1.4.3)</dd></div>
+          <div class="srow"><dt>Runs Local</dt><dd>Boots with zero external services. No auth, no account, no API key; audit to <code>~/.novo/audit.jsonl</code></dd></div>
+          <div class="srow"><dt>Desktop GPU</dt><dd>Novo Station: the compute core on NVIDIA DGX Spark (GB10), one compose file</dd></div>
+          <div class="srow"><dt>Pluggable Spine</dt><dd>Auth · metering · audit swap local ↔ hosted ↔ custom by env flag, same code standalone or operated</dd></div>
+          <div class="srow"><dt>Open Compute</dt><dd>RDKit · GROMACS · AutoDock-GPU · OpenFold · Boltz · Gnina · xTB · ANI-2x · AIMNet2 · MACE</dd></div>
+          <div class="srow"><dt>License</dt><dd>Apache-2.0 (orchestration core BSL 1.1 → Apache 2029-07-12)</dd></div>
+          <div class="srow"><dt>Compliance</dt><dd>FAVES V4 (hosted): 8 regulatory frameworks, 1,585 structural alerts</dd></div>
+          <div class="srow"><dt>Surfaces</dt><dd>MCP · REST · Workbench (v1.5.x) · Chrome ext · Word add-in · dashboard</dd></div>
+          <div class="srow"><dt>Verticals</dt><dd>Drug discovery + materials science</dd></div>
+          <div class="srow"><dt>Ecosystem</dt><dd>NVIDIA Inception · AWS Activate · Microsoft Founders Hub</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="status">
+    <div class="field-label rev"><span class="idx">§</span> Status <span class="cmt">// current</span></div>
+    <div class="rows">
+      <div class="row rev">
+        <div class="rk">Building</div>
+        <div class="rv"><b>NovoMCP</b>: the open computational chemistry engine. MCP + REST, 69 tools, self-hostable under Apache-2.0 or set up by NovoMCP on your infrastructure under a branded subdomain. Solo founder.</div>
+      </div>
+      <div class="row rev">
+        <div class="rk">Shipped</div>
+        <div class="rv">
+          <ul class="ship">
+            <li>Open-sourced NovoMCP at v1.0 (July 2026): engine, compute wrappers, surfaces, and trained models, with the weights on <a href="https://huggingface.co/NovoMCP" target="_blank" rel="noopener">Hugging Face</a>. Clone it and it runs: no auth, no account, no API key.</li>
+            <li>Shipped through <b>v1.4.3</b>: GPU-accelerated paths for geometry, energy, and conformer search, chosen per call, and one codebase that runs standalone or hosted. <code>pip install novomcp</code>.</li>
+            <li>Moved ~30 services from Azure to AWS with no customer-visible downtime, then cut the hosted footprint to one API for the open-source launch.</li>
+            <li>Three audited wins over the current TDC ADMET #1 (NovoExpert) and the FAVES V4 compliance API for regulated pipelines; both on ChemRxiv.</li>
+            <li>Ported the compute core to NVIDIA DGX Spark as <a href="https://novomcp.com/novo-station" target="_blank" rel="noopener">Novo Station</a>: GPU MD, docking, neural-network potentials, and 31 ADMET models on one desktop GB10, at 1.2–1.5× a datacenter L40S's throughput per watt. <a href="https://www.novomcp.com/news/what-actually-breaks-when-you-port-a-chemistry-stack-to-dgx-spark" target="_blank" rel="noopener">Field report</a>.</li>
+            <li>Spun out standalone open repos: <a href="https://github.com/NovoMCP/gromacs-md" target="_blank" rel="noopener">gromacs-md</a>, <a href="https://github.com/NovoMCP/novomcp-nnp" target="_blank" rel="noopener">novomcp-nnp</a>, <a href="https://github.com/NovoMCP/novomcp-qm" target="_blank" rel="noopener">novomcp-qm</a>, <a href="https://github.com/NovoMCP/novomcp-lite" target="_blank" rel="noopener">novomcp-lite</a>, and <a href="https://github.com/ariharrisonlab/NovoMD" target="_blank" rel="noopener">NovoMD</a>.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row rev">
+        <div class="rk">Backed by</div>
+        <div class="rv">NVIDIA Inception <span class="mono" style="color:var(--mute)">·</span> AWS Activate <span class="mono" style="color:var(--mute)">·</span> Microsoft Founders Hub</div>
+      </div>
+      <div class="row rev">
+        <div class="rk">Open to</div>
+        <div class="rv"><b>Product Manager and 0-to-1 product leadership roles.</b> San Francisco / Bay Area or remote. Production AI systems, MCP-shaped infrastructure, and applied AI where correctness is the requirement. <a href="#contact">Reach me ↓</a></div>
+      </div>
     </div>
   </section>
 
