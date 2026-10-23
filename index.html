@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ari Harrison, Founder, NovoMCP · The open computational chemistry engine</title>
-<meta name="description" content="Founder of NovoMCP, the open computational chemistry engine for drug discovery and materials science. Apache-2.0, MCP + REST, 69 tools. Previously: reinforcement-learning agents for autonomous discovery in high-stakes manufacturing.">
+<meta name="description" content="Founder of NovoMCP, the open computational chemistry engine for drug discovery and materials science. Apache-2.0, MCP + REST, 69 tools. Previously: reinforcement-learning agents for autonomous discovery in high-stakes manufacturing. Open to Product Manager and 0-to-1 product roles.">
 <meta property="og:title" content="Ari Harrison, Founder, NovoMCP">
 <meta property="og:description" content="The system between a foundation model and a decision that matters. Building the open computational chemistry engine, under real constraints.">
 <meta property="og:type" content="website">
@@ -77,6 +77,7 @@
   .hero h1 .cy{color:var(--signal)}
   .hero .lede{max-width:62ch;color:var(--soft);font-size:16.5px;line-height:1.75}
   .hero .lede b{color:var(--ink);font-weight:600}
+  .hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--ink);margin-top:22px;max-width:62ch;line-height:1.7}
   .hero-links{display:flex;flex-wrap:wrap;gap:22px;margin-top:36px}
   .hero-links a{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--soft);padding-bottom:5px;border-bottom:1px solid var(--line)}
   .hero-links a:hover{color:var(--signal);border-bottom-color:var(--signal)}
@@ -219,7 +220,7 @@
         <li><a href="#writing">Writing</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <span class="status-pill"><span class="dot"></span> Open to leadership roles</span>
+      <span class="status-pill"><span class="dot"></span> Open to PM &amp; 0-to-1 product roles</span>
       <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -231,6 +232,7 @@
     <div class="eyebrow tag rev">Founder <b>·</b> NovoMCP <b>·</b> the open computational chemistry engine</div>
     <h1 class="rev">The system between a model<br>and a decision that <span class="cy">matters.</span></h1>
     <p class="lede rev">Getting a model to say something is easy. Building the system so its answer can be acted on is the work: safely, correctly, repeatedly, with a record of what happened. <b>NovoMCP is what I built:</b> the open computational chemistry engine, MCP + REST, Apache-2.0, boots with zero external services. Before it, reinforcement-learning agents for autonomous discovery in high-stakes manufacturing. The domain changed; the systems thinking did not.</p>
+    <p class="sub rev">Open to Product Manager and 0-to-1 product leadership roles. Product decisions, systems that make models actionable, and domain-specific tooling.</p>
 
     <div class="hero-links rev">
       <a href="https://github.com/ariharrisonlab" target="_blank" rel="noopener">GitHub ↗</a>
@@ -276,7 +278,7 @@
       </div>
       <div class="row rev">
         <div class="rk">Open to</div>
-        <div class="rv"><b>Product, AI, and 0-to-1 leadership conversations.</b> San Francisco / Bay Area or remote. Production AI systems, MCP-shaped infrastructure, and applied AI where correctness is the requirement. <a href="#contact">Reach me ↓</a></div>
+        <div class="rv"><b>Product Manager and 0-to-1 product leadership roles.</b> San Francisco / Bay Area or remote. Production AI systems, MCP-shaped infrastructure, and applied AI where correctness is the requirement. <a href="#contact">Reach me ↓</a></div>
       </div>
     </div>
   </section>
@@ -287,6 +289,7 @@
       <div class="about-text rev">
         <p>The interesting problem is not getting a model to <em>say</em> something. It is building the system around the model so its output can be acted on: safely, correctly, repeatedly, with a record of what happened. That is the work.</p>
         <p><b>NovoMCP is what I built.</b> One computational chemistry engine, 69 in-silico tools across ADMET, docking, molecular dynamics, quantum chemistry, structure prediction, and compliance, that speaks both <b>MCP</b> (Claude Desktop, Cursor, Codex, Zed, any MCP-compatible assistant) and <b>REST</b> (any pipeline that posts JSON). Two ways to run it: self-host under Apache-2.0 on your own hardware, or have NovoMCP set it up on your infrastructure, under a branded subdomain, with the hosted FAVES compliance API and FEP alongside. Same engine either way.</p>
+        <p><b>The product work, named plainly.</b> Discovery: the core problem was never model accuracy; it was that model output could not be acted on safely, so the product became the system around the model. Prioritization: what to build, what to cut (the autonomous campaign system), and what to delay. Go-to-market: an open engine for adoption, and a deployment service and hosted compliance API as the paid path. Constraints optimized for: unit economics (scale-to-zero), trust (human-in-the-loop, an audit trail on every run), and adoption (clone and run, no account).</p>
         <p>Engine, never platform (positioning call). Scale-to-zero by default (unit-economics call). Human-in-the-loop via MCP elicitation, not an autonomous agent on someone else's molecules (trust call). Open-sourced as an engine, not a hosted product (moat call: the moat is FAVES compliance, FEP, and the deployment service, not the code or the models). <a href="portfolio.html">See the full product portfolio →</a></p>
         <p><b>Before NovoMCP:</b> reinforcement-learning agents for autonomous discovery in high-stakes manufacturing. The systems ran continuously, diagnosed their own failures, and improved without intervention. Different domain, same problem shape. The agent is not the product; the system that makes the agent safe to deploy is the product. That is the throughline.</p>
       </div>
@@ -309,7 +312,7 @@
   </section>
 
   <section id="decisions">
-    <div class="field-label rev"><span class="idx">§</span> Decisions <span class="cmt">// how I decide what to build, cut, and delay</span></div>
+    <div class="field-label rev"><span class="idx">§</span> Decisions <span class="cmt">// selected product decisions from building and shipping NovoMCP</span></div>
     <div class="decks">
       <div class="deck rev">
         <div class="dh"><span class="dcat">Distribution · Moat</span><span class="dnum">D-01</span></div>
@@ -347,6 +350,24 @@
         <p class="body">EKS API, Aurora, Redis, internal ALBs: all private. The catch is that GitHub-hosted CI runners can't reach any of it, so every <code>kubectl apply</code> times out. Rather than poke holes, I committed to <b>build on GH runners, deploy via OIDC → SSM → bastion</b>, applied uniformly across every NovoServices repo.</p>
         <div class="res"><span>RESULT →</span> The pattern does not re-litigate per port. New services pick up a pre-wired bastion for free. Security posture is a default, not an exception.</div>
       </div>
+    </div>
+  </section>
+
+  <section id="practice">
+    <div class="field-label rev"><span class="idx">§</span> Product practice <span class="cmt">// the work, in PM terms, with the evidence</span></div>
+    <div class="bounds rev">
+      <div class="bhead">
+        <h3>Solo, end to end.</h3>
+        <p>No team to delegate to, so every product function ran through one person. Each line points at where it shows up on this page. <a href="portfolio.html">Product case studies (problem, decision, outcome) →</a></p>
+      </div>
+      <ul class="blist">
+        <li><span class="bt">Problem framing</span>Reframed the product from "better predictions" to "predictions that can be acted on": compliance, provenance, and a record of each run (About).</li>
+        <li><span class="bt">Prioritization</span>Cut the autonomous campaign system for human-in-the-loop gates (D-03); retired the hosted platform to focus on the engine and two paid services (D-01).</li>
+        <li><span class="bt">Go-to-market</span>Open-source distribution, a positioning noun held across every surface, and pricing collapsed from a four-tier credit ladder to two paths (D-01, D-02, D-05).</li>
+        <li><span class="bt">Unit economics</span>Scale-to-zero compute by default, so cost tracks use rather than idle capacity (D-04).</li>
+        <li><span class="bt">Trust, regulated domain</span>FAVES compliance screening with stated limits, published validation, and an audit trail on every run (Boundaries).</li>
+        <li><span class="bt">Execution</span>Engineering, infrastructure, docs, the marketing site, partner work with NVIDIA, and launch content, shipped as one person (Status).</li>
+      </ul>
     </div>
   </section>
 
@@ -504,7 +525,7 @@
   <section id="contact">
     <div class="field-label rev"><span class="idx">§</span> Contact</div>
     <div class="contact rev">
-      <p class="big">Open to product, AI, and 0-to-1 leadership conversations.</p>
+      <p class="big">Open to Product Manager and 0-to-1 product leadership roles.</p>
       <div class="clinks">
         <a href="mailto:ariharrisonlab@gmail.com">ariharrisonlab@gmail.com</a>
         <a href="https://www.linkedin.com/in/ariharrisonlab/" target="_blank" rel="noopener">LinkedIn ↗</a>

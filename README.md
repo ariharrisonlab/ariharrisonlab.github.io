@@ -8,7 +8,7 @@ The interesting problem isn't getting a model to say something. It's building th
 
 - Building: **NovoMCP** — the open computational chemistry engine. Open-sourced July 2026 under Apache-2.0, shipped through **v1.4.3**. MCP + REST, 69 tools. Clone it and it boots with zero external services — no auth, no account, no API key. Self-host it, or have NovoMCP set it up on your infrastructure under a branded subdomain. Solo founder.
 - Shipped: **[Novo Station](https://novomcp.com/novo-station)** — the NovoMCP compute core on NVIDIA DGX Spark, one GB10 desktop system from one compose file. About 0.4× a datacenter L40S's raw MD speed, 1.2–1.5× its throughput per watt. [Field report](https://www.novomcp.com/news/what-actually-breaks-when-you-port-a-chemistry-stack-to-dgx-spark).
-- Open to: **product, AI, and 0-to-1 leadership conversations.** Bay Area or remote. Particularly interested in production AI systems, MCP-shaped infrastructure, and applied AI at companies where correctness matters.
+- Open to: **Product Manager and 0-to-1 product leadership roles.** Bay Area or remote. Particularly interested in production AI systems, MCP-shaped infrastructure, and applied AI at companies where correctness matters.
 - Contact: ariharrisonlab@gmail.com · [LinkedIn](https://www.linkedin.com/in/ariharrisonlab/)
 - Backed by: NVIDIA Inception · AWS Activate · Microsoft Founders Hub
 
