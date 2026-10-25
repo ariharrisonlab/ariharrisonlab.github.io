@@ -17,7 +17,7 @@ The interesting problem isn't getting a model to say something. It's building th
 The engine is the product. The surface is how you reach it. Each surface is a thin, backend-configurable client — point it at a local engine (default) or a hosted one (with a key).
 
 - **MCP**: The chat surface, one endpoint on the open engine (`localhost:8018/mcp`). The hosted Novo + Novo Compute servers were retired at the open-source launch. [Engine](https://novomcp.com/engine) · [Novo Compute](https://novomcp.com/novo-compute)
-- **REST API**: ships in the open engine (`localhost:8018`). Single endpoint shape (`POST /v1/tools/{name}`), OpenAPI 3.1 catalog. `api.novomcp.com` hosts the two closed services, FAVES and FEP; hosted billing was retired with the open-source release. [API docs](https://novomcp.com/api)
+- **REST API**: ships in the open engine (`localhost:8018`). Single endpoint shape (`POST /mcp/tools/{name}`), OpenAPI 3.1 catalog. `api.novomcp.com` hosts the two closed services, FAVES and FEP; hosted billing was retired with the open-source release. [API docs](https://novomcp.com/api)
 - **NovoWorkbench**: The workstation. Native desktop (macOS + Windows), local RDKit + offline alert screening, bring-your-own-LLM. Design-partner preview; ships as OSS in v1.5.x.
 - **Chrome extension**: Hover any SMILES for ADMET / FAVES. Ships as a [sideload](https://github.com/NovoMCP/novomcp-chrome-sideload) pointed at your own engine.
 - **Word add-in**: Inline SMILES profiling in manuscripts and grants. Private beta.

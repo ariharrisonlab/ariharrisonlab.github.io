@@ -23,7 +23,7 @@
   :root{
     --ground:#0B0E11; --panel:#12171B; --panel-2:#0E1317;
     --line:#20272D; --line-soft:#161C21;
-    --ink:#E8ECEE; --soft:#949EA4; --mute:#59636A;
+    --ink:#E8ECEE; --soft:#AAB3B8; --mute:#7C878E;
     --signal:#35D2C3; --signal-dim:#1E8079;
     --sans:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
     --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -32,7 +32,7 @@
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.65;font-weight:400;-webkit-font-smoothing:antialiased;
-    background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);background-size:64px 64px;background-position:-1px -1px}
+    background-image:linear-gradient(rgba(22,28,33,.55) 1px,transparent 1px),linear-gradient(90deg,rgba(22,28,33,.55) 1px,transparent 1px);background-size:64px 64px;background-position:-1px -1px}
   .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
   a{color:var(--signal);text-decoration:none;transition:color .3s var(--ease)}
   a:hover{color:var(--ink)}
@@ -82,17 +82,17 @@
   /* CASES */
   .case{border-top:1px solid var(--line);padding:52px 0 8px}
   .chead{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:10px;flex-wrap:wrap}
-  .ctag{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--signal);margin-bottom:12px}
+  .ctag{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--signal);margin-bottom:12px}
   .ctitle{font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:-.025em;line-height:1.08;color:var(--ink)}
   .ctitle em{font-style:normal;color:var(--signal)}
-  .spill{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border:1px solid var(--line);color:var(--soft);white-space:nowrap;flex-shrink:0}
+  .spill{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border:1px solid var(--line);color:var(--soft);white-space:nowrap;flex-shrink:0}
   .spill.live{background:var(--signal);color:#052a27;border-color:var(--signal);font-weight:500}
   .coneliner{color:var(--soft);font-size:15.5px;line-height:1.6;max-width:76ch;margin:18px 0 28px}
   .qgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
   .qcell{background:var(--panel-2);padding:24px 26px;transition:background .35s var(--ease)}
   .qcell:hover{background:var(--panel)}
-  .qcell h4{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
-  .qcell p{font-size:13.5px;color:var(--soft);line-height:1.7}
+  .qcell h4{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+  .qcell p{font-size:14.5px;color:var(--soft);line-height:1.7}
   .qcell p+p{margin-top:10px}
   .qcell b{color:var(--ink);font-weight:600}
   .qcell em{font-style:italic;color:var(--ink)}
@@ -100,7 +100,7 @@
   .proof{margin-top:1px;border:1px solid var(--line);border-left:2px solid var(--signal);background:linear-gradient(180deg,var(--panel-2),transparent);padding:26px 30px}
   .proof .ph{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--signal);margin-bottom:12px}
   .proof .pt{font-size:18px;font-weight:700;letter-spacing:-.02em;color:var(--ink);line-height:1.3;margin-bottom:12px}
-  .proof p{font-size:13.5px;color:var(--soft);line-height:1.7;max-width:80ch}
+  .proof p{font-size:14.5px;color:var(--soft);line-height:1.7;max-width:80ch}
   .proof p+p{margin-top:10px}
   .proof b{color:var(--ink);font-weight:600}
   .pstats{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:36px}
@@ -108,8 +108,10 @@
   .pstat .pn{font-family:var(--mono);font-size:22px;font-weight:500;color:var(--signal);font-variant-numeric:tabular-nums}
   .pstat .pl{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
 
+  .reflect{border-top:none}
+  .reflect h4{color:var(--signal)}
   .cfoot{margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px}
-  .cfoot .cfl{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+  .cfoot .cfl{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
   .cfoot a{font-family:var(--mono);font-size:12px;letter-spacing:.02em;padding-bottom:4px;border-bottom:1px solid var(--line)}
   .cfoot a:hover{border-bottom-color:var(--signal)}
 
@@ -195,7 +197,7 @@
   <section class="hero" id="top">
     <div class="eyebrow tag rev">Portfolio <b>·</b> one engine, every surface</div>
     <h1 class="rev">The open engine, and every<br>surface that <span class="cy">reaches it.</span></h1>
-    <p class="lede rev">Product portfolio for <a href="https://novomcp.com/engine" target="_blank" rel="noopener">NovoMCP</a>, the open computational chemistry engine, open-sourced July 2026 under Apache-2.0 and shipped through v1.4.3. Clone it and it boots with zero external services: no auth, no account, no API key. One engine (MCP + REST, <b>69 tools</b>), one 11-stage discovery funnel, and the surfaces that reach it: chat, code, desktop, browser, editor, and the bundled dashboard. Each case below is a product decision: where it lives, who it's for, what trade-off it pays. The problem, the call, the build, the outcome.</p>
+    <p class="lede rev">Product portfolio for <a href="https://novomcp.com/engine" target="_blank" rel="noopener">NovoMCP</a>, the open computational chemistry engine, open-sourced July 2026 under Apache-2.0 and shipped through v1.4.3. Clone it and it boots with zero external services: no auth, no account, no API key. One engine (MCP + REST, <b>69 tools</b>), one 11-stage discovery funnel, and the surfaces that reach it: chat, code, desktop, browser, editor, and the bundled dashboard. Each case below is a product decision: where it lives, who it's for, what trade-off it pays. The problem, the call, the build, the outcome, then my role and what I'd do differently.</p>
     <div class="chars">
       <div class="char rev"><span class="k">01</span><span class="v">Tools in the engine</span><span class="n">69</span></div>
       <div class="char rev"><span class="k">02</span><span class="v">External services to boot</span><span class="n">0</span></div>
@@ -211,21 +213,139 @@
 
     <article class="case rev">
       <div class="chead">
-        <div><div class="ctag">01 · MCP connector · AI assistants</div><h2 class="ctitle">Novo &amp; Novo Compute. <em>The chat surface.</em></h2></div>
+        <div><div class="ctag">01 · REST API · your own code</div><h2 class="ctitle">The REST API. <em>Bring your own model.</em></h2></div>
+        <span class="spill live">Live · open source</span>
+      </div>
+      <p class="coneliner">Call any of the 69 tools from your own code, or wire them into your own agent. One REST surface, shipped in the open engine, with OpenAPI 3.1 as the source of truth.</p>
+      <div class="qgrid">
+        <div class="qcell"><h4>The Problem</h4><p>Some teams already have their own AI agent, their own automation, their own pipeline. They don't want OAuth flows, they don't want MCP. They want an HTTP call and a JSON body.</p></div>
+        <div class="qcell"><h4>The Decision</h4><p><b>One endpoint shape, not one route per tool.</b> Every tool is <code>POST /mcp/tools/{name}</code> on the engine. No bespoke per-tool routes to design, document, or version. The tool catalog <em>is</em> the live OpenAPI 3.1 spec, so there are no separate docs to drift.</p><p>The same backend serves MCP and REST; zero code duplicated for the second surface.</p></div>
+        <div class="qcell"><h4>The Build</h4><p>FastAPI, with the OpenAPI spec generated from the tool registry and auth shared with the MCP surface. It ran first as a hosted, metered gateway. Hosted billing was retired at the open-source launch; the same surface now ships in the open engine at <code>localhost:8018</code>, and <code>api.novomcp.com</code> hosts only the FAVES compliance API and FEP.</p></div>
+        <div class="qcell"><h4>The Outcome</h4><p>Live in every self-hosted engine. Engineers who don't want a chat assistant can curl their way to ADMET in one command, against their own engine. The OpenAPI spec also feeds custom GPTs, agent frameworks, and Postman collections: same engine, no extra maintenance.</p></div>
+      </div>
+      <div class="qgrid reflect">
+        <div class="qcell"><h4>My role</h4><p>Owned it end to end: the endpoint design, the build, and the docs.</p></div>
+        <div class="qcell"><h4>What I'd do differently</h4><p>I built credit accounting and a billing path before demand justified them, and both were retired at the open-source launch. Next time: ship the open surface first and add metering when a paying deployment asks for it.</p></div>
+      </div>
+      <div class="cfoot">
+        <span class="cfl">Live →</span>
+        <a href="https://novomcp.com/api" target="_blank" rel="noopener">API overview</a>
+        <a href="https://docs.novomcp.com/" target="_blank" rel="noopener">API docs</a>
+      </div>
+    </article>
+
+    <article class="case rev">
+      <div class="chead">
+        <div><div class="ctag">02 · Control room · Bundled dashboard</div><h2 class="ctitle">The bundled dashboard. <em>Ships with the engine.</em></h2></div>
+        <span class="spill live">Live</span>
+      </div>
+      <p class="coneliner">A minimal Next.js dashboard bundled with the open engine: auth, API keys, usage, and pipeline job monitoring. Runs on localhost when you self-host; on your branded subdomain when NovoMCP sets it up for you.</p>
+      <div class="qgrid">
+        <div class="qcell"><h4>The Problem</h4><p>Every surface needs the same answers: who is this key, what can it call, what has it called, what jobs are outstanding. Built per-surface, that is every surface reimplementing identity and observability. Built as a hosted-only product, it disappears when the hosted product does, as it did when the AWS shutdown consolidated the hosted stack down to the open engine.</p></div>
+        <div class="qcell"><h4>The Decision</h4><p><b>Bundle the dashboard with the engine itself.</b> No separate hosted product. The dashboard ships inside the OSS repo (<code>frontend-nextjs/</code>), starts alongside the engine, points at <code>localhost</code> by default, and grows with the engine on the same release train. Self-hosted operators get identity, audit, and jobs UI out of the box.</p></div>
+        <div class="qcell"><h4>The Build</h4><p>Next.js, in the OSS repo at <code>frontend-nextjs/</code>, reading from the engine's REST surface. The same UI runs on <code>localhost</code> or on a branded subdomain; only the backing store changes.</p></div>
+        <div class="qcell"><h4>The Outcome</h4><p>Minimal today, growing each release. A fresh <code>git clone</code> gives you the engine plus a UI to watch it, with no separate install. Deployments NovoMCP sets up get the same UI on their branded subdomain, no divergent build. New surfaces plug into the same identity and audit path the dashboard already speaks.</p></div>
+      </div>
+      <div class="qgrid reflect">
+        <div class="qcell"><h4>My role</h4><p>Made the bundling call and built the frontend.</p></div>
+        <div class="qcell"><h4>What I'd do differently</h4><p>It started as a hosted product and had to be rebuilt to ship with the engine. I'd bundle it with the engine from day one.</p></div>
+      </div>
+      <div class="cfoot">
+        <span class="cfl">Live →</span>
+        <a href="https://github.com/NovoMCP/novomcp/tree/main/frontend-nextjs" target="_blank" rel="noopener">Source: frontend-nextjs/</a>
+        <a href="https://novomcp.com/engine" target="_blank" rel="noopener">Install the engine</a>
+      </div>
+    </article>
+
+    <article class="case rev">
+      <div class="chead">
+        <div><div class="ctag">03 · Browser · Chrome extension</div><h2 class="ctitle">Hover any SMILES. <em>Get the profile.</em></h2></div>
+        <span class="spill">Sideload</span>
+      </div>
+      <p class="coneliner">Profile cards on PubChem, ChEMBL, and preprints: ADMET, compliance, and similarity search, on the page you're already on.</p>
+      <div class="qgrid">
+        <div class="qcell"><h4>The Problem</h4><p>Pharma and academic chemists live on PubChem / ChEMBL / DrugBank / preprint sites for half their day. Every "go open the workbench, paste this in" is friction. The value has to come <em>to</em> the page they are already on.</p></div>
+        <div class="qcell"><h4>The Decision</h4><p><b>Show value before asking for a login.</b> Hover-card profiling calls the engine directly (a local engine by default in the sideload build), with no account required for the basic profile read. The upgrade path is the side-panel advanced-compute tab and a "Continue in AI" deep-link.</p><p>Whitelisted hosts only, with no opportunistic SMILES detection across the open web. A privacy and safety call, not a technical one.</p></div>
+        <div class="qcell"><h4>The Build</h4><p>Manifest V3, content scripts on whitelisted molecular databases and preprint servers, a side panel, and a "Continue in AI" handoff of the current SMILES to any MCP-connected assistant.</p></div>
+        <div class="qcell"><h4>The Outcome</h4><p>Ships as a <a href="https://github.com/NovoMCP/novomcp-chrome-sideload" target="_blank" rel="noopener">sideload</a>: load it unpacked from the repo and point it at your own engine. "Continue in AI" hands off to the MCP surface for users who want to keep working in their assistant.</p></div>
+      </div>
+      <div class="qgrid reflect">
+        <div class="qcell"><h4>My role</h4><p>Product scope (which sites, what shows before a login), the build, and the move to a sideload.</p></div>
+        <div class="qcell"><h4>What I'd do differently</h4><p>The first build hardcoded the hosted API and had to be reworked into a configurable sideload. I'd make the engine URL configurable from the start.</p></div>
+      </div>
+      <div class="cfoot">
+        <span class="cfl">Sideload →</span>
+        <a href="https://github.com/NovoMCP/novomcp-chrome-sideload" target="_blank" rel="noopener">Sideload repo</a>
+        <a href="https://novomcp.com/extensions" target="_blank" rel="noopener">Extensions</a>
+      </div>
+    </article>
+
+    <article class="case rev">
+      <div class="chead">
+        <div><div class="ctag">04 · Editor · Word add-in</div><h2 class="ctitle">Profile SMILES <em>where you write.</em></h2></div>
+        <span class="spill">Private beta</span>
+      </div>
+      <p class="coneliner">Manuscripts, protocols, grants, regulatory writeups. SMILES detected anywhere in the document, profile cards in the task pane, ADMET + FAVES tables inserted as formatted Word tables, inside the editor.</p>
+      <div class="qgrid">
+        <div class="qcell"><h4>The Problem</h4><p>The pharma writeup happens in Word: grants, IND sections, protocols, manuscripts. Compounds get pasted in early and never profiled until much later, often after review. By then the wrong number is everywhere.</p></div>
+        <div class="qcell"><h4>The Decision</h4><p><b>Inline, but private-beta first.</b> The hard part is not detecting SMILES in Word; it is the UX of an inline assistant that stays out of the way. AppSource-style review locks in a UX before validation; sideload during beta keeps the iteration loop fast.</p><p>Insert-as-table, not just preview, so the screening result becomes part of the document rather than a sidebar fact.</p></div>
+        <div class="qcell"><h4>The Build</h4><p>An Office.js add-in with a statically hosted manifest, sideloaded during the beta.</p></div>
+        <div class="qcell"><h4>The Outcome</h4><p>Private beta. Sideload the manifest at <code>addin.novomcp.com/manifest.xml</code>. AppSource submission gated on UX validation with the beta cohort.</p></div>
+      </div>
+      <div class="qgrid reflect">
+        <div class="qcell"><h4>My role</h4><p>Scoped the beta and built the add-in and its hosting.</p></div>
+        <div class="qcell"><h4>What I'd do differently</h4><p>I set up production manifest hosting before the beta had validated the UX. I'd validate on a sideloaded manifest first and build the hosting after.</p></div>
+      </div>
+      <div class="cfoot">
+        <span class="cfl">Beta →</span>
+        <a href="https://novomcp.com/sales-inquiry" target="_blank" rel="noopener">Request beta access</a>
+        <a href="https://novomcp.com/extensions" target="_blank" rel="noopener">Extensions</a>
+      </div>
+    </article>
+
+    <article class="case rev">
+      <div class="chead">
+        <div><div class="ctag">05 · Workstation · NovoWorkbench</div><h2 class="ctitle">The workbench. <em>On your machine.</em></h2></div>
+        <span class="spill">Design-partner preview</span>
+      </div>
+      <p class="coneliner">The molecule canvas, 3D viewers, and discovery funnel as a native desktop for macOS and Windows. Local RDKit, offline alert screening, bring-your-own-LLM chat. Ships as OSS in v1.5.x.</p>
+      <div class="qgrid">
+        <div class="qcell"><h4>The Problem</h4><p>Plenty of researchers don't have API skills, don't use Claude, and don't want a chat to do their job. They want an app. Some live in regulated or offline environments where local-first is non-negotiable. The chat and REST surfaces don't reach them.</p></div>
+        <div class="qcell"><h4>The Decision</h4><p>Ship the engine as a <b>native desktop workbench</b>, not a browser SPA behind a dashboard. Local RDKit and alert screening (PAINS + Lipinski + controlled-substance flags) run without a network; bring-your-own-LLM chat routes to the provider you configure. The cloud runtime was retired with the OSS launch; the desktop rebuild ships as OSS in v1.5.x.</p></div>
+        <div class="qcell"><h4>The Build</h4><p>A Tauri desktop app with the Python and RDKit stack bundled inside, Apple-notarized for macOS. The v1.5.x rebuild points at any engine URL, self-hosted or set up by NovoMCP.</p></div>
+        <div class="qcell"><h4>The Outcome</h4><p>Design-partner preview live for macOS and Windows. Ships as OSS in v1.5.x per the product roadmap. Access is via <code>/sales-inquiry</code> until the OSS release.</p></div>
+      </div>
+      <div class="qgrid reflect">
+        <div class="qcell"><h4>My role</h4><p>Product direction (local-first, bring-your-own-LLM), the desktop build, and notarization.</p></div>
+        <div class="qcell"><h4>What I'd do differently</h4><p>The cloud runtime was retired and the desktop is being rebuilt. Offline and regulated users were the reason for this surface, so I'd have committed to local-first from the start.</p></div>
+      </div>
+      <div class="cfoot">
+        <span class="cfl">Preview →</span>
+        <a href="https://novomcp.com/novoworkbench" target="_blank" rel="noopener">Product page</a>
+        <a href="https://novomcp.com/sales-inquiry" target="_blank" rel="noopener">Request early access</a>
+      </div>
+    </article>
+
+    <article class="case rev">
+      <div class="chead">
+        <div><div class="ctag">06 · MCP connector · AI assistants</div><h2 class="ctitle">Novo &amp; Novo Compute. <em>The chat surface.</em></h2></div>
         <span class="spill">Retired · now open source</span>
       </div>
       <p class="coneliner">Two hosted MCP servers ran the full discovery funnel inside Claude, ChatGPT, Gemini, and Cursor, with human-in-the-loop confirmation at each stage. Retired when the engine went open source; the same MCP surface now ships in the open engine.</p>
       <div class="qgrid">
         <div class="qcell"><h4>The Problem</h4><p>Chemists already live in Claude and ChatGPT. Asking them to leave their assistant for a separate product is adoption death. But "an MCP server" is not a product either; it is a protocol. The product call is what you ship through it.</p></div>
         <div class="qcell"><h4>The Decision</h4><p><b>Two MCP servers, not one.</b> <code>Novo</code> exposed core tools on every tier including the free preview; <code>Novo Compute</code> exposed paid GPU/quantum tools. Different key prefixes (<code>nmcp_</code> vs <code>ncmcp_</code>) so a leaked core key could not burn GPU budget.</p><p>Same Docker image; one env flag (<code>NOVO_SERVER_MODE</code>) toggled the tool catalog. Zero duplicated code, a separate governance surface.</p></div>
-        <div class="qcell"><h4>The Build</h4><p>FastAPI MCP server, OAuth + RFC 8693 token exchange (a separate <code>novomcp-auth</code> service), Redis-cached key validation with a 5-minute TTL and an in-memory fallback so dashboard outages didn't take MCP down.</p><p>Funnel stages use MCP elicitation, so the assistant prompts the user at each gate. Never silent autonomy on someone else's compounds. That design carried into the open engine unchanged.</p></div>
+        <div class="qcell"><h4>The Build</h4><p>A FastAPI MCP server with token-exchange auth and cached key checks, so a dashboard outage never took MCP down. Funnel stages used MCP elicitation, so the assistant asked the user at each gate. That design carried into the open engine unchanged.</p></div>
         <div class="qcell"><h4>The Outcome</h4><p>Ran in production on Claude AI, Claude Code, Cursor, ChatGPT (Plus / Pro / Business), and Gemini, serving <b>69 tools</b> across the two-server split: ADMET, docking, MD, QM, structure prediction, materials, plus the hosted FAVES compliance API for regulated pipelines.</p><p>Retired when the engine went open source. The hosted servers came down, and both toolsets now come from one MCP endpoint on the open engine, at <code>localhost:8018/mcp</code> when self-hosted or a branded subdomain when NovoMCP sets it up for you.</p></div>
+      </div>
+      <div class="qgrid reflect">
+        <div class="qcell"><h4>My role</h4><p>Designed the two-server model, built the auth and funnel, and ran it in production across five clients.</p></div>
+        <div class="qcell"><h4>What I'd do differently</h4><p>I built a tiered, two-server hosted model before testing whether hosting was the business. Open distribution won. I'd test it first and keep the hosted layer thin.</p></div>
       </div>
       <div class="proof">
         <div class="ph">Proof · Production MCP at scale, before the open release</div>
         <div class="pt">An MCP server is easy. Running one in production, across every major client, was the actual work.</div>
-        <p>A lot of teams now ship "an MCP server." What NovoMCP ran daily was harder: a <b>two-server governance model</b> on Anthropic's protocol with <b>OAuth 2.1 + RFC 8693 token exchange</b> for the paid tier, scoped Bearer keys with Redis-cached validation (5-minute TTL plus an in-memory fallback so the dashboard going down doesn't take MCP down with it), <b>MCP elicitation</b> driving an 11-stage human-in-the-loop funnel, and a separate identity service (<code>novomcp-auth</code>) that issues the exchange tokens.</p>
-        <p>It ran <b>across every major MCP client</b>: Claude AI (web + desktop), Claude Code, Cursor, ChatGPT (Plus / Pro / Business), Gemini. One backend, one tool catalog, one billing path behind all of them.</p>
+        <p>A two-server governance model with token-exchange auth for the paid tier, scoped keys, and an 11-stage human-in-the-loop funnel, running daily across <b>Claude AI, Claude Code, Cursor, ChatGPT, and Gemini</b>: one backend, one tool catalog, one billing path behind all of them.</p>
         <div class="pstats">
           <div class="pstat"><span class="pn">2</span><span class="pl">MCP servers, scoped</span></div>
           <div class="pstat"><span class="pn">69</span><span class="pl">tools served</span></div>
@@ -238,101 +358,6 @@
         <a href="https://novomcp.com/engine" target="_blank" rel="noopener">The engine</a>
         <a href="https://novomcp.com/novo-compute" target="_blank" rel="noopener">Novo Compute</a>
         <a href="https://github.com/NovoMCP/novomcp" target="_blank" rel="noopener">Repo</a>
-      </div>
-    </article>
-
-    <article class="case rev">
-      <div class="chead">
-        <div><div class="ctag">02 · REST API · your own code</div><h2 class="ctitle">The REST API. <em>Bring your own model.</em></h2></div>
-        <span class="spill live">Live · open source</span>
-      </div>
-      <p class="coneliner">Call any of the 69 tools from your own code, or wire them into your own agent. One REST surface, shipped in the open engine, with OpenAPI 3.1 as the source of truth.</p>
-      <div class="qgrid">
-        <div class="qcell"><h4>The Problem</h4><p>Some teams already have their own AI agent, their own automation, their own pipeline. They don't want OAuth flows, they don't want MCP. They want an HTTP call and a JSON body.</p></div>
-        <div class="qcell"><h4>The Decision</h4><p><b>One endpoint shape, not one route per tool.</b> Every tool is <code>POST /v1/tools/{name}</code>. No bespoke per-tool routes to design, document, or version. The tool catalog <em>is</em> the live OpenAPI 3.1 spec, so there are no separate docs to drift.</p><p>The same backend serves MCP and REST; zero code duplicated for the second surface.</p></div>
-        <div class="qcell"><h4>The Build</h4><p>FastAPI, with OpenAPI 3.1 generated from the tool registry and auth shared with the MCP surface. It ran first as a hosted gateway at <code>api.novomcp.com</code>, with rate limits and credit accounting on an Aurora-backed billing path.</p><p>Hosted billing was retired with the open-source release. The same REST surface now ships in the open engine at <code>localhost:8018</code>, and <code>api.novomcp.com</code> now hosts the two closed services: the FAVES compliance API and FEP.</p></div>
-        <div class="qcell"><h4>The Outcome</h4><p>Live in every self-hosted engine. Engineers who don't want a chat assistant can curl their way to ADMET in one command, against their own engine. The OpenAPI spec also feeds custom GPTs, agent frameworks, and Postman collections: same engine, no extra maintenance.</p></div>
-      </div>
-      <div class="cfoot">
-        <span class="cfl">Live →</span>
-        <a href="https://novomcp.com/api" target="_blank" rel="noopener">API overview</a>
-        <a href="https://docs.novomcp.com/" target="_blank" rel="noopener">API docs</a>
-      </div>
-    </article>
-
-    <article class="case rev">
-      <div class="chead">
-        <div><div class="ctag">03 · Workstation · NovoWorkbench</div><h2 class="ctitle">The workbench. <em>On your machine.</em></h2></div>
-        <span class="spill">Design-partner preview</span>
-      </div>
-      <p class="coneliner">The molecule canvas, 3D viewers, and discovery funnel as a native desktop for macOS and Windows. Local RDKit, offline alert screening, bring-your-own-LLM chat. Ships as OSS in v1.5.x.</p>
-      <div class="qgrid">
-        <div class="qcell"><h4>The Problem</h4><p>Plenty of researchers don't have API skills, don't use Claude, and don't want a chat to do their job. They want an app. Some live in regulated or offline environments where local-first is non-negotiable. The chat and REST surfaces don't reach them.</p></div>
-        <div class="qcell"><h4>The Decision</h4><p>Ship the engine as a <b>native desktop workbench</b>, not a browser SPA behind a dashboard. Local RDKit and alert screening (PAINS + Lipinski + controlled-substance flags) run without a network; bring-your-own-LLM chat routes to the provider you configure. The cloud runtime was retired with the OSS launch; the desktop rebuild ships as OSS in v1.5.x.</p></div>
-        <div class="qcell"><h4>The Build</h4><p>Tauri (Rust + system webview), Python sidecar bundled with the binary so the RDKit stack ships inside the app. <b>Apple Developer ID notarized</b> (team <code>8N9K9B7Y69</code>), Gatekeeper-accepted. The v1.5.x rebuild routes engine calls to a configurable engine URL, self-hosted or set up by NovoMCP, with no hosted-dashboard dependency.</p></div>
-        <div class="qcell"><h4>The Outcome</h4><p>Design-partner preview live for macOS and Windows. Ships as OSS in v1.5.x per the product roadmap. Access is via <code>/sales-inquiry</code> until the OSS release.</p></div>
-      </div>
-      <div class="cfoot">
-        <span class="cfl">Preview →</span>
-        <a href="https://novomcp.com/novoworkbench" target="_blank" rel="noopener">Product page</a>
-        <a href="https://novomcp.com/sales-inquiry" target="_blank" rel="noopener">Request early access</a>
-      </div>
-    </article>
-
-    <article class="case rev">
-      <div class="chead">
-        <div><div class="ctag">04 · Browser · Chrome extension</div><h2 class="ctitle">Hover any SMILES. <em>Get the profile.</em></h2></div>
-        <span class="spill">Sideload</span>
-      </div>
-      <p class="coneliner">Profile cards on PubChem, ChEMBL, and preprints: ADMET, compliance, and similarity search, on the page you're already on.</p>
-      <div class="qgrid">
-        <div class="qcell"><h4>The Problem</h4><p>Pharma and academic chemists live on PubChem / ChEMBL / DrugBank / preprint sites for half their day. Every "go open the workbench, paste this in" is friction. The value has to come <em>to</em> the page they are already on.</p></div>
-        <div class="qcell"><h4>The Decision</h4><p><b>Show value before asking for a login.</b> Hover-card profiling calls the engine directly (a local engine by default in the sideload build), with no account required for the basic profile read. The upgrade path is the side-panel advanced-compute tab and a "Continue in AI" deep-link.</p><p>Whitelisted hosts only, with no opportunistic SMILES detection across the open web. A privacy and safety call, not a technical one.</p></div>
-        <div class="qcell"><h4>The Build</h4><p>Manifest V3, content scripts on whitelisted molecular databases and preprint servers, side-panel UI, and a "Continue in AI" deep-link that hands the current SMILES into any MCP-connected assistant via a session handoff.</p></div>
-        <div class="qcell"><h4>The Outcome</h4><p>Ships as a <a href="https://github.com/NovoMCP/novomcp-chrome-sideload" target="_blank" rel="noopener">sideload</a>: load it unpacked from the repo and point it at your own engine. "Continue in AI" hands off to the MCP surface for users who want to keep working in their assistant.</p></div>
-      </div>
-      <div class="cfoot">
-        <span class="cfl">Sideload →</span>
-        <a href="https://github.com/NovoMCP/novomcp-chrome-sideload" target="_blank" rel="noopener">Sideload repo</a>
-        <a href="https://novomcp.com/extensions" target="_blank" rel="noopener">Extensions</a>
-      </div>
-    </article>
-
-    <article class="case rev">
-      <div class="chead">
-        <div><div class="ctag">05 · Editor · Word add-in</div><h2 class="ctitle">Profile SMILES <em>where you write.</em></h2></div>
-        <span class="spill">Private beta</span>
-      </div>
-      <p class="coneliner">Manuscripts, protocols, grants, regulatory writeups. SMILES detected anywhere in the document, profile cards in the task pane, ADMET + FAVES tables inserted as formatted Word tables, inside the editor.</p>
-      <div class="qgrid">
-        <div class="qcell"><h4>The Problem</h4><p>The pharma writeup happens in Word: grants, IND sections, protocols, manuscripts. Compounds get pasted in early and never profiled until much later, often after review. By then the wrong number is everywhere.</p></div>
-        <div class="qcell"><h4>The Decision</h4><p><b>Inline, but private-beta first.</b> The hard part is not detecting SMILES in Word; it is the UX of an inline assistant that stays out of the way. AppSource-style review locks in a UX before validation; sideload during beta keeps the iteration loop fast.</p><p>Insert-as-table, not just preview, so the screening result becomes part of the document rather than a sidebar fact.</p></div>
-        <div class="qcell"><h4>The Build</h4><p>Office.js add-in. Manifest hosted statically at <code>addin.novomcp.com</code> (S3 + CloudFront + ACM, SSE-KMS-encrypted bucket with an explicit CloudFront <code>kms:Decrypt</code> grant on the CMK: a real gotcha that 403s the manifest silently if missed).</p></div>
-        <div class="qcell"><h4>The Outcome</h4><p>Private beta. Sideload the manifest at <code>addin.novomcp.com/manifest.xml</code>. AppSource submission gated on UX validation with the beta cohort.</p></div>
-      </div>
-      <div class="cfoot">
-        <span class="cfl">Beta →</span>
-        <a href="https://novomcp.com/sales-inquiry" target="_blank" rel="noopener">Request beta access</a>
-        <a href="https://novomcp.com/extensions" target="_blank" rel="noopener">Extensions</a>
-      </div>
-    </article>
-
-    <article class="case rev">
-      <div class="chead">
-        <div><div class="ctag">06 · Control room · Bundled dashboard</div><h2 class="ctitle">The bundled dashboard. <em>Ships with the engine.</em></h2></div>
-        <span class="spill live">Live</span>
-      </div>
-      <p class="coneliner">A minimal Next.js dashboard bundled with the open engine: auth, API keys, usage, and pipeline job monitoring. Runs on localhost when you self-host; on your branded subdomain when NovoMCP sets it up for you.</p>
-      <div class="qgrid">
-        <div class="qcell"><h4>The Problem</h4><p>Every surface needs the same answers: who is this key, what can it call, what has it called, what jobs are outstanding. Built per-surface, that is every surface reimplementing identity and observability. Built as a hosted-only product, it disappears when the hosted product does, as it did when the AWS shutdown consolidated the hosted stack down to the open engine.</p></div>
-        <div class="qcell"><h4>The Decision</h4><p><b>Bundle the dashboard with the engine itself.</b> No separate hosted product. The dashboard ships inside the OSS repo (<code>frontend-nextjs/</code>), starts alongside the engine, points at <code>localhost</code> by default, and grows with the engine on the same release train. Self-hosted operators get identity, audit, and jobs UI out of the box.</p></div>
-        <div class="qcell"><h4>The Build</h4><p>Next.js 15 frontend shipped in the OSS repo at <code>frontend-nextjs/</code>. Reads from the engine's REST surface (same base URL as the tool catalog). Deployments NovoMCP sets up back identity / audit / async jobs with Postgres behind the same UI; self-hosted operators point it at SQLite / Postgres / whatever the auth service backs.</p></div>
-        <div class="qcell"><h4>The Outcome</h4><p>Minimal today, growing each release. A fresh <code>git clone</code> gives you the engine plus a UI to watch it, with no separate install. Deployments NovoMCP sets up get the same UI on their branded subdomain, no divergent build. New surfaces plug into the same identity and audit path the dashboard already speaks.</p></div>
-      </div>
-      <div class="cfoot">
-        <span class="cfl">Live →</span>
-        <a href="https://github.com/NovoMCP/novomcp/tree/main/frontend-nextjs" target="_blank" rel="noopener">Source: frontend-nextjs/</a>
-        <a href="https://novomcp.com/engine" target="_blank" rel="noopener">Install the engine</a>
       </div>
     </article>
 
